@@ -49,7 +49,7 @@
         </plugins>
     </build-->
     <build>
-        <finalName>hospital</finalName>
+        <finalName>PetHospital</finalName>
     </build>
     <!-- 本人将配置包的版本信息都统一放入此处，方便以后管理-->
     <properties>
