@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userRepository;
 
-    public Long saveUser() {
+    public Integer saveUser() {
         User user = new User();
         user.setName("root");
         user.setPassword("root");

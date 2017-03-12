@@ -17,15 +17,16 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+
     private Session getCurrentSession() {
         return this.sessionFactory.openSession();
     }
 
-    public User load(Long id) {
+    public User load(Integer id) {
         return (User)getCurrentSession().load(User.class,id);
     }
 
-    public User get(Long id) {
+    public User get(Integer id) {
         return (User)getCurrentSession().get(User.class,id);
     }
 
@@ -39,8 +40,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     //插入数据
-    public Long save(User entity) {
-        return (Long)getCurrentSession().save(entity);
+    public Integer save(User entity) {
+        return (Integer)getCurrentSession().save(entity);
     }
 
     //更新数据
@@ -49,7 +50,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     //删除数据
-    public void delete(Long id) {
+    public void delete(Integer id) {
         User user = load(id);
         getCurrentSession().delete(user);
     }

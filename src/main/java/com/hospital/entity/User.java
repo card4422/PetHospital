@@ -13,15 +13,39 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
-    //@Id
-    //@GeneratedValue
-    //private Long id;
+    @Id
+    @GeneratedValue
+    @Column(name="user_id")
+
+    private Integer id;
 
   //  @Column(name = "created")
     //private Long created = System.currentTimeMillis();
 
     @Column(name = "user_name")
     private String name;
+
+    @Column(name = "user_pwd")
+    private String password;
+
+    @Column(name = "user_type")
+    private int type;
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPassword() {
         return this.password;
@@ -38,19 +62,4 @@ public class User {
     public void setType(int type) {
         this.type = type;
     }
-
-    public String getName() {
-
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Column(name = "user_pwd")
-    private String password;
-
-    @Column(name = "user_type")
-    private int type;
 }
