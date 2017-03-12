@@ -29,6 +29,7 @@ public class MainController {
         return "success!";
     }
 
+
 //    @RequestMapping(value = "test", method = RequestMethod.GET)
 //    public String test(){
 //        //实际返回的是views/test.jsp ,spring-mvc.xml中配置过前后缀
