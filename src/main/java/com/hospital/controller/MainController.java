@@ -31,7 +31,7 @@ public class MainController {
 
 //    @RequestMapping(value = "test", method = RequestMethod.GET)
 //    public String test(){
-//        //实际返回的是views/test.jsp ,spring-mvc.xml中配置过前后缀
+//        //瀹為檯杩斿洖鐨勬槸views/test.jsp ,spring-mvc.xml涓厤缃繃鍓嶅悗缂�
 //        return "test";
 //    }
 //

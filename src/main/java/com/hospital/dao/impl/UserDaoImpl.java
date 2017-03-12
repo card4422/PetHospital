@@ -33,28 +33,28 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
-    //²éÕÒÊı¾İ£¿
+    //æŸ¥æ‰¾æ•°æ®ï¼Ÿ
     public void persist(User entity) {
         getCurrentSession().persist(entity);
     }
 
-    //²åÈëÊı¾İ
+    //æ’å…¥æ•°æ®
     public Long save(User entity) {
         return (Long)getCurrentSession().save(entity);
     }
 
-    //¸üĞÂÊı¾İ
+    //æ›´æ–°æ•°æ®
     public void saveOrUpdate(User entity) {
         getCurrentSession().saveOrUpdate(entity);
     }
 
-    //É¾³ıÊı¾İ
+    //åˆ é™¤æ•°æ®
     public void delete(Long id) {
         User user = load(id);
         getCurrentSession().delete(user);
     }
 
-    //ÇåÀí
+    //æ¸…ç†
     public void flush() {
         getCurrentSession().flush();
     }

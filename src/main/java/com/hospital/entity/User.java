@@ -13,9 +13,9 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    //@Id
+    //@GeneratedValue
+    //private Long id;
 
   //  @Column(name = "created")
     //private Long created = System.currentTimeMillis();
