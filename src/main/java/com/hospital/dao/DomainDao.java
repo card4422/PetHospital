@@ -1,4 +1,4 @@
-package com.hospital.repository;
+package com.hospital.dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Jimmy on 2017/3/11.
  */
-public interface DomainRepository<T,PK extends Serializable>{
+public interface DomainDao<T,PK extends Serializable>{
     T load(PK id);
 
     T get(PK id);

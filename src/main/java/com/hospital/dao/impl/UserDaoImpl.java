@@ -1,7 +1,7 @@
-package com.hospital.repository.impl;
+package com.hospital.dao.impl;
 
 import com.hospital.entity.User;
-import com.hospital.repository.UserRepository;
+import com.hospital.dao.UserDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Jimmy on 2017/3/11.
  */
 @Repository
-public class UserRepositoryImpl implements UserRepository {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -33,23 +33,28 @@ public class UserRepositoryImpl implements UserRepository {
         return null;
     }
 
+    //查找数据？
     public void persist(User entity) {
         getCurrentSession().persist(entity);
     }
 
+    //插入数据
     public Long save(User entity) {
         return (Long)getCurrentSession().save(entity);
     }
 
+    //更新数据
     public void saveOrUpdate(User entity) {
         getCurrentSession().saveOrUpdate(entity);
     }
 
+    //删除数据
     public void delete(Long id) {
         User user = load(id);
         getCurrentSession().delete(user);
     }
 
+    //清理
     public void flush() {
         getCurrentSession().flush();
     }

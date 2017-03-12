@@ -1,7 +1,7 @@
 package com.hospital.service.impl;
 
 import com.hospital.entity.User;
-import com.hospital.repository.UserRepository;
+import com.hospital.dao.UserDao;
 import com.hospital.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserDao userRepository;
 
     public Long saveUser() {
         User user = new User();
