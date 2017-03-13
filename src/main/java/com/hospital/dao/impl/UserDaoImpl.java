@@ -2,6 +2,7 @@ package com.hospital.dao.impl;
 
 import com.hospital.entity.User;
 import com.hospital.dao.UserDao;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,11 @@ public class UserDaoImpl implements UserDao {
         return (User)getCurrentSession().get(User.class,id);
     }
 
+    //@SuppressWarnings("JpaQlInspection")
     public List<User> findAll() {
-        return null;
+        String hql = "from User";
+        Query query = getCurrentSession().createQuery(hql);
+        return query.list();
     }
 
     //查找数据？
