@@ -1,66 +1,79 @@
 package com.hospital.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
-
 /**
- * Created by Jimmy on 2017/3/11.
+ * Created by Jimmy on 2017/3/13.
  */
-@Data
 @Entity
-@Table(name = "user")
 public class User {
+    private int userId;
+    private String userName;
+    private String userPwd;
+    private Integer userType;
 
     @Id
     @GeneratedValue
-    @Column(name="user_id")
-
-    private Integer id;
-
-  //  @Column(name = "created")
-    //private Long created = System.currentTimeMillis();
-
-    @Column(name = "user_name")
-    private String name;
-
-    @Column(name = "user_pwd")
-    private String password;
-
-    @Column(name = "user_type")
-    private int type;
-
-    public Integer getId() {
-        return this.id;
+    @Column(name = "user_id", nullable = false, insertable = true, updatable = true)
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getName() {
-        return this.name;
+    @Basic
+    @Column(name = "user_name", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getUserName() {
+        return userName;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPassword() {
-        return this.password;
+    @Basic
+    @Column(name = "user_pwd", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getUserPwd() {
+        return userPwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
     }
 
-    public int getType() {
-        return this.type;
+    @Basic
+    @Column(name = "user_type", nullable = true, insertable = true, updatable = true)
+    public Integer getUserType() {
+        return userType;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setUserType(Integer userType) {
+        this.userType = userType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (userId != user.userId) return false;
+        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
+        if (userPwd != null ? !userPwd.equals(user.userPwd) : user.userPwd != null) return false;
+        if (userType != null ? !userType.equals(user.userType) : user.userType != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userId;
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (userPwd != null ? userPwd.hashCode() : 0);
+        result = 31 * result + (userType != null ? userType.hashCode() : 0);
+        return result;
     }
 }

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hospital.entity.User" table="user" schema="" catalog="pethospital">
+        <id name="userId">
+            <column name="user_id" sql-type="int" not-null="true"/>
+        </id>
+        <property name="userName">
+            <column name="user_name" sql-type="varchar"/>
+        </property>
+        <property name="userPwd">
+            <column name="user_pwd" sql-type="varchar"/>
+        </property>
+        <property name="userType">
+            <column name="user_type" sql-type="int"/>
+        </property>
+    </class>
+</hibernate-mapping>

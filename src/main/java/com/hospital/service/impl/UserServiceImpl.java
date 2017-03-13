@@ -17,9 +17,9 @@ public class UserServiceImpl implements UserService {
 
     public Integer saveUser() {
         User user = new User();
-        user.setName("root");
-        user.setPassword("root");
-        user.setType(1);
+        user.setUserName("root");
+        user.setUserPwd("root");
+        user.setUserType(1);
         return userRepository.save(user);
     }
 }
