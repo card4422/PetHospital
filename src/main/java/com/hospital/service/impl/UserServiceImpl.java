@@ -31,15 +31,15 @@ public class UserServiceImpl implements UserService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        user.setUserName("root");
-//        user.setUserPwd("root");
-//        user.setUserType(1);
-        System.out.println(user);
         return userRepository.save(user);
     }
 
     public List<User> getAllUser(){
         List list = userRepository.findAll();
         return list;
+    }
+
+    public User getUser(String name){
+        return userRepository.getByName(name);
     }
 }

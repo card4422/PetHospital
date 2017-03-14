@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserService {
     Integer saveUser();
     List<User> getAllUser();
+    User getUser(String name);
 }

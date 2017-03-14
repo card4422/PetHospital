@@ -31,7 +31,13 @@ public class UserDaoImpl implements UserDao {
         return (User)getCurrentSession().get(User.class,id);
     }
 
-    //@SuppressWarnings("JpaQlInspection")
+    public User getByName(String userName){
+        String hql = "from User u where u.userName=?";
+        Query query = getCurrentSession().createQuery(hql);
+        query.setString(0,userName);
+        return (User)query.list().get(0);
+    }
+
     public List<User> findAll() {
         String hql = "from User";
         Query query = getCurrentSession().createQuery(hql);
