@@ -7,6 +7,7 @@ import com.hospital.service.TestService;
 import com.hospital.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,6 +41,28 @@ public class UserController {
         List users = userService.getAllUser();
         return users;
     }
+
+    @RequestMapping(value = "admin/user/{page}",method = RequestMethod.GET)
+    @ResponseBody
+    /**
+     * 返回指定页面的user信息
+     */
+    public List getUsers(@PathVariable String page) {
+        int pages = Integer.parseInt(page);
+        List users = userService.getAllUser();
+        List subusers = null;
+        int fromIndex = (pages - 1) * 10 ;
+        if (users.size() >= fromIndex) {
+            int toIndex = pages * 10;
+            if (users.size() >= toIndex) {
+                subusers = users.subList(fromIndex, toIndex);
+            } else {
+                subusers = users.subList(fromIndex, users.size());
+            }
+        }
+        return subusers;
+    }
+
     class validateInfo{
         Boolean isValidated;
         Integer userType;
