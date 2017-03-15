@@ -11,7 +11,6 @@ public class User {
     private String userName;
     private String userPwd;
     private Integer userType;
-    private String userCode;
 
     @Id
     @GeneratedValue
@@ -52,15 +51,6 @@ public class User {
 
     public void setUserType(Integer userType) {
         this.userType = userType;
-    }
-
-    @Transient
-    public String getUserCode(){
-        return userCode;
-    }
-
-    public void setUserCode(String userCode){
-        this.userCode = userCode;
     }
 
     @Override

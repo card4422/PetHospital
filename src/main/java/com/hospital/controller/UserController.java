@@ -55,16 +55,16 @@ public class UserController {
             }
         }
         class templateInfo {
-            Integer user_id;
-            String user_name;
-            Integer user_type;
+            Integer userId;
+            String userName;
+            Integer userType;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (User user : subusers) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.user_id = user.getUserId();
-            tempInfo.user_name = user.getUserName();
-            tempInfo.user_type = user.getUserType();
+            tempInfo.userId = user.getUserId();
+            tempInfo.userName = user.getUserName();
+            tempInfo.userType = user.getUserType();
             result.add(tempInfo);
         }
         String json = null;
@@ -78,6 +78,11 @@ public class UserController {
         return "{data:"+json+",pages:"+page+"}";
     }
 
+    /**
+     * 更新用户
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "admin/user",method = RequestMethod.PUT)
     @ResponseBody
     public String updateUser(@RequestBody User user){
@@ -85,6 +90,11 @@ public class UserController {
         return " Update success";
     }
 
+    /**
+     * 增加用户
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "admin/user",method = RequestMethod.POST)
     @ResponseBody
     public String saveUser(@RequestBody User user){
@@ -92,54 +102,39 @@ public class UserController {
         return "success!";
     }
 
+
+    /**
+     * 删除用户
+     */
     @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
     @ResponseBody
-    public String deleteUser(@RequestBody User user){
+    public String deleteUser(@RequestBody User user) {
         Integer id = user.getUserId();
         userService.deleteUser(id);
-        return id + "  has been deleted";
+        return "{result:true}";
     }
 
+    /**
+     * 验证用户名和密码，返回权限
+     */
     @RequestMapping(value = "validate",method = RequestMethod.POST)
     @ResponseBody
     @JsonIgnoreProperties(ignoreUnknown=true)
-    public String validate(@RequestBody String jsonString,HttpSession session) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            class FirsttemplateInfo {
-                String user_name;
-                String user_pwd;
-                String captcha;
-            }
-            FirsttemplateInfo firsttemplateInfo = objectMapper.readValue(jsonString, FirsttemplateInfo.class);
-            class templateInfo {
-                Boolean isValidated;
-                Integer userType;
-            }
-            if (!(firsttemplateInfo.captcha.equalsIgnoreCase(session.getAttribute("captcha").toString()))) {  //忽略验证码大小写
-                templateInfo info = new templateInfo();
-                User u = userService.getUser(firsttemplateInfo.user_name);
-                if (u != null) {
-                    info.isValidated = true;
-                    info.userType = u.getUserType();
-                } else {
-                    info.isValidated = false;
-                    info.userType = null;
-                }
-                String json = null;
-                try {
-                    json = objectMapper.writeValueAsString(info);
-                } catch (JsonProcessingException e) {
-                    e.printStackTrace();
-                }
-                return json;
+    public Map<String, String> validate(@RequestBody Map map,HttpSession session) {
+        if (map.get("captcha").toString().equalsIgnoreCase(session.getAttribute("captcha").toString())) {  //忽略验证码大小写
+            Map<String, String> result = new HashMap<String, String>();
+            User u = userService.getUser(map.get("userName").toString());
+            if (u != null && u.getUserPwd().equals(map.get("userPwd").toString())) {
+                result.put("isValidated", "true");
+                result.put("userType", u.getUserType().toString());
             } else {
-                return "false";
+                result.put("isValidated", "false");
+                result.put("userType", u.getUserType().toString());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            return result;
+        } else {
+            return null;
         }
-        return "false";
     }
 
 
