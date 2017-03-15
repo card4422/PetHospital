@@ -19,7 +19,7 @@ public interface DomainDao<T,PK extends Serializable>{
 
     PK save(T entity);
 
-    void saveOrUpdate(T entity);
+    void update(T entity);
 
     void delete(PK id);
 

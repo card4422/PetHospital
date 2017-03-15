@@ -1,17 +1,18 @@
 package com.hospital.controller;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hospital.entity.User;
-import com.hospital.service.TestService;
 import com.hospital.service.UserService;
+import org.hibernate.usertype.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
+import sun.org.mozilla.javascript.internal.json.JsonParser;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -28,30 +29,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "saveUser", method = RequestMethod.GET)
-    @ResponseBody
-    public String saveUser(){
-        userService.saveUser();
-        return "success!";
-    }
-
-    @RequestMapping(value = "getAllUser",method = RequestMethod.GET)
-    @ResponseBody
-    public List getAllUser(){
-        List users = userService.getAllUser();
-        return users;
-    }
+//    @RequestMapping(value = "getAllUser",method = RequestMethod.GET)
+//    @ResponseBody
+//    public List getAllUser(){
+//        List users = userService.getAllUser();
+//        return users;
+//    }
 
     @RequestMapping(value = "admin/user/{page}",method = RequestMethod.GET)
     @ResponseBody
     /**
      * 返回指定页面的user信息
      */
-    public List getUsers(@PathVariable String page) {
+    public String getUsers(@PathVariable String page) {
         int pages = Integer.parseInt(page);
         List users = userService.getAllUser();
-        List subusers = null;
-        int fromIndex = (pages - 1) * 10 ;
+        List<User> subusers = null;
+        int fromIndex = (pages - 1) * 10;
         if (users.size() >= fromIndex) {
             int toIndex = pages * 10;
             if (users.size() >= toIndex) {
@@ -60,40 +54,94 @@ public class UserController {
                 subusers = users.subList(fromIndex, users.size());
             }
         }
-        return subusers;
+        class templateInfo {
+            Integer user_id;
+            String user_name;
+            Integer user_type;
+        }
+        List<templateInfo> result = new ArrayList<templateInfo>();
+        for (User user : subusers) {
+            templateInfo tempInfo = new templateInfo();//必须放在循环内
+            tempInfo.user_id = user.getUserId();
+            tempInfo.user_name = user.getUserName();
+            tempInfo.user_type = user.getUserType();
+            result.add(tempInfo);
+        }
+        String json = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        try {
+            json = objectMapper.writeValueAsString(result);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "{data:"+json+",pages:"+page+"}";
     }
 
-    class validateInfo{
-        Boolean isValidated;
-        Integer userType;
+    @RequestMapping(value = "admin/user",method = RequestMethod.PUT)
+    @ResponseBody
+    public String updateUser(@RequestBody User user){
+        userService.updateUser(user);
+        return " Update success";
     }
+
+    @RequestMapping(value = "admin/user",method = RequestMethod.POST)
+    @ResponseBody
+    public String saveUser(@RequestBody User user){
+        userService.saveUser(user);
+        return "success!";
+    }
+
+    @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deleteUser(@RequestBody User user){
+        Integer id = user.getUserId();
+        userService.deleteUser(id);
+        return id + "  has been deleted";
+    }
+
     @RequestMapping(value = "validate",method = RequestMethod.POST)
     @ResponseBody
-    public String validate(User user,HttpSession session){
-        if (!(user.getUserCode().equalsIgnoreCase(session.getAttribute("captcha").toString()))){  //忽略验证码大小写
-            validateInfo info = new validateInfo();
-            ObjectMapper objectMapper = new ObjectMapper();
-            User u = userService.getUser(user.getUserName());
-            if(u!=null){
-                info.isValidated = true;
-                info.userType = u.getUserType();
+    @JsonIgnoreProperties(ignoreUnknown=true)
+    public String validate(@RequestBody String jsonString,HttpSession session) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            class FirsttemplateInfo {
+                String user_name;
+                String user_pwd;
+                String captcha;
             }
-            else{
-                info.isValidated = false;
-                info.userType = null;
+            FirsttemplateInfo firsttemplateInfo = objectMapper.readValue(jsonString, FirsttemplateInfo.class);
+            class templateInfo {
+                Boolean isValidated;
+                Integer userType;
             }
-            String json = null;
-            try {
-                json = objectMapper.writeValueAsString(info);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
+            if (!(firsttemplateInfo.captcha.equalsIgnoreCase(session.getAttribute("captcha").toString()))) {  //忽略验证码大小写
+                templateInfo info = new templateInfo();
+                User u = userService.getUser(firsttemplateInfo.user_name);
+                if (u != null) {
+                    info.isValidated = true;
+                    info.userType = u.getUserType();
+                } else {
+                    info.isValidated = false;
+                    info.userType = null;
+                }
+                String json = null;
+                try {
+                    json = objectMapper.writeValueAsString(info);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+                return json;
+            } else {
+                return "false";
             }
-            return json;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        else{
-            return "false";
-        }
+        return "false";
     }
+
 
 //    @RequestMapping(value = "test", method = RequestMethod.GET)
 //    public String test(){

@@ -2,11 +2,10 @@ package com.hospital.dao.impl;
 
 import com.hospital.entity.User;
 import com.hospital.dao.UserDao;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
@@ -55,14 +54,30 @@ public class UserDaoImpl implements UserDao {
     }
 
     //更新数据
-    public void saveOrUpdate(User entity) {
-        getCurrentSession().saveOrUpdate(entity);
+    public void update(User entity) {
+        try {
+            Session session = getCurrentSession();
+            Transaction tx = session.beginTransaction();
+            session.update(entity);
+            tx.commit();
+            session.close();
+        }catch(HibernateException e){
+            e.printStackTrace();
+        }
     }
 
     //删除数据
     public void delete(Integer id) {
-        User user = load(id);
-        getCurrentSession().delete(user);
+        try {
+            Session session = getCurrentSession();
+            Transaction tx = session.beginTransaction();
+            User user = (User)session.load(User.class,id);
+            session.delete(user);
+            tx.commit();
+            session.close();
+        }catch(HibernateException e){
+            e.printStackTrace();
+        }
     }
 
     //清理

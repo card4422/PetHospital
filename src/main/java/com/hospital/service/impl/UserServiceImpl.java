@@ -20,17 +20,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userRepository;
 
-    public Integer saveUser() {
-//        User user = new User();
-        //json数据中属性名要与User实体类的名字对应
-        String json = "{\"userName\":\"root\",\"userPwd\":\"root\",\"userType\":1}";
-        ObjectMapper objectMapper = new ObjectMapper();
-        User user = null;
-        try {
-            user = objectMapper.readValue(json, User.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public Integer saveUser(User user) {
         return userRepository.save(user);
     }
 
@@ -41,5 +31,13 @@ public class UserServiceImpl implements UserService {
 
     public User getUser(String name){
         return userRepository.getByName(name);
+    }
+
+    public void deleteUser(Integer id){
+        userRepository.delete(id);
+    }
+
+    public void updateUser(User user){
+        userRepository.update(user);
     }
 }
