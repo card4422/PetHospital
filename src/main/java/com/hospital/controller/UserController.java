@@ -23,18 +23,12 @@ import java.util.*;
  * Created by zhuzheng on 17/3/9.
  */
 @Controller
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping("/")
 public class UserController {
 
     @Autowired
     private UserService userService;
-
-//    @RequestMapping(value = "getAllUser",method = RequestMethod.GET)
-//    @ResponseBody
-//    public List getAllUser(){
-//        List users = userService.getAllUser();
-//        return users;
-//    }
 
     @RequestMapping(value = "admin/user/{page}",method = RequestMethod.GET)
     @ResponseBody
@@ -75,7 +69,7 @@ public class UserController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{data:"+json+",pages:"+page+"}";
+        return "{\"data\":"+json+",\"pages\":"+page+"}";
     }
 
     /**
