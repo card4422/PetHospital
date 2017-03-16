@@ -49,14 +49,14 @@ public class UserController {
             }
         }
         class templateInfo {
-            Integer userId;
+            Integer Id;
             String userName;
             Integer userType;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (User user : subusers) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.userId = user.getUserId();
+            tempInfo.Id = user.getId();
             tempInfo.userName = user.getUserName();
             tempInfo.userType = user.getUserType();
             result.add(tempInfo);
@@ -103,7 +103,7 @@ public class UserController {
     @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteUser(@RequestBody User user) {
-        Integer id = user.getUserId();
+        Integer id = user.getId();
         userService.deleteUser(id);
         return "{result:true}";
     }

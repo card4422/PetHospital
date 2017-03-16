@@ -44,14 +44,14 @@ public class MedicineController {
         class templateInfo{
             Integer medicineId;
             String medicineName;
-            Double  medicinePrice;
+            Float  medicinePrice;
             Integer medicineType;
             String description;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for(Medicine medicine : submedicines) {
             templateInfo tempInfo = new templateInfo();
-            tempInfo.medicineId = medicine.getMedicineId();
+            tempInfo.medicineId = medicine.getId();
             tempInfo.medicineName = medicine.getMedicineName();
             tempInfo.medicinePrice = medicine.getMedicinePrice();
             tempInfo.medicineType = medicine.getMedicineType();
@@ -99,7 +99,7 @@ public class MedicineController {
     @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteMedicine(@RequestBody Medicine medicine) {
-        Integer id = medicine.getMedicineId();
+        Integer id = medicine.getId();
         medicineService.deleteMedicine(id);
         return "{result:true}";
     }

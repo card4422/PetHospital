@@ -1,9 +1,6 @@
 package com.hospital.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Jimmy on 2017/3/16.
@@ -17,6 +14,7 @@ public class Medicine {
     private String description;
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;

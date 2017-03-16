@@ -1,14 +1,11 @@
 package com.hospital.service.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hospital.entity.User;
 import com.hospital.dao.UserDao;
 import com.hospital.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 
 /**
