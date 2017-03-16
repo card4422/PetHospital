@@ -11,8 +11,6 @@ public interface DomainDao<T,PK extends Serializable>{
 
     T get(PK id);
 
-    T getByName(String name);
-
     List<T> findAll();
 
     void persist(T entity);

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by zhuzheng on 17/3/16.
  */
 public interface MedicineService {
-    Integer saveMedicine(Medicine user);
+    Integer saveMedicine(Medicine medicine);
 
     List<Medicine> getAllMedicine();
 
@@ -16,5 +16,5 @@ public interface MedicineService {
 
     void deleteMedicine(Integer id);
 
-    void updateMedicine(Medicine user);
+    void updateMedicine(Medicine medicine);
 }
