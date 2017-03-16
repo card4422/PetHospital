@@ -6,26 +6,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
 public class Staff {
-    private int staffId;
+    private int id;
     private String staffName;
     private String title;
+    private Integer roomId;
 
     @Id
-    @Column(name = "staff_id", nullable = false)
-    public int getStaffId() {
-        return staffId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "staff_name", nullable = true, length = 255)
+    @Column(name = "staff_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getStaffName() {
         return staffName;
     }
@@ -35,13 +36,23 @@ public class Staff {
     }
 
     @Basic
-    @Column(name = "title", nullable = true, length = 255)
+    @Column(name = "title", nullable = true, insertable = true, updatable = true, length = 255)
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Basic
+    @Column(name = "room_id", nullable = true, insertable = true, updatable = true)
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
     }
 
     @Override
@@ -51,18 +62,20 @@ public class Staff {
 
         Staff staff = (Staff) o;
 
-        if (staffId != staff.staffId) return false;
+        if (id != staff.id) return false;
         if (staffName != null ? !staffName.equals(staff.staffName) : staff.staffName != null) return false;
         if (title != null ? !title.equals(staff.title) : staff.title != null) return false;
+        if (roomId != null ? !roomId.equals(staff.roomId) : staff.roomId != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = staffId;
+        int result = id;
         result = 31 * result + (staffName != null ? staffName.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
         return result;
     }
 }

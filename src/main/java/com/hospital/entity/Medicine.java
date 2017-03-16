@@ -6,28 +6,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
 public class Medicine {
-    private int medicineId;
+    private int id;
     private String medicineName;
-    private Double medicinePrice;
+    private Float medicinePrice;
     private Integer medicineType;
     private String description;
 
     @Id
-    @Column(name = "medicine_id", nullable = false)
-    public int getMedicineId() {
-        return medicineId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setMedicineId(int medicineId) {
-        this.medicineId = medicineId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "medicine_name", nullable = true, length = 255)
+    @Column(name = "medicine_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getMedicineName() {
         return medicineName;
     }
@@ -37,17 +37,17 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "medicine_price", nullable = true, precision = 0)
-    public Double getMedicinePrice() {
+    @Column(name = "medicine_price", nullable = true, insertable = true, updatable = true, precision = 0)
+    public Float getMedicinePrice() {
         return medicinePrice;
     }
 
-    public void setMedicinePrice(Double medicinePrice) {
+    public void setMedicinePrice(Float medicinePrice) {
         this.medicinePrice = medicinePrice;
     }
 
     @Basic
-    @Column(name = "medicine_type", nullable = true)
+    @Column(name = "medicine_type", nullable = true, insertable = true, updatable = true)
     public Integer getMedicineType() {
         return medicineType;
     }
@@ -57,7 +57,7 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -73,7 +73,7 @@ public class Medicine {
 
         Medicine medicine = (Medicine) o;
 
-        if (medicineId != medicine.medicineId) return false;
+        if (id != medicine.id) return false;
         if (medicineName != null ? !medicineName.equals(medicine.medicineName) : medicine.medicineName != null)
             return false;
         if (medicinePrice != null ? !medicinePrice.equals(medicine.medicinePrice) : medicine.medicinePrice != null)
@@ -88,7 +88,7 @@ public class Medicine {
 
     @Override
     public int hashCode() {
-        int result = medicineId;
+        int result = id;
         result = 31 * result + (medicineName != null ? medicineName.hashCode() : 0);
         result = 31 * result + (medicinePrice != null ? medicinePrice.hashCode() : 0);
         result = 31 * result + (medicineType != null ? medicineType.hashCode() : 0);

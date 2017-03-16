@@ -4,32 +4,32 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.sql.Date;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
 public class Record {
-    private int recordId;
+    private int id;
     private Date time;
     private String patient;
     private String petType;
     private String description;
-    private Double price;
+    private Float price;
 
     @Id
-    @Column(name = "record_id", nullable = false)
-    public int getRecordId() {
-        return recordId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setRecordId(int recordId) {
-        this.recordId = recordId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "time", nullable = true)
+    @Column(name = "time", nullable = true, insertable = true, updatable = true)
     public Date getTime() {
         return time;
     }
@@ -39,7 +39,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "patient", nullable = true, length = 255)
+    @Column(name = "patient", nullable = true, insertable = true, updatable = true, length = 255)
     public String getPatient() {
         return patient;
     }
@@ -49,7 +49,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "pet_type", nullable = true, length = 255)
+    @Column(name = "pet_type", nullable = true, insertable = true, updatable = true, length = 255)
     public String getPetType() {
         return petType;
     }
@@ -59,7 +59,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -69,12 +69,12 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "price", nullable = true, precision = 0)
-    public Double getPrice() {
+    @Column(name = "price", nullable = true, insertable = true, updatable = true, precision = 0)
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -85,7 +85,7 @@ public class Record {
 
         Record record = (Record) o;
 
-        if (recordId != record.recordId) return false;
+        if (id != record.id) return false;
         if (time != null ? !time.equals(record.time) : record.time != null) return false;
         if (patient != null ? !patient.equals(record.patient) : record.patient != null) return false;
         if (petType != null ? !petType.equals(record.petType) : record.petType != null) return false;
@@ -97,7 +97,7 @@ public class Record {
 
     @Override
     public int hashCode() {
-        int result = recordId;
+        int result = id;
         result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (patient != null ? patient.hashCode() : 0);
         result = 31 * result + (petType != null ? petType.hashCode() : 0);

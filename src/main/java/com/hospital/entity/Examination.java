@@ -6,27 +6,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
 public class Examination {
-    private int examinationId;
+    private int id;
     private String examinationName;
-    private Double examinationPrice;
+    private Float examinationPrice;
     private String description;
 
     @Id
-    @Column(name = "examination _id", nullable = false)
-    public int getExaminationId() {
-        return examinationId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setExaminationId(int examinationId) {
-        this.examinationId = examinationId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "examination _name", nullable = true, length = 255)
+    @Column(name = "examination _name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getExaminationName() {
         return examinationName;
     }
@@ -36,17 +36,17 @@ public class Examination {
     }
 
     @Basic
-    @Column(name = "examination _price", nullable = true, precision = 0)
-    public Double getExaminationPrice() {
+    @Column(name = "examination _price", nullable = true, insertable = true, updatable = true, precision = 0)
+    public Float getExaminationPrice() {
         return examinationPrice;
     }
 
-    public void setExaminationPrice(Double examinationPrice) {
+    public void setExaminationPrice(Float examinationPrice) {
         this.examinationPrice = examinationPrice;
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -62,7 +62,7 @@ public class Examination {
 
         Examination that = (Examination) o;
 
-        if (examinationId != that.examinationId) return false;
+        if (id != that.id) return false;
         if (examinationName != null ? !examinationName.equals(that.examinationName) : that.examinationName != null)
             return false;
         if (examinationPrice != null ? !examinationPrice.equals(that.examinationPrice) : that.examinationPrice != null)
@@ -74,7 +74,7 @@ public class Examination {
 
     @Override
     public int hashCode() {
-        int result = examinationId;
+        int result = id;
         result = 31 * result + (examinationName != null ? examinationName.hashCode() : 0);
         result = 31 * result + (examinationPrice != null ? examinationPrice.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);

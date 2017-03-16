@@ -6,31 +6,75 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
 public class Case {
-    private int caseId;
+    private int id;
     private String caseName;
+    private Integer symptom;
+    private Integer examination;
+    private Integer result;
+    private Integer method;
 
     @Id
-    @Column(name = "case_id", nullable = false)
-    public int getCaseId() {
-        return caseId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setCaseId(int caseId) {
-        this.caseId = caseId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "case_name", nullable = true, length = 255)
+    @Column(name = "case_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getCaseName() {
         return caseName;
     }
 
     public void setCaseName(String caseName) {
         this.caseName = caseName;
+    }
+
+    @Basic
+    @Column(name = "symptom", nullable = true, insertable = true, updatable = true)
+    public Integer getSymptom() {
+        return symptom;
+    }
+
+    public void setSymptom(Integer symptom) {
+        this.symptom = symptom;
+    }
+
+    @Basic
+    @Column(name = "examination", nullable = true, insertable = true, updatable = true)
+    public Integer getExamination() {
+        return examination;
+    }
+
+    public void setExamination(Integer examination) {
+        this.examination = examination;
+    }
+
+    @Basic
+    @Column(name = "result", nullable = true, insertable = true, updatable = true)
+    public Integer getResult() {
+        return result;
+    }
+
+    public void setResult(Integer result) {
+        this.result = result;
+    }
+
+    @Basic
+    @Column(name = "method", nullable = true, insertable = true, updatable = true)
+    public Integer getMethod() {
+        return method;
+    }
+
+    public void setMethod(Integer method) {
+        this.method = method;
     }
 
     @Override
@@ -40,16 +84,24 @@ public class Case {
 
         Case aCase = (Case) o;
 
-        if (caseId != aCase.caseId) return false;
+        if (id != aCase.id) return false;
         if (caseName != null ? !caseName.equals(aCase.caseName) : aCase.caseName != null) return false;
+        if (symptom != null ? !symptom.equals(aCase.symptom) : aCase.symptom != null) return false;
+        if (examination != null ? !examination.equals(aCase.examination) : aCase.examination != null) return false;
+        if (result != null ? !result.equals(aCase.result) : aCase.result != null) return false;
+        if (method != null ? !method.equals(aCase.method) : aCase.method != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = caseId;
-        result = 31 * result + (caseName != null ? caseName.hashCode() : 0);
-        return result;
+        int result1 = id;
+        result1 = 31 * result1 + (caseName != null ? caseName.hashCode() : 0);
+        result1 = 31 * result1 + (symptom != null ? symptom.hashCode() : 0);
+        result1 = 31 * result1 + (examination != null ? examination.hashCode() : 0);
+        result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
+        result1 = 31 * result1 + (method != null ? method.hashCode() : 0);
+        return result1;
     }
 }

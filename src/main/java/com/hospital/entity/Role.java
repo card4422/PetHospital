@@ -1,19 +1,20 @@
 package com.hospital.entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
-@IdClass(RolePK.class)
 public class Role {
     private int id;
-    private int roleType;
     private String roomAccess;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -22,18 +23,8 @@ public class Role {
         this.id = id;
     }
 
-    @Id
-    @Column(name = "role_type", nullable = false)
-    public int getRoleType() {
-        return roleType;
-    }
-
-    public void setRoleType(int roleType) {
-        this.roleType = roleType;
-    }
-
     @Basic
-    @Column(name = "room_access", nullable = true, length = 255)
+    @Column(name = "room_access", nullable = true, insertable = true, updatable = true, length = 255)
     public String getRoomAccess() {
         return roomAccess;
     }
@@ -50,7 +41,6 @@ public class Role {
         Role role = (Role) o;
 
         if (id != role.id) return false;
-        if (roleType != role.roleType) return false;
         if (roomAccess != null ? !roomAccess.equals(role.roomAccess) : role.roomAccess != null) return false;
 
         return true;
@@ -59,7 +49,6 @@ public class Role {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + roleType;
         result = 31 * result + (roomAccess != null ? roomAccess.hashCode() : 0);
         return result;
     }

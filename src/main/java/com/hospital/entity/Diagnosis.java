@@ -6,26 +6,26 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
 public class Diagnosis {
-    private int diagnosisId;
+    private int id;
     private String diagnosisDescription;
-    private Double diagnosisPrice;
+    private Float diagnosisPrice;
 
     @Id
-    @Column(name = "diagnosis_id", nullable = false)
-    public int getDiagnosisId() {
-        return diagnosisId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setDiagnosisId(int diagnosisId) {
-        this.diagnosisId = diagnosisId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "diagnosis_description", nullable = true, length = 255)
+    @Column(name = "diagnosis_description", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDiagnosisDescription() {
         return diagnosisDescription;
     }
@@ -35,12 +35,12 @@ public class Diagnosis {
     }
 
     @Basic
-    @Column(name = "diagnosis_price", nullable = true, precision = 0)
-    public Double getDiagnosisPrice() {
+    @Column(name = "diagnosis_price", nullable = true, insertable = true, updatable = true, precision = 0)
+    public Float getDiagnosisPrice() {
         return diagnosisPrice;
     }
 
-    public void setDiagnosisPrice(Double diagnosisPrice) {
+    public void setDiagnosisPrice(Float diagnosisPrice) {
         this.diagnosisPrice = diagnosisPrice;
     }
 
@@ -51,7 +51,7 @@ public class Diagnosis {
 
         Diagnosis diagnosis = (Diagnosis) o;
 
-        if (diagnosisId != diagnosis.diagnosisId) return false;
+        if (id != diagnosis.id) return false;
         if (diagnosisDescription != null ? !diagnosisDescription.equals(diagnosis.diagnosisDescription) : diagnosis.diagnosisDescription != null)
             return false;
         if (diagnosisPrice != null ? !diagnosisPrice.equals(diagnosis.diagnosisPrice) : diagnosis.diagnosisPrice != null)
@@ -62,7 +62,7 @@ public class Diagnosis {
 
     @Override
     public int hashCode() {
-        int result = diagnosisId;
+        int result = id;
         result = 31 * result + (diagnosisDescription != null ? diagnosisDescription.hashCode() : 0);
         result = 31 * result + (diagnosisPrice != null ? diagnosisPrice.hashCode() : 0);
         return result;

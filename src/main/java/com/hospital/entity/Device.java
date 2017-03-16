@@ -6,27 +6,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/16.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
 public class Device {
-    private int deviceId;
+    private int id;
     private String deviceName;
+    private Integer roomId;
     private String description;
     private String media;
 
     @Id
-    @Column(name = "device_id", nullable = false)
-    public int getDeviceId() {
-        return deviceId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setDeviceId(int deviceId) {
-        this.deviceId = deviceId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "device_name", nullable = true, length = 255)
+    @Column(name = "device_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDeviceName() {
         return deviceName;
     }
@@ -36,7 +37,17 @@ public class Device {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "room_id", nullable = true, insertable = true, updatable = true)
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    @Basic
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -46,7 +57,7 @@ public class Device {
     }
 
     @Basic
-    @Column(name = "media", nullable = true, length = 255)
+    @Column(name = "media", nullable = true, insertable = true, updatable = true, length = 255)
     public String getMedia() {
         return media;
     }
@@ -62,8 +73,9 @@ public class Device {
 
         Device device = (Device) o;
 
-        if (deviceId != device.deviceId) return false;
+        if (id != device.id) return false;
         if (deviceName != null ? !deviceName.equals(device.deviceName) : device.deviceName != null) return false;
+        if (roomId != null ? !roomId.equals(device.roomId) : device.roomId != null) return false;
         if (description != null ? !description.equals(device.description) : device.description != null) return false;
         if (media != null ? !media.equals(device.media) : device.media != null) return false;
 
@@ -72,8 +84,9 @@ public class Device {
 
     @Override
     public int hashCode() {
-        int result = deviceId;
+        int result = id;
         result = 31 * result + (deviceName != null ? deviceName.hashCode() : 0);
+        result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (media != null ? media.hashCode() : 0);
         return result;

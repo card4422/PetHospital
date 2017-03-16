@@ -1,20 +1,18 @@
 package com.hospital.entity;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Jimmy on 2017/3/16.
  */
-@Entity
-public class Room {
+public class UserPK implements Serializable {
     private int id;
-    private String roomName;
+    private String userName;
 
-    @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Id
     public int getId() {
         return id;
     }
@@ -23,14 +21,14 @@ public class Room {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "room_name", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getRoomName() {
-        return roomName;
+    @Column(name = "user_name", nullable = false, insertable = true, updatable = true, length = 255)
+    @Id
+    public String getUserName() {
+        return userName;
     }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override
@@ -38,10 +36,10 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Room room = (Room) o;
+        UserPK userPK = (UserPK) o;
 
-        if (id != room.id) return false;
-        if (roomName != null ? !roomName.equals(room.roomName) : room.roomName != null) return false;
+        if (id != userPK.id) return false;
+        if (userName != null ? !userName.equals(userPK.userName) : userPK.userName != null) return false;
 
         return true;
     }
@@ -49,7 +47,7 @@ public class Room {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (roomName != null ? roomName.hashCode() : 0);
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
         return result;
     }
 }

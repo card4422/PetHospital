@@ -3,28 +3,29 @@ package com.hospital.entity;
 import javax.persistence.*;
 
 /**
- * Created by Jimmy on 2017/3/13.
+ * Created by Jimmy on 2017/3/16.
  */
 @Entity
+@IdClass(UserPK.class)
 public class User {
-    private int userId;
+    private int id;
     private String userName;
     private String userPwd;
     private Integer userType;
 
     @Id
     @GeneratedValue
-    @Column(name = "user_id", nullable = false, insertable = true, updatable = true)
-    public int getUserId() {
-        return userId;
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Basic
-    @Column(name = "user_name", nullable = true, insertable = true, updatable = true, length = 255)
+    @Id
+    @Column(name = "user_name", nullable = false, insertable = true, updatable = true, length = 255)
     public String getUserName() {
         return userName;
     }
@@ -60,7 +61,7 @@ public class User {
 
         User user = (User) o;
 
-        if (userId != user.userId) return false;
+        if (id != user.id) return false;
         if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
         if (userPwd != null ? !userPwd.equals(user.userPwd) : user.userPwd != null) return false;
         if (userType != null ? !userType.equals(user.userType) : user.userType != null) return false;
@@ -70,7 +71,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = userId;
+        int result = id;
         result = 31 * result + (userName != null ? userName.hashCode() : 0);
         result = 31 * result + (userPwd != null ? userPwd.hashCode() : 0);
         result = 31 * result + (userType != null ? userType.hashCode() : 0);
