@@ -95,29 +95,94 @@ public class CaseController {
     }
 
     //SYMPTOM
-//    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.PUT)
-//    @ResponseBody
-//    public String updateSymptom(@RequestBody CaseResource caseResource){
-//        caseResourceService.updateCaseResource(caseResource);
-//        return " Update success";
-//    }
-//
-//    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.POST)
-//    @ResponseBody
-//    public String saveSymptom(@RequestBody CaseResource caseResource){
-//        caseResourceService.saveCaseResource(caseResource);
-//        return "success!";
-//    }
-//
-//    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.DELETE)
-//    @ResponseBody
-//    public String deleteSymptom(@RequestBody CaseResource caseResource) {
-//        Integer id = caseResource.getId();
-//        caseResourceService.deleteCaseResource(id);
-//        return "{result:true}";
-//    }
+    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.PUT)
+    @ResponseBody
+    public String updateSymptom(@RequestBody CaseResource caseResource){
+        caseResourceService.updateCaseResource(caseResource);
+        return " Update success";
+    }
 
-    //RESULT
+    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.POST)
+    @ResponseBody
+    public String saveSymptom(@RequestBody CaseResource caseResource){
+        caseResourceService.saveCaseResource(caseResource);
+        return "success!";
+    }
+
+    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deleteSymptom(@RequestBody CaseResource caseResource) {
+        Integer id = caseResource.getId();
+        caseResourceService.deleteCaseResource(id);
+        return "{result:true}";
+    }
 
     //EXAMINATION
+    @RequestMapping(value = "admin/case/examination",method = RequestMethod.PUT)
+    @ResponseBody
+    public String updateExamination(@RequestBody CaseResource caseResource){
+        caseResourceService.updateCaseResource(caseResource);
+        return " Update success";
+    }
+
+    @RequestMapping(value = "admin/case/examination",method = RequestMethod.POST)
+    @ResponseBody
+    public String saveExamination(@RequestBody CaseResource caseResource){
+        caseResourceService.saveCaseResource(caseResource);
+        return "success!";
+    }
+
+    @RequestMapping(value = "admin/case/examination",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deleteExamination(@RequestBody CaseResource caseResource) {
+        Integer id = caseResource.getId();
+        caseResourceService.deleteCaseResource(id);
+        return "{result:true}";
+    }
+
+    //RESULT
+    @RequestMapping(value = "admin/case/result",method = RequestMethod.PUT)
+    @ResponseBody
+    public String updateResult(@RequestBody CaseResource caseResource){
+        caseResourceService.updateCaseResource(caseResource);
+        return " Update success";
+    }
+
+    @RequestMapping(value = "admin/case/result",method = RequestMethod.POST)
+    @ResponseBody
+    public String saveResult(@RequestBody CaseResource caseResource){
+        caseResourceService.saveCaseResource(caseResource);
+        return "success!";
+    }
+
+    @RequestMapping(value = "admin/case/result",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deleteResult(@RequestBody CaseResource caseResource) {
+        Integer id = caseResource.getId();
+        caseResourceService.deleteCaseResource(id);
+        return "{result:true}";
+    }
+
+    //METHOD
+    @RequestMapping(value = "admin/case/method",method = RequestMethod.PUT)
+    @ResponseBody
+    public String updateMethod(@RequestBody CaseResource caseResource){
+        caseResourceService.updateCaseResource(caseResource);
+        return " Update success";
+    }
+
+    @RequestMapping(value = "admin/case/method",method = RequestMethod.POST)
+    @ResponseBody
+    public String saveMethod(@RequestBody CaseResource caseResource){
+        caseResourceService.saveCaseResource(caseResource);
+        return "success!";
+    }
+
+    @RequestMapping(value = "admin/case/method",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deleteMethod(@RequestBody CaseResource caseResource) {
+        Integer id = caseResource.getId();
+        caseResourceService.deleteCaseResource(id);
+        return "{result:true}";
+    }
 }
