@@ -12,7 +12,6 @@
 
 ###前端服务器端口:
 	http://localhost:3000
-	
 ##基本框架
 使用了**Spring**+**SpringMVC**+**Hibernate**框架进行系统的开发
 
@@ -33,10 +32,10 @@
 * 用户user
 
 属性名     | 备注
-----------|----------------
-id        | pk,ai
-user_name | pk
-user_pwd  | 0普通用户;1管理员
+-----------|----------------
+id         | pk,ai
+user_name  | pk
+user_pwd   | 0普通用户;1管理员
 
 * 科室room
 

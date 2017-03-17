@@ -74,7 +74,7 @@ public class MedicineController {
     * @param medicine
     * @return
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.POST)
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.POST)
     @ResponseBody
     public String saveMedicine(@RequestBody Medicine medicine){
         medicineService.saveMedicine(medicine);
@@ -96,7 +96,7 @@ public class MedicineController {
     /**
      * 删除药品
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteMedicine(@RequestBody Medicine medicine) {
         Integer id = medicine.getId();
