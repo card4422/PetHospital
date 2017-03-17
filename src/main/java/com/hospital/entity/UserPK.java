@@ -1,6 +1,7 @@
 package com.hospital.entity;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -11,6 +12,7 @@ public class UserPK implements Serializable {
     private int id;
     private String userName;
 
+    @GeneratedValue
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     @Id
     public int getId() {

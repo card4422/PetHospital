@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
         String hql = "from User";
         Query query = getCurrentSession().createQuery(hql);
         return query.list();
-    }
+}
 
     //查找数据？
     public void persist(User entity) {
