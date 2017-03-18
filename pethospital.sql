@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-03-18 01:55:44
+Date: 2017-03-19 00:18:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,6 +30,10 @@ CREATE TABLE `case` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of case
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for case_resource
 -- ----------------------------
 DROP TABLE IF EXISTS `case_resource`;
@@ -42,6 +46,10 @@ CREATE TABLE `case_resource` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of case_resource
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for examination
 -- ----------------------------
 DROP TABLE IF EXISTS `examination`;
@@ -52,6 +60,10 @@ CREATE TABLE `examination` (
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of examination
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for hospital_record
@@ -67,6 +79,10 @@ CREATE TABLE `hospital_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of hospital_record
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for medicine
 -- ----------------------------
 DROP TABLE IF EXISTS `medicine`;
@@ -78,6 +94,11 @@ CREATE TABLE `medicine` (
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of medicine
+-- ----------------------------
+INSERT INTO `medicine` VALUES ('1', 'm1', '1.2', '1', 'med1');
 
 -- ----------------------------
 -- Table structure for record
@@ -94,6 +115,10 @@ CREATE TABLE `record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of record
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
@@ -102,6 +127,10 @@ CREATE TABLE `role` (
   `room_access` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for room
@@ -113,6 +142,10 @@ CREATE TABLE `room` (
   PRIMARY KEY (`id`),
   KEY `room_type` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of room
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for staff
@@ -127,6 +160,10 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of staff
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -137,3 +174,22 @@ CREATE TABLE `user` (
   `user_type` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`,`user_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', 'zhu', 'zhu', '1');
+INSERT INTO `user` VALUES ('2', 'yang', 'yang', '0');
+INSERT INTO `user` VALUES ('3', 'xu', 'xu', '1');
+INSERT INTO `user` VALUES ('4', 'james', 'james', '0');
+INSERT INTO `user` VALUES ('5', 'harden', 'harden', '1');
+INSERT INTO `user` VALUES ('6', 'kobe', 'kobe', '0');
+INSERT INTO `user` VALUES ('7', 'curry', 'curry', '1');
+INSERT INTO `user` VALUES ('8', 'capela', 'capela', '0');
+INSERT INTO `user` VALUES ('9', 'messi', 'messi', '1');
+INSERT INTO `user` VALUES ('10', 'xavi', 'xavi', '0');
+INSERT INTO `user` VALUES ('11', 'neymar', 'neymar', '1');
+INSERT INTO `user` VALUES ('12', 'pique', 'pique', '0');
+INSERT INTO `user` VALUES ('13', 'pogba', 'pogba', '1');
+INSERT INTO `user` VALUES ('14', 'rooney', 'rooney', '0');
+INSERT INTO `user` VALUES ('15', 'kante', 'kante', '1');
