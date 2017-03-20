@@ -31,16 +31,92 @@
 ##数据表设计
 * 用户user
 
-属性名     | 备注
------------|----------------
-id         | pk,ai
-user_name  | pk
-user_pwd   | 0普通用户;1管理员
+| 属性名            | 备注           |
+|----------------- |:--------------:|
+|id                | pk,ai          |
+|user_name         | pk              |
+|user_pwd          | 0普通用户;1管理员 |
 
 * 科室room
 
-属性名|备注
------|----
-id|pk,ai
-room_name|
+属性名     |备注
+-----------|----------------
+id         |pk,ai
+room_name  |
+
+* 病例case
+
+属性名       | 备注
+-------------|----------------
+id	          |pk, ai
+case_name	  |
+symptom	      |resource_id,FK,病症是怎样的
+examination	  |resource_id,FK,例：验血
+result	      |resource_id,FK,诊断结果
+method	      |resource_id,FK,治疗方案
+
+* 病例资源case_resource
+
+属性名       | 备注
+-------------|----------------
+id	         |pk, ai
+description	 |
+picture	     |
+video        |
+
+* 角色分配role
+
+属性名        | 备注
+--------------|----------------
+id	          |1前台；2助理；3兽医 pk
+room_access   |对应科室
+
+* 记录record【档案管理：就诊记录】
+
+属性名        | 备注
+--------------|----------------
+id	          |pk, ai
+time	      |Time
+patient	      |Str
+pet_type	  |宠物种类
+description   |病人本次全部就诊详情
+price	      |总收费
+
+* 药品medicine【药品和疫苗统一管理】
+
+属性名           | 备注
+-----------------|----------------
+id	             |pk, ai
+medicine_name    |	
+medicine_price   |	
+medicine_type	 |药品的类型（药品or疫苗）
+description	     |
+
+* 人员管理staff
+
+属性名       | 备注
+-------------|----------------
+id	         |pk, ai
+staff_name 	 |
+title	     |
+room_id	     |fk
+
+* 住院记录hospital_record【住院管理】
+
+属性名       | 备注
+-------------|----------------
+id	         |pk, ai
+patient	     |
+start_time	 |
+end_time	 |
+description  |
+
+* 化验examination
+
+属性名              | 备注
+--------------------|----------------
+id	                |pk, ai
+examination_name    |	
+examination_price   |	
+description	        |为了什么病做这个化验
 
