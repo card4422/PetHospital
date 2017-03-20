@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : test
-Source Server Version : 50717
+Source Server         : PetHospital
+Source Server Version : 50622
 Source Host           : localhost:3306
 Source Database       : pethospital
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50622
 File Encoding         : 65001
 
-Date: 2017-03-19 00:18:53
+Date: 2017-03-20 17:11:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,11 +59,14 @@ CREATE TABLE `examination` (
   `examination _price` float DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of examination
 -- ----------------------------
+INSERT INTO `examination` VALUES ('1', 'CT', '200', 'CT');
+INSERT INTO `examination` VALUES ('2', 'B ultrasound', '400', 'B ultrasound');
+INSERT INTO `examination` VALUES ('3', 'NMR', '300', 'NMR');
 
 -- ----------------------------
 -- Table structure for hospital_record
@@ -76,11 +79,14 @@ CREATE TABLE `hospital_record` (
   `end_time` date DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hospital_record
 -- ----------------------------
+INSERT INTO `hospital_record` VALUES ('1', 'shiro', '2017-02-28', '2017-03-01', 'flu');
+INSERT INTO `hospital_record` VALUES ('2', 'kuro', '2017-03-24', '2017-03-24', 'cough');
+INSERT INTO `hospital_record` VALUES ('3', 'sora', '2017-03-25', '2017-03-28', 'pregnant');
 
 -- ----------------------------
 -- Table structure for medicine
@@ -93,12 +99,14 @@ CREATE TABLE `medicine` (
   `medicine_type` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of medicine
 -- ----------------------------
 INSERT INTO `medicine` VALUES ('1', 'm1', '1.2', '1', 'med1');
+INSERT INTO `medicine` VALUES ('2', 'm2', '1.5', '1', 'mde2');
+INSERT INTO `medicine` VALUES ('3', 'm3', '400', '2', 'med3');
 
 -- ----------------------------
 -- Table structure for record
@@ -112,11 +120,14 @@ CREATE TABLE `record` (
   `description` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of record
 -- ----------------------------
+INSERT INTO `record` VALUES ('1', '2017-03-21', 'shiro', 'neko', 'flu', '500');
+INSERT INTO `record` VALUES ('2', '2017-02-28', 'kuro', 'inu', 'cough', '200');
+INSERT INTO `record` VALUES ('3', '2017-03-23', 'sora', 'tori', 'pregnant', '300');
 
 -- ----------------------------
 -- Table structure for role
@@ -131,6 +142,9 @@ CREATE TABLE `role` (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
+INSERT INTO `role` VALUES ('1', '1');
+INSERT INTO `role` VALUES ('2', '3');
+INSERT INTO `role` VALUES ('3', '4');
 
 -- ----------------------------
 -- Table structure for room
@@ -146,6 +160,9 @@ CREATE TABLE `room` (
 -- ----------------------------
 -- Records of room
 -- ----------------------------
+INSERT INTO `room` VALUES ('1', 'room1');
+INSERT INTO `room` VALUES ('2', 'room2');
+INSERT INTO `room` VALUES ('3', 'room3');
 
 -- ----------------------------
 -- Table structure for staff
@@ -157,11 +174,16 @@ CREATE TABLE `staff` (
   `title` varchar(255) DEFAULT NULL,
   `room_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of staff
 -- ----------------------------
+INSERT INTO `staff` VALUES ('1', 'kumamon', 'professor', '1');
+INSERT INTO `staff` VALUES ('2', 'konan', 'professor', '1');
+INSERT INTO `staff` VALUES ('3', 'pikacyu', 'associate professor', '2');
+INSERT INTO `staff` VALUES ('4', 'pudin', 'doctor', '1');
+INSERT INTO `staff` VALUES ('5', 'guradon', 'doctor', '2');
 
 -- ----------------------------
 -- Table structure for user
