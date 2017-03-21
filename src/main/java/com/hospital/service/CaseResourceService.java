@@ -14,6 +14,8 @@ public interface CaseResourceService {
 
 //    CaseResource getCaseResource(String name);
 
+    CaseResource getById(Integer id);
+
     void deleteCaseResource(Integer id);
 
     void updateCaseResource(CaseResource caseResource);

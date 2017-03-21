@@ -16,7 +16,7 @@ public class User {
     private Integer userType;
 
     @Id
-    @Autowired
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

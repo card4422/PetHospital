@@ -18,7 +18,7 @@ public class HospitalRecord {
     private String description;
 
     @Id
-    @Autowired
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

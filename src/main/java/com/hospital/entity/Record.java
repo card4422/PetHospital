@@ -2,10 +2,7 @@ package com.hospital.entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -21,7 +18,7 @@ public class Record {
     private Float price;
 
     @Id
-    @Autowired
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

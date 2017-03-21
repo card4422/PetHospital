@@ -2,10 +2,7 @@ package com.hospital.entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by zhuzheng on 17/3/21.
@@ -20,7 +17,7 @@ public class Case {
     private Integer method;
 
     @Id
-    @Autowired
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

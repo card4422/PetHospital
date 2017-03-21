@@ -16,7 +16,7 @@ public class CaseResource {
     private String video;
 
     @Id
-    @Autowired
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

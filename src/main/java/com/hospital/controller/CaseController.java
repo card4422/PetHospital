@@ -46,20 +46,20 @@ public class CaseController {
         class templateInfo {
             Integer Id;
             String caseName;
-            Integer symptom;
-            Integer examination;
-            Integer result;
-            Integer method;
+            CaseResource symptom;
+            CaseResource examination;
+            CaseResource result;
+            CaseResource method;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Case c : subcases) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
             tempInfo.Id = c.getId();
             tempInfo.caseName = c.getCaseName();
-            tempInfo.symptom = c.getSymptom();
-            tempInfo.examination = c.getExam();
-            tempInfo.result = c.getResult();
-            tempInfo.method = c.getMethod();
+            tempInfo.symptom = caseResourceService.getById(c.getSymptom());
+            tempInfo.examination = caseResourceService.getById(c.getExam());
+            tempInfo.result = caseResourceService.getById(c.getResult());
+            tempInfo.method = caseResourceService.getById(c.getMethod());
             result.add(tempInfo);
         }
         String json = null;

@@ -53,7 +53,7 @@ public class HospitalRecordController {
             tempInfo.Id = hospitalRecord.getId();
             tempInfo.patient = hospitalRecord.getPatient();
             tempInfo.startTime = hospitalRecord.getStartTime();
-            tempInfo.startTime = hospitalRecord.getEndTime();
+            tempInfo.endTime = hospitalRecord.getEndTime();
             tempInfo.description = hospitalRecord.getDescription();
             result.add(tempInfo);
         }

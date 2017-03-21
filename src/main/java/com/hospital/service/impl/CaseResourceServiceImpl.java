@@ -26,6 +26,9 @@ public class CaseResourceServiceImpl implements CaseResourceService {
         return list;
     }
 
+    public CaseResource getById(Integer id){
+        return caseResourceRepository.get(id);
+    }
 //    public CaseResource getCaseResource(String name){
 //        return caseResourceRepository.getByName(name);
 //    }
