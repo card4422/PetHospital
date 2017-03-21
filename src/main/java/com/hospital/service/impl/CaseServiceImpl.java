@@ -1,6 +1,6 @@
 package com.hospital.service.impl;
 
-import com.hospital.entity.Case;
+import com.hospital.entity.CaseEntity;
 import com.hospital.dao.CaseDao;
 import com.hospital.service.CaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +17,16 @@ public class CaseServiceImpl implements CaseService {
     @Autowired
     private CaseDao caseRepository;
 
-    public Integer saveCase(Case case_s) {
-        return caseRepository.save(case_s);
+    public Integer saveCase(CaseEntity case_Entity_s) {
+        return caseRepository.save(case_Entity_s);
     }
 
-    public List<Case> getAllCase() {
+    public List<CaseEntity> getAllCase() {
         List list = caseRepository.findAll();
         return list;
     }
 
-    public Case getCase(String name) {
+    public CaseEntity getCase(String name) {
         return caseRepository.getByName(name);
     }
 
@@ -34,7 +34,7 @@ public class CaseServiceImpl implements CaseService {
         caseRepository.delete(id);
     }
 
-    public void updateCase(Case case_s) {
-        caseRepository.update(case_s);
+    public void updateCase(CaseEntity case_Entity_s) {
+        caseRepository.update(case_Entity_s);
     }
 }

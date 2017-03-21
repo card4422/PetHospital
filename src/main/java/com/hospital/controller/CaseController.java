@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hospital.entity.Case;
+import com.hospital.entity.CaseEntity;
 import com.hospital.entity.CaseResource;
 import com.hospital.service.CaseResourceService;
 import com.hospital.service.CaseService;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Jimmy on 2017/3/17.
@@ -24,16 +23,15 @@ import java.util.Map;
 public class CaseController {
     @Autowired
     private CaseService caseService;
+    @Autowired
     private CaseResourceService caseResourceService;
-
-
 
     @RequestMapping(value = "admin/case/{page}",method = RequestMethod.GET)
     @ResponseBody
     public String getCases(@PathVariable String page) {
         int pages = Integer.parseInt(page);
         List cases = caseService.getAllCase();
-        List<Case> subcases = null;
+        List<CaseEntity> subcases = null;
         int fromIndex = (pages - 1) * 10;
         if (cases.size() >= fromIndex) {
             int toIndex = pages * 10;
@@ -52,7 +50,7 @@ public class CaseController {
             CaseResource method;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
-        for (Case c : subcases) {
+        for (CaseEntity c : subcases) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
             tempInfo.Id = c.getId();
             tempInfo.caseName = c.getCaseName();
@@ -75,21 +73,21 @@ public class CaseController {
 
     @RequestMapping(value = "admin/case",method = RequestMethod.PUT)
     @ResponseBody
-    public String updateCase(@RequestBody Case c){
+    public String updateCase(@RequestBody CaseEntity c){
         caseService.updateCase(c);
         return " Update success";
     }
 
     @RequestMapping(value = "admin/case",method = RequestMethod.POST)
     @ResponseBody
-    public String saveCase(@RequestBody Case c){
+    public String saveCase(@RequestBody CaseEntity c){
         caseService.saveCase(c);
         return "success!";
     }
 
     @RequestMapping(value = "admin/case",method = RequestMethod.DELETE)
     @ResponseBody
-    public String deleteCase(@RequestBody Case c) {
+    public String deleteCase(@RequestBody CaseEntity c) {
         Integer id = c.getId();
         caseService.deleteCase(id);
         return "{result:true}";

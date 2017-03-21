@@ -1,14 +1,13 @@
 package com.hospital.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 
 /**
- * Created by zhuzheng on 17/3/21.
+ * Created by Jimmy on 2017/3/21.
  */
 @Entity
-public class Case {
+@Table(name = "case_entity", schema = "", catalog = "pethospital")
+public class CaseEntity {
     private int id;
     private String caseName;
     private Integer symptom;
@@ -17,8 +16,7 @@ public class Case {
     private Integer method;
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -28,7 +26,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "case_name", nullable = true, length = 255)
+    @Column(name = "case_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getCaseName() {
         return caseName;
     }
@@ -38,7 +36,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "symptom", nullable = true)
+    @Column(name = "symptom", nullable = true, insertable = true, updatable = true)
     public Integer getSymptom() {
         return symptom;
     }
@@ -48,7 +46,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "exam", nullable = true)
+    @Column(name = "exam", nullable = true, insertable = true, updatable = true)
     public Integer getExam() {
         return exam;
     }
@@ -58,7 +56,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "result", nullable = true)
+    @Column(name = "result", nullable = true, insertable = true, updatable = true)
     public Integer getResult() {
         return result;
     }
@@ -68,7 +66,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "method", nullable = true)
+    @Column(name = "method", nullable = true, insertable = true, updatable = true)
     public Integer getMethod() {
         return method;
     }
@@ -82,14 +80,14 @@ public class Case {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Case aCase = (Case) o;
+        CaseEntity that = (CaseEntity) o;
 
-        if (id != aCase.id) return false;
-        if (caseName != null ? !caseName.equals(aCase.caseName) : aCase.caseName != null) return false;
-        if (symptom != null ? !symptom.equals(aCase.symptom) : aCase.symptom != null) return false;
-        if (exam != null ? !exam.equals(aCase.exam) : aCase.exam != null) return false;
-        if (result != null ? !result.equals(aCase.result) : aCase.result != null) return false;
-        if (method != null ? !method.equals(aCase.method) : aCase.method != null) return false;
+        if (id != that.id) return false;
+        if (caseName != null ? !caseName.equals(that.caseName) : that.caseName != null) return false;
+        if (symptom != null ? !symptom.equals(that.symptom) : that.symptom != null) return false;
+        if (exam != null ? !exam.equals(that.exam) : that.exam != null) return false;
+        if (result != null ? !result.equals(that.result) : that.result != null) return false;
+        if (method != null ? !method.equals(that.method) : that.method != null) return false;
 
         return true;
     }

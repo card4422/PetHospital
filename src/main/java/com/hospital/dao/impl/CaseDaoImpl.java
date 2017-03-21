@@ -1,6 +1,6 @@
 package com.hospital.dao.impl;
 
-import com.hospital.entity.Case;
+import com.hospital.entity.CaseEntity;
 import com.hospital.dao.CaseDao;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,39 +22,39 @@ public class CaseDaoImpl implements CaseDao {
         return this.sessionFactory.openSession();
     }
 
-    public Case load(Integer id) {
-        return (Case) getCurrentSession().load(Case.class, id);
+    public CaseEntity load(Integer id) {
+        return (CaseEntity) getCurrentSession().load(CaseEntity.class, id);
     }
 
-    public Case get(Integer id) {
-        return (Case) getCurrentSession().get(Case.class, id);
+    public CaseEntity get(Integer id) {
+        return (CaseEntity) getCurrentSession().get(CaseEntity.class, id);
     }
 
-    public Case getByName(String caseName) {
-        String hql = "from Case ca where ca.caseName=?";
+    public CaseEntity getByName(String caseName) {
+        String hql = "from CaseEntity ca where ca.caseName=?";
         Query query = getCurrentSession().createQuery(hql);
         query.setString(0, caseName);
-        return (Case) query.list().get(0);
+        return (CaseEntity) query.list().get(0);
     }
 
-    public List<Case> findAll() {
-        String hql = "from Case";
+    public List<CaseEntity> findAll() {
+        String hql = "from CaseEntity ce";
         Query query = getCurrentSession().createQuery(hql);
         return query.list();
     }
 
     //查找数据？
-    public void persist(Case entity) {
+    public void persist(CaseEntity entity) {
         getCurrentSession().persist(entity);
     }
 
     //插入数据
-    public Integer save(Case entity) {
+    public Integer save(CaseEntity entity) {
         return (Integer) getCurrentSession().save(entity);
     }
 
     //更新数据
-    public void update(Case entity) {
+    public void update(CaseEntity entity) {
         try {
             Session session = getCurrentSession();
             Transaction tx = session.beginTransaction();
@@ -71,8 +71,8 @@ public class CaseDaoImpl implements CaseDao {
         try {
             Session session = getCurrentSession();
             Transaction tx = session.beginTransaction();
-            Case case_s = (Case) session.load(Case.class, id);
-            session.delete(case_s);
+            CaseEntity caseEntity = (CaseEntity) session.load(CaseEntity.class, id);
+            session.delete(caseEntity);
             tx.commit();
             session.close();
         } catch (HibernateException e) {

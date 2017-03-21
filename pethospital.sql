@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : test
+Source Server         : zhuzheng
 Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : pethospital
@@ -10,16 +10,16 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-03-21 14:57:00
+Date: 2017-03-21 21:42:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for case
+-- Table structure for case_entity
 -- ----------------------------
-DROP TABLE IF EXISTS `case`;
-CREATE TABLE `case` (
+DROP TABLE IF EXISTS `case_entity`;
+CREATE TABLE `case_entity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `case_name` varchar(255) DEFAULT NULL,
   `symptom` int(11) DEFAULT NULL,
@@ -27,11 +27,13 @@ CREATE TABLE `case` (
   `result` int(11) DEFAULT NULL,
   `method` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of case
+-- Records of case_entity
 -- ----------------------------
+INSERT INTO `case_entity` VALUES ('1', 'c1', '1', '2', '3', '4');
+INSERT INTO `case_entity` VALUES ('2', 'c2', '2', '1', '4', '3');
 
 -- ----------------------------
 -- Table structure for case_resource
@@ -43,11 +45,15 @@ CREATE TABLE `case_resource` (
   `picture` varchar(255) DEFAULT NULL,
   `video` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of case_resource
 -- ----------------------------
+INSERT INTO `case_resource` VALUES ('1', 'aaa', 'qqq', 'ee');
+INSERT INTO `case_resource` VALUES ('2', 'bbb', 'www', 'ff');
+INSERT INTO `case_resource` VALUES ('3', 'ccc', 'eee', 'rrr');
+INSERT INTO `case_resource` VALUES ('4', 'ddd', 'hhh', 'yyy');
 
 -- ----------------------------
 -- Table structure for examination
@@ -55,8 +61,8 @@ CREATE TABLE `case_resource` (
 DROP TABLE IF EXISTS `examination`;
 CREATE TABLE `examination` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `examination _name` varchar(255) DEFAULT NULL,
-  `examination _price` float DEFAULT NULL,
+  `examination_name` varchar(255) DEFAULT NULL,
+  `examination_price` float DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
