@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : PetHospital
-Source Server Version : 50622
+Source Server         : test
+Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : pethospital
 
 Target Server Type    : MYSQL
-Target Server Version : 50622
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-03-20 17:11:04
+Date: 2017-03-21 14:46:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `case` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `case_name` varchar(255) DEFAULT NULL,
   `symptom` int(11) DEFAULT NULL,
-  `examination` int(11) DEFAULT NULL,
+  `exam` int(11) DEFAULT NULL,
   `result` int(11) DEFAULT NULL,
   `method` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -47,6 +47,38 @@ CREATE TABLE `case_resource` (
 
 -- ----------------------------
 -- Records of case_resource
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for device
+-- ----------------------------
+DROP TABLE IF EXISTS `device`;
+CREATE TABLE `device` (
+  `id` int(11) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `device_name` varchar(255) DEFAULT NULL,
+  `media` varchar(255) DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of device
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for diagnosis
+-- ----------------------------
+DROP TABLE IF EXISTS `diagnosis`;
+CREATE TABLE `diagnosis` (
+  `id` int(11) NOT NULL,
+  `diagnosis_description` varchar(255) DEFAULT NULL,
+  `diagnosis_price` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of diagnosis
 -- ----------------------------
 
 -- ----------------------------
