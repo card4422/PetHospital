@@ -1,12 +1,14 @@
 package com.hospital.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Jimmy on 2017/3/16.
+ * Created by zhuzheng on 17/3/21.
  */
 @Entity
 public class Case {
@@ -18,7 +20,8 @@ public class Case {
     private Integer method;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Autowired
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -28,7 +31,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "case_name", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "case_name", nullable = true, length = 255)
     public String getCaseName() {
         return caseName;
     }
@@ -38,7 +41,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "symptom", nullable = true, insertable = true, updatable = true)
+    @Column(name = "symptom", nullable = true)
     public Integer getSymptom() {
         return symptom;
     }
@@ -48,7 +51,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "examination", nullable = true, insertable = true, updatable = true)
+    @Column(name = "examination", nullable = true)
     public Integer getExamination() {
         return examination;
     }
@@ -58,7 +61,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "result", nullable = true, insertable = true, updatable = true)
+    @Column(name = "result", nullable = true)
     public Integer getResult() {
         return result;
     }
@@ -68,7 +71,7 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "method", nullable = true, insertable = true, updatable = true)
+    @Column(name = "method", nullable = true)
     public Integer getMethod() {
         return method;
     }

@@ -1,19 +1,17 @@
 package com.hospital.entity;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by Jimmy on 2017/3/16.
+ * Created by zhuzheng on 17/3/21.
  */
 public class UserPK implements Serializable {
     private int id;
     private String userName;
 
-    @GeneratedValue
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id", nullable = false)
     @Id
     public int getId() {
         return id;
@@ -23,7 +21,7 @@ public class UserPK implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "user_name", nullable = false, insertable = true, updatable = true, length = 255)
+    @Column(name = "user_name", nullable = false, length = 255)
     @Id
     public String getUserName() {
         return userName;

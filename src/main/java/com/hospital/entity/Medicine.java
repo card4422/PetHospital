@@ -1,21 +1,26 @@
 package com.hospital.entity;
 
-import javax.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by Jimmy on 2017/3/16.
+ * Created by zhuzheng on 17/3/21.
  */
 @Entity
 public class Medicine {
     private int id;
     private String medicineName;
-    private Float medicinePrice;
+    private Double medicinePrice;
     private Integer medicineType;
     private String description;
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Autowired
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,7 +30,7 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "medicine_name", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "medicine_name", nullable = true, length = 255)
     public String getMedicineName() {
         return medicineName;
     }
@@ -35,17 +40,17 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "medicine_price", nullable = true, insertable = true, updatable = true, precision = 0)
-    public Float getMedicinePrice() {
+    @Column(name = "medicine_price", nullable = true, precision = 0)
+    public Double getMedicinePrice() {
         return medicinePrice;
     }
 
-    public void setMedicinePrice(Float medicinePrice) {
+    public void setMedicinePrice(Double medicinePrice) {
         this.medicinePrice = medicinePrice;
     }
 
     @Basic
-    @Column(name = "medicine_type", nullable = true, insertable = true, updatable = true)
+    @Column(name = "medicine_type", nullable = true)
     public Integer getMedicineType() {
         return medicineType;
     }
@@ -55,7 +60,7 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
