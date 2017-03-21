@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Jimmy on 2017/3/17.
@@ -56,7 +57,7 @@ public class CaseController {
             tempInfo.Id = c.getId();
             tempInfo.caseName = c.getCaseName();
             tempInfo.symptom = c.getSymptom();
-            tempInfo.examination = c.getExamination();
+            tempInfo.examination = c.getExam();
             tempInfo.result = c.getResult();
             tempInfo.method = c.getMethod();
             result.add(tempInfo);

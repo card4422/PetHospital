@@ -18,7 +18,7 @@ public class Record {
     private String patient;
     private String petType;
     private String description;
-    private Double price;
+    private Float price;
 
     @Id
     @Autowired
@@ -73,11 +73,11 @@ public class Record {
 
     @Basic
     @Column(name = "price", nullable = true, precision = 0)
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

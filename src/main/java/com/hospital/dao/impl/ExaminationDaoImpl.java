@@ -40,7 +40,8 @@ public class ExaminationDaoImpl implements ExaminationDao {
     public List<Examination> findAll() {
         String hql = "from Examination";
         Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        List list =  query.list();
+        return list;
     }
 
     //查找数据？

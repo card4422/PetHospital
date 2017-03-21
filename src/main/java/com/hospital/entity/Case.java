@@ -15,7 +15,7 @@ public class Case {
     private int id;
     private String caseName;
     private Integer symptom;
-    private Integer examination;
+    private Integer exam;
     private Integer result;
     private Integer method;
 
@@ -51,13 +51,13 @@ public class Case {
     }
 
     @Basic
-    @Column(name = "examination", nullable = true)
-    public Integer getExamination() {
-        return examination;
+    @Column(name = "exam", nullable = true)
+    public Integer getExam() {
+        return exam;
     }
 
-    public void setExamination(Integer examination) {
-        this.examination = examination;
+    public void setExam(Integer exam) {
+        this.exam = exam;
     }
 
     @Basic
@@ -90,7 +90,7 @@ public class Case {
         if (id != aCase.id) return false;
         if (caseName != null ? !caseName.equals(aCase.caseName) : aCase.caseName != null) return false;
         if (symptom != null ? !symptom.equals(aCase.symptom) : aCase.symptom != null) return false;
-        if (examination != null ? !examination.equals(aCase.examination) : aCase.examination != null) return false;
+        if (exam != null ? !exam.equals(aCase.exam) : aCase.exam != null) return false;
         if (result != null ? !result.equals(aCase.result) : aCase.result != null) return false;
         if (method != null ? !method.equals(aCase.method) : aCase.method != null) return false;
 
@@ -102,7 +102,7 @@ public class Case {
         int result1 = id;
         result1 = 31 * result1 + (caseName != null ? caseName.hashCode() : 0);
         result1 = 31 * result1 + (symptom != null ? symptom.hashCode() : 0);
-        result1 = 31 * result1 + (examination != null ? examination.hashCode() : 0);
+        result1 = 31 * result1 + (exam != null ? exam.hashCode() : 0);
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + (method != null ? method.hashCode() : 0);
         return result1;

@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Medicine {
     private int id;
     private String medicineName;
-    private Double medicinePrice;
+    private Float medicinePrice;
     private Integer medicineType;
     private String description;
 
@@ -41,11 +41,11 @@ public class Medicine {
 
     @Basic
     @Column(name = "medicine_price", nullable = true, precision = 0)
-    public Double getMedicinePrice() {
+    public Float getMedicinePrice() {
         return medicinePrice;
     }
 
-    public void setMedicinePrice(Double medicinePrice) {
+    public void setMedicinePrice(Float medicinePrice) {
         this.medicinePrice = medicinePrice;
     }
 
