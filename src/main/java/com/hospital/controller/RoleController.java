@@ -74,7 +74,7 @@ public class RoleController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/role",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/role",method = RequestMethod.PUT)
     @ResponseBody
     public String updateRole(@RequestBody Role role){
         roleService.updateRole(role);
@@ -82,14 +82,14 @@ public class RoleController {
     }
 
 
-    @RequestMapping(value = "admin/role", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/role", method = RequestMethod.POST)
     @ResponseBody
     public String saveRole(@RequestBody Role role) {
         roleService.saveRole(role);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/role",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/role",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteRole(@RequestBody Role role) {
         Integer id = role.getId();

@@ -22,7 +22,7 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
-    @RequestMapping(value = "admin/room/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/room/{page}", method = RequestMethod.GET)
     @ResponseBody
     public String getRoom(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -60,7 +60,7 @@ public class RoomController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/room",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/room",method = RequestMethod.PUT)
     @ResponseBody
     public String updateRoom(@RequestBody Room room){
         roomService.updateRoom(room);
@@ -68,14 +68,14 @@ public class RoomController {
     }
 
 
-    @RequestMapping(value = "admin/room", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/room", method = RequestMethod.POST)
     @ResponseBody
     public String saveRoom(@RequestBody Room room) {
         roomService.saveRoom(room);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/room",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/room",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteRoom(@RequestBody Room room) {
         Integer id = room.getId();

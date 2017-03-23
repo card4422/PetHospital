@@ -72,21 +72,21 @@ public class CaseController {
         return "{\"data\":"+json+",\"pages\":"+total+"}";
     }
 
-    @RequestMapping(value = "admin/case",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case",method = RequestMethod.PUT)
     @ResponseBody
     public String updateCase(@RequestBody CaseEntity c){
         caseService.updateCase(c);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case",method = RequestMethod.POST)
     @ResponseBody
     public String saveCase(@RequestBody CaseEntity c){
         caseService.saveCase(c);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteCase(@RequestBody CaseEntity c) {
         Integer id = c.getId();
@@ -95,21 +95,21 @@ public class CaseController {
     }
 
     //SYMPTOM
-    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.PUT)
     @ResponseBody
     public String updateSymptom(@RequestBody CaseResource caseResource){
         caseResourceService.updateCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.POST)
     @ResponseBody
     public String saveSymptom(@RequestBody CaseResource caseResource){
         caseResourceService.saveCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteSymptom(@RequestBody CaseResource caseResource) {
         Integer id = caseResource.getId();
@@ -118,21 +118,21 @@ public class CaseController {
     }
 
     //EXAMINATION
-    @RequestMapping(value = "admin/case/examination",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/examination",method = RequestMethod.PUT)
     @ResponseBody
     public String updateExamination(@RequestBody CaseResource caseResource){
         caseResourceService.updateCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/examination",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/examination",method = RequestMethod.POST)
     @ResponseBody
     public String saveExamination(@RequestBody CaseResource caseResource){
         caseResourceService.saveCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/examination",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/examination",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteExamination(@RequestBody CaseResource caseResource) {
         Integer id = caseResource.getId();
@@ -141,21 +141,21 @@ public class CaseController {
     }
 
     //RESULT
-    @RequestMapping(value = "admin/case/result",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/result",method = RequestMethod.PUT)
     @ResponseBody
     public String updateResult(@RequestBody CaseResource caseResource){
         caseResourceService.updateCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/result",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/result",method = RequestMethod.POST)
     @ResponseBody
     public String saveResult(@RequestBody CaseResource caseResource){
         caseResourceService.saveCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/result",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/result",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteResult(@RequestBody CaseResource caseResource) {
         Integer id = caseResource.getId();
@@ -164,21 +164,21 @@ public class CaseController {
     }
 
     //METHOD
-    @RequestMapping(value = "admin/case/method",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/method",method = RequestMethod.PUT)
     @ResponseBody
     public String updateMethod(@RequestBody CaseResource caseResource){
         caseResourceService.updateCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/method",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/method",method = RequestMethod.POST)
     @ResponseBody
     public String saveMethod(@RequestBody CaseResource caseResource){
         caseResourceService.saveCaseResource(caseResource);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/case/method",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/case/method",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteMethod(@RequestBody CaseResource caseResource) {
         Integer id = caseResource.getId();

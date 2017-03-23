@@ -71,6 +71,7 @@ public class UserController {
         try {
             json = objectMapper.writeValueAsString(result);
         } catch (JsonProcessingException e) {
+            log.error(e);
             e.printStackTrace();
         }
         return "{\"data\":"+json+",\"pages\":"+total+"}";
@@ -81,7 +82,7 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/user",method = RequestMethod.PUT)
     @ResponseBody
     public String updateUser(@RequestBody User user){
         userService.updateUser(user);
@@ -93,7 +94,7 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/user",method = RequestMethod.POST)
     @ResponseBody
     public String saveUser(@RequestBody User user){
         userService.saveUser(user);
@@ -104,7 +105,7 @@ public class UserController {
     /**
      * 删除用户
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteUser(@RequestBody User user) {
         Integer id = user.getId();
@@ -115,7 +116,7 @@ public class UserController {
     /**
      * 验证用户名和密码，返回权限
      */
-    @RequestMapping(value = "validate",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "validate",method = RequestMethod.POST)
     @ResponseBody
     @JsonIgnoreProperties(ignoreUnknown=true)
     public Map<String, String> validate(@RequestBody Map map,HttpSession session) {

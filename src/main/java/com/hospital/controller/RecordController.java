@@ -71,14 +71,14 @@ public class RecordController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/record", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/record", method = RequestMethod.POST)
     @ResponseBody
     public String saveRecord(@RequestBody Record record) {
         recordService.saveRecord(record);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/record",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/record",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteRecord(@RequestBody Record record) {
         Integer id = record.getId();

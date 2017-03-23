@@ -64,7 +64,7 @@ public class ExaminationController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/examination",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/examination",method = RequestMethod.PUT)
     @ResponseBody
     public String updateExamination(@RequestBody Examination examination){
         examinationService.updateExamination(examination);
@@ -72,14 +72,14 @@ public class ExaminationController {
     }
 
 
-    @RequestMapping(value = "admin/examination", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/examination", method = RequestMethod.POST)
     @ResponseBody
     public String saveExamination(@RequestBody Examination examination) {
         examinationService.saveExamination(examination);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/examination",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/examination",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteExamination(@RequestBody Examination examination) {
         Integer id = examination.getId();

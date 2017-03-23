@@ -75,7 +75,7 @@ public class MedicineController {
     * @param medicine
     * @return
      */
-    @RequestMapping(value = "admin/medicine",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.POST)
     @ResponseBody
     public String saveMedicine(@RequestBody Medicine medicine){
         medicineService.saveMedicine(medicine);
@@ -87,7 +87,7 @@ public class MedicineController {
      * @param medicine
      * @return
      */
-    @RequestMapping(value = "admin/medicine",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.PUT)
     @ResponseBody
     public String updateMedicine(@RequestBody Medicine medicine){
         medicineService.updateMedicine(medicine);
@@ -97,7 +97,7 @@ public class MedicineController {
     /**
      * 删除药品
      */
-    @RequestMapping(value = "admin/medicine",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteMedicine(@RequestBody Medicine medicine) {
         Integer id = medicine.getId();

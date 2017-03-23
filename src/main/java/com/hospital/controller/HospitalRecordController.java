@@ -69,7 +69,7 @@ public class HospitalRecordController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.PUT)
     @ResponseBody
     public String updateHospitalRecord(@RequestBody HospitalRecord hospitalRecord){
         hospitalRecordService.updateHospitalRecord(hospitalRecord);
@@ -77,14 +77,14 @@ public class HospitalRecordController {
     }
 
 
-    @RequestMapping(value = "admin/hospitalRecord", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/hospitalRecord", method = RequestMethod.POST)
     @ResponseBody
     public String saveHospitalRecord(@RequestBody HospitalRecord hospitalRecord) {
         hospitalRecordService.saveHospitalRecord(hospitalRecord);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteHospitalRecord(@RequestBody HospitalRecord hospitalRecord) {
         Integer id = hospitalRecord.getId();

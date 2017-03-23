@@ -65,7 +65,7 @@ public class StaffController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/staff",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/staff",method = RequestMethod.PUT)
     @ResponseBody
     public String updateStaff(@RequestBody Staff staff){
         staffService.updateStaff(staff);
@@ -73,14 +73,14 @@ public class StaffController {
     }
 
 
-    @RequestMapping(value = "admin/staff", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/staff", method = RequestMethod.POST)
     @ResponseBody
     public String saveStaff(@RequestBody Staff staff) {
         staffService.saveStaff(staff);
         return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/staff",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "admin/staff",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteStaff(@RequestBody Staff staff) {
         Integer id = staff.getId();
