@@ -32,6 +32,7 @@ public class RecordController {
         List records = recordService.getAllRecord();
         List<Record> subrecords = null;
         int fromIndex = (pages - 1) * 10;
+        int total = (records.size()-1)/10+1;
         if (records.size() >= fromIndex) {
             int toIndex = pages * 10;
             if (records.size() >= toIndex) {
@@ -67,7 +68,7 @@ public class RecordController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":" + json + ",\"pages\":" + page + "}";
+        return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
     @RequestMapping(value = "admin/record", method = RequestMethod.POST)

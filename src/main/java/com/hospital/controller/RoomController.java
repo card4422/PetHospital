@@ -29,6 +29,7 @@ public class RoomController {
         List rooms = roomService.getAllRoom();
         List<Room> subrooms = null;
         int fromIndex = (pages - 1) * 10;
+        int total = (rooms.size()-1)/10+1;
         if (rooms.size() >= fromIndex) {
             int toIndex = pages * 10;
             if (rooms.size() >= toIndex) {
@@ -56,7 +57,7 @@ public class RoomController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":" + json + ",\"pages\":" + page + "}";
+        return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
     @RequestMapping(value = "admin/room",method = RequestMethod.PUT)

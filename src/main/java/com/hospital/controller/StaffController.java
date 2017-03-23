@@ -30,6 +30,7 @@ public class StaffController {
         List staffs = staffService.getAllStaff();
         List<Staff> substaffs = null;
         int fromIndex = (pages - 1) * 10;
+        int total = (staffs.size() - 1) / 10 + 1;
         if (staffs.size() >= fromIndex) {
             int toIndex = pages * 10;
             if (staffs.size() >= toIndex) {
@@ -61,7 +62,7 @@ public class StaffController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":" + json + ",\"pages\":" + page + "}";
+        return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
     @RequestMapping(value = "admin/staff",method = RequestMethod.PUT)

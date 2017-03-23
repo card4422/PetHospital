@@ -28,28 +28,29 @@ public class MedicineController {
 
     @RequestMapping(value = "admin/medicine/{page}",method = RequestMethod.GET)
     @ResponseBody
-    public String getMedicine(@PathVariable String page){
+    public String getMedicine(@PathVariable String page) {
         int pages = Integer.parseInt(page);
         List medicines = medicineService.getAllMedicine();
-        List <Medicine> submedicines = null;
-        int fromINdex = (pages -1) *10;
-        if(medicines.size()>=fromINdex) {
+        List<Medicine> submedicines = null;
+        int total = (medicines.size() - 1) / 10 + 1;
+        int fromINdex = (pages - 1) * 10;
+        if (medicines.size() >= fromINdex) {
             int toIndex = pages * 10;
-            if(medicines.size()>=toIndex){
-                submedicines = medicines.subList(fromINdex,toIndex);
-            }else{
+            if (medicines.size() >= toIndex) {
+                submedicines = medicines.subList(fromINdex, toIndex);
+            } else {
                 submedicines = medicines.subList(fromINdex, medicines.size());
             }
         }
-        class templateInfo{
+        class templateInfo {
             Integer id;
             String medicineName;
-            Float  medicinePrice;
+            Float medicinePrice;
             Integer medicineType;
             String description;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
-        for(Medicine medicine : submedicines) {
+        for (Medicine medicine : submedicines) {
             templateInfo tempInfo = new templateInfo();
             tempInfo.id = medicine.getId();
             tempInfo.medicineName = medicine.getMedicineName();
@@ -61,12 +62,12 @@ public class MedicineController {
         String json = null;
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-        try{
+        try {
             json = objectMapper.writeValueAsString(result);
-        }catch(JsonProcessingException e){
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":"+json+",\"pages\":"+page+"}";
+        return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
 
