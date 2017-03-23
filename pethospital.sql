@@ -140,7 +140,7 @@ INSERT INTO `record` VALUES ('3', '2017-03-23', 'sora', 'tori', 'pregnant', '300
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `room_access` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -157,7 +157,7 @@ INSERT INTO `role` VALUES ('3', '4');
 -- ----------------------------
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `room_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `room_type` (`id`)
@@ -200,7 +200,7 @@ CREATE TABLE `user` (
   `user_name` varchar(255) NOT NULL,
   `user_pwd` varchar(255) DEFAULT NULL,
   `user_type` int(255) DEFAULT NULL,
-  PRIMARY KEY (`id`,`user_name`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
