@@ -3,7 +3,7 @@ package com.hospital.entity;
 import javax.persistence.*;
 
 /**
- * Created by Jimmy on 2017/3/21.
+ * Created by Jimmy on 2017/3/23.
  */
 @Entity
 @Table(name = "case_entity", schema = "", catalog = "pethospital")
@@ -16,6 +16,7 @@ public class CaseEntity {
     private Integer method;
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;

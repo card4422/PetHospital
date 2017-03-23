@@ -1,12 +1,10 @@
 package com.hospital.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by zhuzheng on 17/3/21.
+ * Created by Jimmy on 2017/3/23.
  */
 @Entity
 public class Record {
@@ -19,7 +17,7 @@ public class Record {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -29,7 +27,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "time", nullable = true)
+    @Column(name = "time", nullable = true, insertable = true, updatable = true)
     public Date getTime() {
         return time;
     }
@@ -39,7 +37,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "patient", nullable = true, length = 255)
+    @Column(name = "patient", nullable = true, insertable = true, updatable = true, length = 255)
     public String getPatient() {
         return patient;
     }
@@ -49,7 +47,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "pet_type", nullable = true, length = 255)
+    @Column(name = "pet_type", nullable = true, insertable = true, updatable = true, length = 255)
     public String getPetType() {
         return petType;
     }
@@ -59,7 +57,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -69,7 +67,7 @@ public class Record {
     }
 
     @Basic
-    @Column(name = "price", nullable = true, precision = 0)
+    @Column(name = "price", nullable = true, insertable = true, updatable = true, precision = 0)
     public Float getPrice() {
         return price;
     }

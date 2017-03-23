@@ -1,11 +1,9 @@
 package com.hospital.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 
 /**
- * Created by zhuzheng on 17/3/21.
+ * Created by Jimmy on 2017/3/23.
  */
 @Entity
 public class Medicine {
@@ -17,7 +15,7 @@ public class Medicine {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -27,7 +25,7 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "medicine_name", nullable = true, length = 255)
+    @Column(name = "medicine_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getMedicineName() {
         return medicineName;
     }
@@ -37,7 +35,7 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "medicine_price", nullable = true, precision = 0)
+    @Column(name = "medicine_price", nullable = true, insertable = true, updatable = true, precision = 0)
     public Float getMedicinePrice() {
         return medicinePrice;
     }
@@ -47,7 +45,7 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "medicine_type", nullable = true)
+    @Column(name = "medicine_type", nullable = true, insertable = true, updatable = true)
     public Integer getMedicineType() {
         return medicineType;
     }
@@ -57,7 +55,7 @@ public class Medicine {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
     public String getDescription() {
         return description;
     }

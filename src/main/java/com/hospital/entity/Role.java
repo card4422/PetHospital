@@ -1,11 +1,12 @@
 package com.hospital.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by zhuzheng on 17/3/21.
+ * Created by Jimmy on 2017/3/23.
  */
 @Entity
 public class Role {
@@ -13,8 +14,7 @@ public class Role {
     private String roomAccess;
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -24,7 +24,7 @@ public class Role {
     }
 
     @Basic
-    @Column(name = "room_access", nullable = true, length = 255)
+    @Column(name = "room_access", nullable = true, insertable = true, updatable = true, length = 255)
     public String getRoomAccess() {
         return roomAccess;
     }
