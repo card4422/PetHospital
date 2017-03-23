@@ -92,15 +92,22 @@ http://localhost:8080/admin/room/1
 }
 
 http://localhost:8080/admin/examination/1
-???
+{
+"data":[{"id": 1, "examinationName": "CT", "examinationPrice": 200.0, "description": "CT"}, {"id": 2, "examinationName": "B ultrasound", "examinationPrice": 400.0, "description": "B ultrasound"}, {"id": 3, "examinationName": "NMR", "examinationPrice": 300.0, "description": "NMR"}], "pages": 1
+}
 
 "updateExamination"
-
+1. {
+"id": 1, "examinationName": "blood test", "examinationPrice": 50.0, "description": "blood test"
+}
 
 "saveExamination"
-
+1. {
+"examinationName": "e1", "examinationPrice": 5.0, "description": "e1"}
 
 "deleteExamination"
+1.  {
+"id": ???}
 
 http://localhost:8080/admin/staff/1
 {
@@ -137,3 +144,20 @@ http://localhost:8080/admin/hospitalRecord/1
 "id": ???
 }
 
+http: //localhost:8080/admin/case/1
+{"data":[{"id": 1, "caseName": "c1", "symptom": {"id": 4, "description": "ddd","picture": "hhh", "video": "yyy"}, "examination": {"id": 1, "description": "aaa","picture": "qqq", "video": "ee"}, "result": {"id": 3, "description": "ccc","picture": "eee", "video": "rrr"}, "method": {"id": 2, "description": "bbb","picture": "www", "video": "ff"}},{"id": 2, "caseName": "c2", "symptom": {"id": 3, "description": "ccc","picture": "eee", "video": "rrr"}, "examination": {"id": 2, "description": "bbb","picture": "www", "video": "ff"}, "result": {"id": 4, "description": "ddd","picture": "hhh", "video": "yyy"}, "method": {"id": 1, "description": "aaa","picture": "qqq", "video": "ee"}}], "pages": 1
+}
+
+"updateCase"
+{
+"id": 1, "caseName": "c2", "symptom": 1, "examination": 2, "result": 3, "method": 4}
+
+"saveCase"
+{
+"caseName": "c22222", "symptom": 1 , "examination": 2, "result": 3, "method": 4
+}
+
+"deleteCase"
+1. {
+"id": ???
+}
