@@ -22,7 +22,7 @@ public class ExaminationController {
     @Autowired
     private ExaminationService examinationService;
 
-    @RequestMapping(value = "admin/examination/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/examination/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getExamination(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -64,22 +64,22 @@ public class ExaminationController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/examination",method = RequestMethod.PUT)
+    @RequestMapping(value = "admin/examination",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String updateExamination(@RequestBody Examination examination){
         examinationService.updateExamination(examination);
-        return " Update success";
+        return "{\"result\":true}";
     }
 
 
-    @RequestMapping(value = "admin/examination", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/examination", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String saveExamination(@RequestBody Examination examination) {
         examinationService.saveExamination(examination);
-        return "success!";
+        return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/examination",method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/examination",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String deleteExamination(@RequestBody Examination examination) {
         Integer id = examination.getId();

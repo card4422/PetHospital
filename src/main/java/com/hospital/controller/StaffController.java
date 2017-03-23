@@ -23,7 +23,7 @@ public class StaffController {
     @Autowired
     private StaffService staffService;
 
-    @RequestMapping(value = "admin/staff/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/staff/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getStaff(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -65,22 +65,22 @@ public class StaffController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/staff",method = RequestMethod.PUT)
+    @RequestMapping(value = "admin/staff",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String updateStaff(@RequestBody Staff staff){
         staffService.updateStaff(staff);
-        return " Update success";
+        return "{\"result\":true}";
     }
 
 
-    @RequestMapping(value = "admin/staff", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/staff", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String saveStaff(@RequestBody Staff staff) {
         staffService.saveStaff(staff);
-        return "success!";
+        return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/staff",method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/staff",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String deleteStaff(@RequestBody Staff staff) {
         Integer id = staff.getId();

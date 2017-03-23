@@ -36,7 +36,7 @@ public class UserController {
      * @param page
      * @return
      */
-    @RequestMapping(value = "admin/user/{page}",method = RequestMethod.GET)
+    @RequestMapping(value = "admin/user/{page}",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getUsers(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -81,11 +81,11 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.PUT)
+    @RequestMapping(value = "admin/user",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String updateUser(@RequestBody User user){
         userService.updateUser(user);
-        return " Update success";
+        return "{\"result\":true}";
     }
 
     /**
@@ -93,18 +93,18 @@ public class UserController {
      * @param user
      * @return
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.POST)
+    @RequestMapping(value = "admin/user",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String saveUser(@RequestBody User user){
         userService.saveUser(user);
-        return "success!";
+        return "{\"result\":true}";
     }
 
 
     /**
      * 删除用户
      */
-    @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/user",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String deleteUser(@RequestBody User user) {
         Integer id = user.getId();
@@ -115,7 +115,7 @@ public class UserController {
     /**
      * 验证用户名和密码，返回权限
      */
-    @RequestMapping(value = "validate",method = RequestMethod.POST)
+    @RequestMapping(value = "validate",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     @JsonIgnoreProperties(ignoreUnknown=true)
     public Map<String, String> validate(@RequestBody Map map,HttpSession session) {

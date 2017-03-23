@@ -26,7 +26,7 @@ public class MedicineController {
     private MedicineService medicineService;
 
 
-    @RequestMapping(value = "admin/medicine/{page}",method = RequestMethod.GET)
+    @RequestMapping(value = "admin/medicine/{page}",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getMedicine(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -75,11 +75,11 @@ public class MedicineController {
     * @param medicine
     * @return
      */
-    @RequestMapping(value = "admin/medicine",method = RequestMethod.POST)
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String saveMedicine(@RequestBody Medicine medicine){
         medicineService.saveMedicine(medicine);
-        return "success!";
+        return "{\"result\":true}";
     }
 
     /**
@@ -87,17 +87,17 @@ public class MedicineController {
      * @param medicine
      * @return
      */
-    @RequestMapping(value = "admin/medicine",method = RequestMethod.PUT)
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String updateMedicine(@RequestBody Medicine medicine){
         medicineService.updateMedicine(medicine);
-        return " Update success";
+        return "{\"result\":true}";
     }
 
     /**
      * 删除药品
      */
-    @RequestMapping(value = "admin/medicine",method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/medicine",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String deleteMedicine(@RequestBody Medicine medicine) {
         Integer id = medicine.getId();

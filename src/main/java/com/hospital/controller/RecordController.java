@@ -25,7 +25,7 @@ public class RecordController {
     @Autowired
     private RecordService recordService;
 
-    @RequestMapping(value = "admin/record/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/record/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getRecord(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -71,14 +71,14 @@ public class RecordController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/record", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/record", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String saveRecord(@RequestBody Record record) {
         recordService.saveRecord(record);
-        return "success!";
+        return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/record",method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/record",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String deleteRecord(@RequestBody Record record) {
         Integer id = record.getId();
