@@ -4,7 +4,7 @@ http://localhost:8080/admin/user/1
 }
 
 "updateUser"
-1.  {
+1. {
 "id": 1, "userName": "zhu", "userPwd": "zu", "userType": 0
 }
 2. {
@@ -108,28 +108,25 @@ http://localhost:8080/admin/staff/1
 }
 
 "updateStaff"
-1.  {
+1. {
 "id": 1, "staffName": "ssss1", "title": "ass professor", "roomId": 2
 }
 2. {
 "id": 1, "staffName": "kumamon", "title": "professor", "roomId": 1}
 
 "saveStaff"
-1. {staffName":"ssss2","title":"professor","roomId":1}
+1. {"staffName":"ssss2", "title": "professor", "roomId": 1}
 
 "deleteStaff"
-1. {
-"id": ???
-}
+1. {"id": ???}
 
 http://localhost:8080/admin/hospitalRecord/1
-{
-"data":[{"id": 1, "patient": "shiro", "startTime": "2017-02-28", "endTime": "2017-03-01", "description": "flu"}, {"id": 2, "patient": "kuro", "startTime": "2017-03-24", "endTime": "2017-03-24", "description": "cough"}, {"id": 3, "patient": "sora", "startTime": "2017-03-25", "endTime": "2017-03-28", "description": "pregnant"}], "pages": 1
+{"data":[{"id": 1, "patient": "shiro", "startTime": "2017-02-28", "endTime": "2017-03-01", "description": "flu"}, {"id": 2, "patient": "kuro", "startTime": "2017-03-24", "endTime": "2017-03-24", "description": "cough"}, {"id": 3, "patient": "sora", "startTime": "2017-03-25", "endTime": "2017-03-28", "description": "pregnant"}], "pages": 1
 
 "updateHospitalRecord"
 1. {
 "id": 1, "patient": "o1", "startTime": "2017-02-23", "endTime": "2017-03-15", "description": "ddd"}
-2.  {"id": 1, "patient": "shiro", "startTime": "2017-02-28", "endTime": "2017-03-01", "description": "flu"}
+2. {"id": 1, "patient": "shiro", "startTime": "2017-02-28", "endTime": "2017-03-01", "description": "flu"}
 
 "saveHospitalRecord"
 1. {
