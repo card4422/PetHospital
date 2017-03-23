@@ -31,6 +31,7 @@ public class HospitalRecordController {
         int pages = Integer.parseInt(page);
         List hospitalRecords = hospitalRecordService.getAllHospitalRecord();
         List<HospitalRecord> subhospitalRecords = null;
+        int total = (hospitalRecords.size()-1)/10+1;
         int fromIndex = (pages - 1) * 10;
         if (hospitalRecords.size() >= fromIndex) {
             int toIndex = pages * 10;
@@ -65,7 +66,7 @@ public class HospitalRecordController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":" + json + ",\"pages\":" + page + "}";
+        return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
     @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.PUT)

@@ -32,6 +32,7 @@ public class CaseController {
         int pages = Integer.parseInt(page);
         List cases = caseService.getAllCase();
         List<CaseEntity> subcases = null;
+        int total = (cases.size()-1)/10+1;
         int fromIndex = (pages - 1) * 10;
         if (cases.size() >= fromIndex) {
             int toIndex = pages * 10;
@@ -68,7 +69,7 @@ public class CaseController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":"+json+",\"pages\":"+page+"}";
+        return "{\"data\":"+json+",\"pages\":"+total+"}";
     }
 
     @RequestMapping(value = "admin/case",method = RequestMethod.PUT)

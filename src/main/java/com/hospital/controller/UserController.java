@@ -21,7 +21,7 @@ import java.util.*;
  */
 @Controller
 //跨域访问
-//@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials = "true")
 @RequestMapping("/")
 public class UserController {
 
@@ -42,6 +42,7 @@ public class UserController {
         int pages = Integer.parseInt(page);
         List users = userService.getAllUser();
         List<User> subusers = null;
+        int total = (users.size()-1)/10+1;
         int fromIndex = (pages - 1) * 10;
         if (users.size() >= fromIndex) {
             int toIndex = pages * 10;
@@ -72,7 +73,7 @@ public class UserController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":"+json+",\"pages\":"+page+"}";
+        return "{\"data\":"+json+",\"pages\":"+total+"}";
     }
 
     /**
@@ -108,7 +109,7 @@ public class UserController {
     public String deleteUser(@RequestBody User user) {
         Integer id = user.getId();
         userService.deleteUser(id);
-        return "{result:true}";
+        return "{result:\"true\"}";
     }
 
     /**

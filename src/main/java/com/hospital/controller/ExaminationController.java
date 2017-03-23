@@ -28,6 +28,7 @@ public class ExaminationController {
         int pages = Integer.parseInt(page);
         List examinations = examinationService.getAllExamination();
         List<Examination> subexaminations = null;
+        int total = (examinations.size()-1)/10+1;
         int fromIndex = (pages - 1) * 10;
         if (examinations.size() >= fromIndex) {
             int toIndex = pages * 10;
@@ -60,7 +61,7 @@ public class ExaminationController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":" + json + ",\"pages\":" + page + "}";
+        return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
     @RequestMapping(value = "admin/examination",method = RequestMethod.PUT)

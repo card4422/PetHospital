@@ -1,11 +1,9 @@
 package com.hospital.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 
 /**
- * Created by zhuzheng on 17/3/21.
+ * Created by zhuzheng on 17/3/23.
  */
 @Entity
 @IdClass(UserPK.class)
@@ -16,7 +14,6 @@ public class User {
     private Integer userType;
 
     @Id
-    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

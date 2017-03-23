@@ -29,6 +29,7 @@ public class RoleController {
         int pages = Integer.parseInt(page);
         List roles = roleService.getAllRole();
         List<Role> subroles = null;
+        int total = (roles.size()-1)/10+1;
         int fromIndex = (pages - 1) * 10;
         if (roles.size() >= fromIndex) {
             int toIndex = pages * 10;
@@ -57,7 +58,7 @@ public class RoleController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"data\":" + json + ",\"pages\":" + page + "}";
+        return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
     @RequestMapping(value = "admin/role",method = RequestMethod.PUT)
