@@ -4,12 +4,17 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.ArrayType;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import com.hospital.entity.Role;
+import com.hospital.entity.User;
 import com.hospital.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,13 +46,17 @@ public class RoleController {
         }
         class templateInfo {
             Integer id;
-            String roomAccess;
+            List<Integer> roomAccess;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Role role : subroles) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
             tempInfo.id = role.getId();
-            tempInfo.roomAccess = role.getRoomAccess();
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Integer.class);
+            tempInfo.roomAccess = objectMapper.readValue(role.getRoomAccess(), listType);
+
             result.add(tempInfo);
         }
         String json = null;

@@ -46,7 +46,7 @@ public class CaseController {
             Integer id;
             String caseName;
             CaseResource symptom;
-            CaseResource examination;
+            CaseResource exam;
             CaseResource result;
             CaseResource method;
         }
@@ -56,7 +56,7 @@ public class CaseController {
             tempInfo.id = c.getId();
             tempInfo.caseName = c.getCaseName();
             tempInfo.symptom = caseResourceService.getById(c.getSymptom());
-            tempInfo.examination = caseResourceService.getById(c.getExam());
+            tempInfo.exam = caseResourceService.getById(c.getExam());
             tempInfo.result = caseResourceService.getById(c.getResult());
             tempInfo.method = caseResourceService.getById(c.getMethod());
             result.add(tempInfo);
