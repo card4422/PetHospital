@@ -102,7 +102,7 @@ public class MedicineController {
     public String deleteMedicine(@RequestBody Medicine medicine) {
         Integer id = medicine.getId();
         medicineService.deleteMedicine(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 
 }

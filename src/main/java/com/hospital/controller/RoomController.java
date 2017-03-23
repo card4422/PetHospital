@@ -80,6 +80,6 @@ public class RoomController {
     public String deleteRoom(@RequestBody Room room) {
         Integer id = room.getId();
         roomService.deleteRoom(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }

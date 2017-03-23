@@ -89,6 +89,6 @@ public class HospitalRecordController {
     public String deleteHospitalRecord(@RequestBody HospitalRecord hospitalRecord) {
         Integer id = hospitalRecord.getId();
         hospitalRecordService.deleteHospitalRecord(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }

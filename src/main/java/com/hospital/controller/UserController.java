@@ -109,7 +109,7 @@ public class UserController {
     public String deleteUser(@RequestBody User user) {
         Integer id = user.getId();
         userService.deleteUser(id);
-        return "{result:\"true\"}";
+        return "{\"result\":true}";
     }
 
     /**

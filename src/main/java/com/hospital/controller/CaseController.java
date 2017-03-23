@@ -183,6 +183,6 @@ public class CaseController {
     public String deleteMethod(@RequestBody CaseResource caseResource) {
         Integer id = caseResource.getId();
         caseResourceService.deleteCaseResource(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }

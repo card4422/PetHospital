@@ -85,6 +85,6 @@ public class StaffController {
     public String deleteStaff(@RequestBody Staff staff) {
         Integer id = staff.getId();
         staffService.deleteStaff(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }

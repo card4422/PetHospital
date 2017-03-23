@@ -83,6 +83,6 @@ public class RecordController {
     public String deleteRecord(@RequestBody Record record) {
         Integer id = record.getId();
         recordService.deleteRecord(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }

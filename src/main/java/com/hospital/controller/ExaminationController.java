@@ -84,6 +84,6 @@ public class ExaminationController {
     public String deleteExamination(@RequestBody Examination examination) {
         Integer id = examination.getId();
         examinationService.deleteExamination(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }

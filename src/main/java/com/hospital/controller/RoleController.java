@@ -81,6 +81,6 @@ public class RoleController {
     public String deleteRole(@RequestBody Role role) {
         Integer id = role.getId();
         roleService.deleteRole(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }
