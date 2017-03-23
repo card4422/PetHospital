@@ -1,100 +1,94 @@
 http://localhost:8080/admin/user/1
-{"data":[{"Id":1,"userName":"zhu","userType":1},{"Id":2,"userName":"yang","userType":0},{"Id":3,"userName":"xu","userType":1},{"Id":4,"userName":"james","userType":0},{"Id":5,"userName":"harden","userType":1},{"Id":6,"userName":"kobe","userType":0},{"Id":7,"userName":"curry","userType":1},{"Id":8,"userName":"capela","userType":0},{"Id":9,"userName":"messi","userType":1},{"Id":10,"userName":"xavi","userType":0}],"pages":1}
+{
+"data":[{"id": 1, "userName": "zhu", "userType": 1}, {"id": 2, "userName": "yang", "userType": 0}, {"id": 3, "userName": "xu", "userType": 1}, {"id": 4, "userName": "james", "userType": 0}, {"id": 5, "userName": "harden", "userType": 1},{"id": 6, "userName": "kobe", "userType": 0}, {"id": 7, "userName": "curry", "userType": 1}, {"id": 8, "userName": "capela", "userType": 0}, {"id": 9, "userName": "messi", "userType": 1}, {"id": 10, "userName": "xavi", "userType": 0}], "pages": 1
+}
 
 "updateUser"
-1. {
-"data": {"Id": 1, "userName": "zhu","userPwd": "zu", "userType": 0
+1.  {
+"id": 1, "userName": "zhu", "userPwd": "zu", "userType": 0
 }
-2. {"data": {"Id": 1, "userName":"zhu", "userPwd": "zhu", "userType": 1}
+2. {
+"id": 1, "userName": "zhu", "userPwd": "zhu", "userType": 1}
 
 "saveUser"
-1.  {"data": {"userName": "pikaqiu", "userPwd": "pikaqiu", "userType": 0
-}
+1.  {"userName": "pikaqiu", "userPwd": "pikaqiu", "userType": 0}
 
 "deleteUser"
-1. {"data": {"Id": ???
-}
+1. {"id": ???}
 
 "validate"
-1. {
-"data": {
-"userName": "zhu", "userPwd": "zhu", "captcha": "xxxx"}
+1. {"userName": "zhu", "userPwd": "zhu", "captcha": "xxxx"}
 
 http://localhost:8080/admin/medicine/1
-{"data":[{"Id":1,"medicineName":"m1","medicinePrice":1.2,"medicineType":1,"description":"med1"},{"Id":2,"medicineName":"m2","medicinePrice":1.5,"medicineType":1,"description":"mde2"},{"Id":3,"medicineName":"m3","medicinePrice":400.0,"medicineType":2,"description":"med3"}],"pages":1}
+{"data":[{"id": 1, "medicineName": "m1", "medicinePrice": 1.2, "medicineType": 1, "description": "med1"}, {"id": 2, "medicineName": "m2", "medicinePrice": 1.5, "medicineType": 1, "description": "mde2"}, {"id": 3, "medicineName": "m3", "medicinePrice": 400.0, "medicineType": 2, "description": "med3"}], "pages": 1
+}
 
 "updateMedicine"
 1. {
-"data": {"Id": 1, "medicineName": "m1","medicinePrice": 4.9, "medicineType": 0, "description":"med100"
+"id": 1, "medicineName": "m1", "medicinePrice": 4.9, "medicineType": 0, "description": "med100"
 }
-2. {
-"data": {
-"Id":1, "medicineName": "m1", "medicinePrice": 1.2,"medicineType": 1, "description": "med1"
-}
+2. {"id": 1, "medicineName": "m1", "medicinePrice": 1.2, "medicineType": 1, "description": "med1"}
 
 "saveMedicine"
-1.  {"data": {"medicineName": "m12", "medicinePrice": 400.3, "medicineType": 1, "description": "med12"}
+1.  {"medicineName": "m12", "medicinePrice": 400.3, "medicineType": 1, "description": "med12"}
 
 "deleteMedicine"
-1.  {
-"data": {
-"Id":???
+1.  {"id": ???
 }
 
 http://localhost:8080/admin/record/1
-{"data":[{"Id":1,"time":"2017-03-21","patient":"shiro","petType":"neko","description":"flu","price":500.0},{"Id":2,"time":"2017-02-28","patient":"kuro","petType":"inu","description":"cough","price":200.0},{"Id":3,"time":"2017-03-23","patient":"sora","petType":"tori","description":"pregnant","price":300.0}],"pages":1}
+{
+"data":[{"id": 1, "time": "2017-03-21", "patient": "shiro", "petType": "neko", "description": "flu", "price": 500.0}, {"id": 2, "time": "2017-02-28", "patient": "kuro", "petType": "inu", "description": "cough", "price": 200.0}, {"id": 3, "time": "2017-03-23", "patient": "sora", "petType": "tori", "description": "pregnant", "price": 300.0}], "pages": 1
+}
 
 "saveRecord"
 1. {
-"data": {"time": "2017-04-03", "patient": "abc","petType": "dog", "description": "what", "price":400.0
+"time": "2017-04-03", "patient": "abc", "petType": "dog", "description": "what", "price": 400.0
 }
 
 "deleteRecord"
-1.  {
-"data": {
-"Id": ???
-}
+1.  {"id": ???}
 
 http://localhost:8080/admin/role/1
-{"data":[{"Id":1,"roomAccess":"1"},{"Id":2,"roomAccess":"3"},{"Id":3,"roomAccess":"4"}],"pages":1}
+{
+"data":[{"id": 1, "roomAccess": "1"},{"id": 2, "roomAccess": "3"},{"id": 3, "roomAccess": "4"}], "pages": 1
+}
 
 "updateRole"
 1. {
-"data": {"Id": 1, "roomAccess": "2"}
-2. {"data": {"Id": 1,"roomAccess": "1"
+"id": 1, "roomAccess": "2"
+}
+2. {"id": 1, "roomAccess": "1"
 }
 
 "saveRole"
 1. {
-"data":{
 "roomAccess": "1"
 }
 
 "deleteRole"
-1. {
-"data": {
-"Id": ???
+1. {"id": ???
 }
 
 http://localhost:8080/admin/room/1
-{"data":[{"Id":1,"roomName":"room1"},{"Id":2,"roomName":"room2"},{"Id":3,"roomName":"room3"}],"pages":1}
+{
+"data":[{"id": 1, "roomName": "room1"},{"id": 2, "roomName": "room2"},{"id": 3, "roomName": "room3"}], "pages": 1
+}
 
 "updateRoom"
-1. {
-"data": {"Id": 1, "roomName": "ro10"}
-2. {"data": {"Id": 1,"roomName": "room1"
+1.  {
+"id": 1, "roomName": "ro10"
+}
+2. {"id": 1, "roomName": "room1"
 }
 
 "saveRole"
 1. {
-"data":{
 "roomName": "room12"
 }
 
 "deleteRole"
-1. {
-"data": {
-"Id": ???
+1.  {"id": ???
 }
 
 http://localhost:8080/admin/examination/1
@@ -109,35 +103,40 @@ http://localhost:8080/admin/examination/1
 "deleteExamination"
 
 http://localhost:8080/admin/staff/1
-{"data":[{"Id":1,"staffName":"kumamon","title":"professor","roomId":1},{"Id":2,"staffName":"konan","title":"professor","roomId":1},{"Id":3,"staffName":"pikacyu","title":"associate professor","roomId":2},{"Id":4,"staffName":"pudin","title":"doctor","roomId":1},{"Id":5,"staffName":"guradon","title":"doctor","roomId":2}],"pages":1}
+{
+"data":[{"id": 1, "staffName": "kumamon", "title": "professor", "roomId": 1}, {"id": 2, "staffName": "konan", "title": "professor", "roomId": 1}, {"id": 3, "staffName": "pikacyu", "title": "associate professor", "roomId": 2}, {"id": 4, "staffName": "pudin", "title": "doctor", "roomId": 1}, {"id": 5, "staffName": "guradon", "title": "doctor", "roomId": 2}], "pages": 1
+}
 
 "updateStaff"
-1. {
-"data": {"Id": 1, "staffName": "ssss1","title": "ass professor", "roomId": 2
+1.  {
+"id": 1, "staffName": "ssss1", "title": "ass professor", "roomId": 2
 }
-2. {"data": {"Id": 1, "staffName":"kumamon", "title": "professor", "roomId": 1}
+2. {
+"id": 1, "staffName": "kumamon", "title": "professor", "roomId": 1}
 
 "saveStaff"
-1. {"data": {staffName":"ssss2","title":"professor","roomId":1}
+1. {staffName":"ssss2","title":"professor","roomId":1}
 
 "deleteStaff"
-1. {"data": {"Id": ???}
+1. {
+"id": ???
+}
 
 http://localhost:8080/admin/hospitalRecord/1
-{"data":[{"Id":1,"patient":"shiro","startTime":"2017-02-28","endTime":"2017-03-01","description":"flu"},{"Id":2,"patient":"kuro","startTime":"2017-03-24","endTime":"2017-03-24","description":"cough"},{"Id":3,"patient":"sora","startTime":"2017-03-25","endTime":"2017-03-28","description":"pregnant"}],"pages":1
+{
+"data":[{"id": 1, "patient": "shiro", "startTime": "2017-02-28", "endTime": "2017-03-01", "description": "flu"}, {"id": 2, "patient": "kuro", "startTime": "2017-03-24", "endTime": "2017-03-24", "description": "cough"}, {"id": 3, "patient": "sora", "startTime": "2017-03-25", "endTime": "2017-03-28", "description": "pregnant"}], "pages": 1
 
 "updateHospitalRecord"
 1. {
-"data":{"Id": 1, "patient": "o1", "startTime": "2017-02-23", "endTime": "2017-03-15", "description": "ddd"}
-2. {
-"data": {
-"Id": 1, "patient": "shiro", "startTime": "2017-02-28", "endTime": "2017-03-01", "description": "flu"
-}
+"id": 1, "patient": "o1", "startTime": "2017-02-23", "endTime": "2017-03-15", "description": "ddd"}
+2.  {"id": 1, "patient": "shiro", "startTime": "2017-02-28", "endTime": "2017-03-01", "description": "flu"}
 
 "saveHospitalRecord"
-1. {"data": {"patient": "p1", "startTime":"2017-02-12", "endTime": "2017-03-05", "description": "fds"}
+1. {
+"patient": "p1", "startTime": "2017-02-12", "endTime": "2017-03-05", "description": "fds"}
 
 "deleteHospitalRecord"
-1. {"data": {"Id": ???
+1. {
+"id": ???
 }
 
