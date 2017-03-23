@@ -39,7 +39,7 @@ public class StaffController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             String staffName;
             String title;
             Integer roomId;
@@ -47,7 +47,7 @@ public class StaffController {
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Staff staff : substaffs) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = staff.getId();
+            tempInfo.id = staff.getId();
             tempInfo.staffName = staff.getStaffName();
             tempInfo.title = staff.getTitle();
             tempInfo.roomId = staff.getRoomId();

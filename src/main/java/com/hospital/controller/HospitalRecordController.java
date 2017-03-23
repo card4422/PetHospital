@@ -41,7 +41,7 @@ public class HospitalRecordController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             String patient;
             Date startTime;
             Date endTime;
@@ -50,7 +50,7 @@ public class HospitalRecordController {
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (HospitalRecord hospitalRecord : subhospitalRecords) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = hospitalRecord.getId();
+            tempInfo.id = hospitalRecord.getId();
             tempInfo.patient = hospitalRecord.getPatient();
             tempInfo.startTime = hospitalRecord.getStartTime();
             tempInfo.endTime = hospitalRecord.getEndTime();

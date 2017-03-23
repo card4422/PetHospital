@@ -42,7 +42,7 @@ public class MedicineController {
             }
         }
         class templateInfo{
-            Integer Id;
+            Integer id;
             String medicineName;
             Float  medicinePrice;
             Integer medicineType;
@@ -51,7 +51,7 @@ public class MedicineController {
         List<templateInfo> result = new ArrayList<templateInfo>();
         for(Medicine medicine : submedicines) {
             templateInfo tempInfo = new templateInfo();
-            tempInfo.Id = medicine.getId();
+            tempInfo.id = medicine.getId();
             tempInfo.medicineName = medicine.getMedicineName();
             tempInfo.medicinePrice = medicine.getMedicinePrice();
             tempInfo.medicineType = medicine.getMedicineType();

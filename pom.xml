@@ -197,6 +197,12 @@
             <version>${fileuploadVersion}</version>
         </dependency>
 
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+        </dependency>
+
         <!-- lombok插件导包-->
         <dependency>
             <groupId>org.projectlombok</groupId>
