@@ -1,12 +1,14 @@
 package com.hospital.entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by zhuzheng on 17/3/23.
  */
 @Entity
-@IdClass(UserPK.class)
 public class User {
     private int id;
     private String userName;
@@ -23,7 +25,7 @@ public class User {
         this.id = id;
     }
 
-    @Id
+    @Basic
     @Column(name = "user_name", nullable = false, length = 255)
     public String getUserName() {
         return userName;

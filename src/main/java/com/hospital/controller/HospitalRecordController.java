@@ -25,7 +25,7 @@ public class HospitalRecordController {
     @Autowired
     private HospitalRecordService hospitalRecordService;
 
-    @RequestMapping(value = "admin/hospitalRecord/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/hospitalRecord/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getHospitalRecords(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -69,26 +69,26 @@ public class HospitalRecordController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.PUT)
+    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.PUT,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String updateHospitalRecord(@RequestBody HospitalRecord hospitalRecord){
         hospitalRecordService.updateHospitalRecord(hospitalRecord);
-        return " Update success";
+        return "{\"result\":true}";
     }
 
 
-    @RequestMapping(value = "admin/hospitalRecord", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/hospitalRecord", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String saveHospitalRecord(@RequestBody HospitalRecord hospitalRecord) {
         hospitalRecordService.saveHospitalRecord(hospitalRecord);
-        return "success!";
+        return "{\"result\":true}";
     }
 
-    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.DELETE)
+    @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.DELETE,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String deleteHospitalRecord(@RequestBody HospitalRecord hospitalRecord) {
         Integer id = hospitalRecord.getId();
         hospitalRecordService.deleteHospitalRecord(id);
-        return "{result:true}";
+        return "{\"result\":true}";
     }
 }

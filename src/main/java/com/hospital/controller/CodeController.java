@@ -31,7 +31,7 @@ public class CodeController {
             'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
             'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-    @RequestMapping(value = "captcha",method = RequestMethod.GET)
+    @RequestMapping(value = "captcha",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     public void getCode(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
