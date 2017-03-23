@@ -29,6 +29,7 @@ CREATE TABLE `case_entity` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+
 -- ----------------------------
 -- Records of case_entity
 -- ----------------------------
