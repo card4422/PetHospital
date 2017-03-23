@@ -38,13 +38,13 @@ public class RoomController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             String roomName;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Room room : subrooms) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = room.getId();
+            tempInfo.id = room.getId();
             tempInfo.roomName = room.getRoomName();
             result.add(tempInfo);
         }

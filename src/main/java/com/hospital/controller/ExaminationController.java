@@ -38,7 +38,7 @@ public class ExaminationController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             String examinationName;
             Float examinationPrice;
             String description;
@@ -46,7 +46,7 @@ public class ExaminationController {
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Examination examination : subexaminations) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = examination.getId();
+            tempInfo.id = examination.getId();
             tempInfo.examinationName = examination.getExaminationName();
             tempInfo.examinationPrice = examination.getExaminationPrice();
             tempInfo.description = examination.getDescription();

@@ -39,13 +39,13 @@ public class RoleController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             String roomAccess;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Role role : subroles) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = role.getId();
+            tempInfo.id = role.getId();
             tempInfo.roomAccess = role.getRoomAccess();
             result.add(tempInfo);
         }

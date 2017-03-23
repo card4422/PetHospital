@@ -20,6 +20,7 @@ import java.util.*;
  * Created by zhuzheng on 17/3/9.
  */
 @Controller
+//跨域访问
 //@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping("/")
 public class UserController {
@@ -30,11 +31,13 @@ public class UserController {
     //log工厂
     private final Log log = LogFactory.getLog(getClass());
 
+    /**
+     *
+     * @param page
+     * @return
+     */
     @RequestMapping(value = "admin/user/{page}",method = RequestMethod.GET)
     @ResponseBody
-    /**
-     * 返回指定页面的user信息
-     */
     public String getUsers(@PathVariable String page) {
         int pages = Integer.parseInt(page);
         List users = userService.getAllUser();
@@ -49,14 +52,14 @@ public class UserController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             String userName;
             Integer userType;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (User user : subusers) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = user.getId();
+            tempInfo.id = user.getId();
             tempInfo.userName = user.getUserName();
             tempInfo.userType = user.getUserType();
             result.add(tempInfo);

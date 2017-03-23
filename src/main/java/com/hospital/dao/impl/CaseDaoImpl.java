@@ -17,7 +17,6 @@ public class CaseDaoImpl implements CaseDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-
     private Session getCurrentSession() {
         return this.sessionFactory.openSession();
     }

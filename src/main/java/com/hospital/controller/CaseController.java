@@ -42,7 +42,7 @@ public class CaseController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             String caseName;
             CaseResource symptom;
             CaseResource examination;
@@ -52,7 +52,7 @@ public class CaseController {
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (CaseEntity c : subcases) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = c.getId();
+            tempInfo.id = c.getId();
             tempInfo.caseName = c.getCaseName();
             tempInfo.symptom = caseResourceService.getById(c.getSymptom());
             tempInfo.examination = caseResourceService.getById(c.getExam());

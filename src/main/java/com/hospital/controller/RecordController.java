@@ -41,7 +41,7 @@ public class RecordController {
             }
         }
         class templateInfo {
-            Integer Id;
+            Integer id;
             Date time;
             String patient;
             String petType;
@@ -51,7 +51,7 @@ public class RecordController {
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Record record : subrecords) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
-            tempInfo.Id = record.getId();
+            tempInfo.id = record.getId();
             tempInfo.time = record.getTime();
             tempInfo.patient = record.getPatient();
             tempInfo.petType = record.getPetType();
