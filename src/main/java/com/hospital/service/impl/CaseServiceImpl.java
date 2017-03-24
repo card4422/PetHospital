@@ -17,8 +17,8 @@ public class CaseServiceImpl implements CaseService {
     @Autowired
     private CaseDao caseRepository;
 
-    public Integer saveCase(CaseEntity case_Entity_s) {
-        return caseRepository.save(case_Entity_s);
+    public Integer saveCase(CaseEntity caseEntity) {
+        return caseRepository.save(caseEntity);
     }
 
     public List<CaseEntity> getAllCase() {
@@ -34,7 +34,7 @@ public class CaseServiceImpl implements CaseService {
         caseRepository.delete(id);
     }
 
-    public void updateCase(CaseEntity case_Entity_s) {
-        caseRepository.update(case_Entity_s);
+    public void updateCase(CaseEntity caseEntity) {
+        caseRepository.update(caseEntity);
     }
 }

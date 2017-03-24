@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Jimmy on 2017/3/11.
  */
 public interface CaseService {
-    Integer saveCase(CaseEntity case_Entity_s);
+    Integer saveCase(CaseEntity caseEntity);
 
     List<CaseEntity> getAllCase();
 
@@ -16,6 +16,6 @@ public interface CaseService {
 
     void deleteCase(Integer id);
 
-    void updateCase(CaseEntity case_Entity_s);
+    void updateCase(CaseEntity caseEntity);
 
 }

@@ -32,9 +32,9 @@ public class UserController {
     private final Log log = LogFactory.getLog(getClass());
 
     /**
-     *
-     * @param page
-     * @return
+     * 获得指定页码的用户信息
+     * @param page 用户申请的页码
+     * @return json数据信息
      */
     @RequestMapping(value = "admin/user/{page}",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
@@ -65,6 +65,9 @@ public class UserController {
             tempInfo.userType = user.getUserType();
             result.add(tempInfo);
         }
+
+        log.info(result);
+        log.info("templateInfo构建完成");
         String json = null;
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
@@ -80,12 +83,16 @@ public class UserController {
     /**
      * 更新用户
      * @param user
-     * @return
+     * @return 接口调用成功与否
      */
     @RequestMapping(value = "admin/user",method = RequestMethod.PUT)
     @ResponseBody
     public String updateUser(@RequestBody User user){
-        userService.updateUser(user);
+        try {
+            userService.updateUser(user);
+        }catch(Exception e) {
+            return "{\"result\":false}";
+        }
         return "{\"result\":true}";
     }
 
@@ -97,7 +104,11 @@ public class UserController {
     @RequestMapping(value = "admin/user",method = RequestMethod.POST)
     @ResponseBody
     public String saveUser(@RequestBody User user){
-        userService.saveUser(user);
+        try {
+            userService.saveUser(user);
+        }catch(Exception e){
+            return "{\"result\":false";
+        }
         return "{\"result\":true}";
     }
 
