@@ -82,7 +82,7 @@ public class UserController {
 
     /**
      * 更新用户
-     * @param user
+     * @param user 指定用户
      * @return 接口调用成功与否
      */
     @RequestMapping(value = "admin/user",method = RequestMethod.PUT)
@@ -98,8 +98,8 @@ public class UserController {
 
     /**
      * 增加用户
-     * @param user
-     * @return
+     * @param user 指定用户
+     * @return 接口调用成功与否
      */
     @RequestMapping(value = "admin/user",method = RequestMethod.POST)
     @ResponseBody
@@ -112,9 +112,10 @@ public class UserController {
         return "{\"result\":true}";
     }
 
-
     /**
      * 删除用户
+     * @param user 指定用户
+     * @return 接口调用成功与否
      */
     @RequestMapping(value = "admin/user",method = RequestMethod.DELETE)
     @ResponseBody
@@ -125,7 +126,10 @@ public class UserController {
     }
 
     /**
-     * 验证用户名和密码，返回权限
+     * 认证用户登录信息
+     * @param map 用户名与密码的映射
+     * @param session 会话
+     * @return 用户是否合法及用户类型
      */
     @RequestMapping(value = "validate",method = RequestMethod.POST)
     @ResponseBody

@@ -25,7 +25,12 @@ public class MedicineController {
     @Autowired
     private MedicineService medicineService;
 
-
+    /**
+     * 获得指定页码的药品信息
+     *
+     * @param page 药品申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/medicine/{page}",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getMedicine(@PathVariable String page) {
@@ -70,10 +75,10 @@ public class MedicineController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
-
-    /** 增加用户
-    * @param medicine
-    * @return
+    /**
+     * 增加药品
+     * @param medicine 指定药品
+     * @return 接口调用成功与否
      */
     @RequestMapping(value = "admin/medicine",method = RequestMethod.POST)
     @ResponseBody
@@ -84,8 +89,8 @@ public class MedicineController {
 
     /**
      * 更新药品
-     * @param medicine
-     * @return
+     * @param medicine 指定药品
+     * @return 接口调用成功与否
      */
     @RequestMapping(value = "admin/medicine",method = RequestMethod.PUT)
     @ResponseBody
@@ -96,6 +101,8 @@ public class MedicineController {
 
     /**
      * 删除药品
+     * @param medicine 指定药品
+     * @return 接口调用成功与否
      */
     @RequestMapping(value = "admin/medicine",method = RequestMethod.DELETE)
     @ResponseBody

@@ -23,6 +23,12 @@ public class StaffController {
     @Autowired
     private StaffService staffService;
 
+    /**
+     * 获得指定页码的人员信息
+     *
+     * @param page 人员申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/staff/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getStaff(@PathVariable String page) {
@@ -65,6 +71,11 @@ public class StaffController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
+    /**
+     * 更新人员
+     * @param staff 指定人员
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/staff",method = RequestMethod.PUT)
     @ResponseBody
     public String updateStaff(@RequestBody Staff staff){
@@ -72,7 +83,11 @@ public class StaffController {
         return "{\"result\":true}";
     }
 
-
+    /**
+     * 增加人员
+     * @param staff 指定人员
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/staff", method = RequestMethod.POST)
     @ResponseBody
     public String saveStaff(@RequestBody Staff staff) {
@@ -80,6 +95,11 @@ public class StaffController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 删除人员
+     * @param staff 指定人员
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/staff",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteStaff(@RequestBody Staff staff) {

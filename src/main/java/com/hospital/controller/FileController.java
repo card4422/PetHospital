@@ -21,6 +21,14 @@ import java.io.IOException;
 @RequestMapping(value="/")
 public class FileController {
 
+    /**
+     * 实现文件上传
+     *
+     * @param uploadFile 多文件上传的数组
+     * @param session    会话
+     * @return 返回成功与否的页面
+     * @throws Exception
+     */
     @RequestMapping(value="upload")
     public String Upload(@RequestParam MultipartFile[] uploadFile, HttpSession session)throws Exception {
         for (MultipartFile item : uploadFile) {
@@ -34,6 +42,11 @@ public class FileController {
         return "error.jsp";
     }
 
+    /**
+     * 实现文件下载
+     * @return 下载实体数据流
+     * @throws IOException
+     */
     @RequestMapping(value = "download")
     public ResponseEntity<byte[]> Download()throws IOException{
         File file = new File("/Users/zhuzheng/Desktop/StoredFile/download");

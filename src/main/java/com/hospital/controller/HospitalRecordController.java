@@ -25,6 +25,12 @@ public class HospitalRecordController {
     @Autowired
     private HospitalRecordService hospitalRecordService;
 
+    /**
+     * 获得指定页码的住院条目信息
+     *
+     * @param page 住院条目申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/hospitalRecord/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getHospitalRecords(@PathVariable String page) {
@@ -69,6 +75,11 @@ public class HospitalRecordController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
+    /**
+     * 更新住院条目
+     * @param hospitalRecord 指定住院条目
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.PUT)
     @ResponseBody
     public String updateHospitalRecord(@RequestBody HospitalRecord hospitalRecord){
@@ -76,7 +87,11 @@ public class HospitalRecordController {
         return "{\"result\":true}";
     }
 
-
+    /**
+     * 增加住院条目
+     * @param hospitalRecord 指定住院条目
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/hospitalRecord", method = RequestMethod.POST)
     @ResponseBody
     public String saveHospitalRecord(@RequestBody HospitalRecord hospitalRecord) {
@@ -84,6 +99,11 @@ public class HospitalRecordController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 删除住院条目
+     * @param hospitalRecord 指定住院条目
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/hospitalRecord",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteHospitalRecord(@RequestBody HospitalRecord hospitalRecord) {

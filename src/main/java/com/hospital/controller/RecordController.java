@@ -25,6 +25,12 @@ public class RecordController {
     @Autowired
     private RecordService recordService;
 
+    /**
+     * 获得指定页码的档案信息
+     *
+     * @param page 档案申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/record/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getRecord(@PathVariable String page) {
@@ -71,6 +77,11 @@ public class RecordController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
+    /**
+     * 增加档案
+     * @param record 指定档案
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/record", method = RequestMethod.POST)
     @ResponseBody
     public String saveRecord(@RequestBody Record record) {
@@ -78,6 +89,11 @@ public class RecordController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 删除档案
+     * @param record 指定档案
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/record",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteRecord(@RequestBody Record record) {

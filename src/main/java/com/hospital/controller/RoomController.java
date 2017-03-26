@@ -22,6 +22,12 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
+    /**
+     * 获得指定页码的科室信息
+     *
+     * @param page 科室申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/room/{page}", method = RequestMethod.GET)
     @ResponseBody
     public String getRoom(@PathVariable String page) {
@@ -60,6 +66,12 @@ public class RoomController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
+
+    /**
+     * 更新科室
+     * @param room 指定科室
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/room",method = RequestMethod.PUT)
     @ResponseBody
     public String updateRoom(@RequestBody Room room){
@@ -68,6 +80,11 @@ public class RoomController {
     }
 
 
+    /**
+     * 增加科室
+     * @param room 指定科室
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/room", method = RequestMethod.POST)
     @ResponseBody
     public String saveRoom(@RequestBody Room room) {
@@ -75,6 +92,11 @@ public class RoomController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 删除科室
+     * @param room 指定科室
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/room",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteRoom(@RequestBody Room room) {

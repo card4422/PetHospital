@@ -22,6 +22,12 @@ public class ExaminationController {
     @Autowired
     private ExaminationService examinationService;
 
+    /**
+     * 获得指定页码的化验项目信息
+     *
+     * @param page 化验项目申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/examination/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getExamination(@PathVariable String page) {
@@ -64,6 +70,11 @@ public class ExaminationController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
+    /**
+     * 更新化验项目
+     * @param examination 指定化验项目
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/examination",method = RequestMethod.PUT)
     @ResponseBody
     public String updateExamination(@RequestBody Examination examination){
@@ -72,6 +83,11 @@ public class ExaminationController {
     }
 
 
+    /**
+     * 增加化验项目
+     * @param examination 指定化验项目
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/examination", method = RequestMethod.POST)
     @ResponseBody
     public String saveExamination(@RequestBody Examination examination) {
@@ -79,6 +95,11 @@ public class ExaminationController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 删除化验项目
+     * @param examination 指定化验项目
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/examination",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteExamination(@RequestBody Examination examination) {

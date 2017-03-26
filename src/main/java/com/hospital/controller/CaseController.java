@@ -27,6 +27,12 @@ public class CaseController {
     @Autowired
     private CaseResourceService caseResourceService;
 
+    /**
+     * 获得指定页码的病例信息，并得到其对应的四种病例资源信息
+     *
+     * @param page 病例申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/case/{page}",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getCases(@PathVariable String page) {
@@ -80,6 +86,11 @@ public class CaseController {
 //        return "{\"result\":true}";
 //    }
 
+    /**
+     * 更新病例及其四种病例资源信息
+     * @param map 现有病例对应的病例资源的映射
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/case",method = RequestMethod.PUT)
     @ResponseBody
     public String updateCase(@RequestBody Map map){
@@ -131,6 +142,11 @@ public class CaseController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 增加病例及其四种病例资源信息
+     * @param map 现有病例对应的病例资源的映射
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/case",method = RequestMethod.POST)
     @ResponseBody
     public String saveCase(@RequestBody Map map){
@@ -177,6 +193,11 @@ public class CaseController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 更新病例
+     * @param c 指定病例实体
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/case",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteCase(@RequestBody CaseEntity c) {

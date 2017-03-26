@@ -29,6 +29,12 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    /**
+     * 获得指定页码的角色信息
+     *
+     * @param page 角色申请的页码
+     * @return json数据信息
+     */
     @RequestMapping(value = "admin/role/{page}", method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getRole(@PathVariable String page) {
@@ -74,6 +80,11 @@ public class RoleController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
+    /**
+     * 更新角色
+     * @param role 指定角色
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/role",method = RequestMethod.PUT)
     @ResponseBody
     public String updateRole(@RequestBody Role role){
@@ -81,7 +92,11 @@ public class RoleController {
         return "{\"result\":true}";
     }
 
-
+    /**
+     * 增加角色
+     * @param role 指定角色
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/role", method = RequestMethod.POST)
     @ResponseBody
     public String saveRole(@RequestBody Role role) {
@@ -89,6 +104,11 @@ public class RoleController {
         return "{\"result\":true}";
     }
 
+    /**
+     * 删除角色
+     * @param role 指定角色
+     * @return 接口调用成功与否
+     */
     @RequestMapping(value = "admin/role",method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteRole(@RequestBody Role role) {

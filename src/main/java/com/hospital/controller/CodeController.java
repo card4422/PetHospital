@@ -31,6 +31,13 @@ public class CodeController {
             'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
             'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
+    /**
+     * 生成验证码
+     *
+     * @param request  从客户端取数据的对象
+     * @param response 向客户端发送数据的对象
+     * @throws IOException
+     */
     @RequestMapping(value = "captcha",method = RequestMethod.GET)
     public void getCode(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
