@@ -17,6 +17,7 @@ public class CaseEntity {
     private String classification;
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

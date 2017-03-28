@@ -3,7 +3,7 @@ package com.hospital.entity;
 import javax.persistence.*;
 
 /**
- * Created by Jimmy on 2017/3/23.
+ * Created by zhuzheng on 17/3/28.
  */
 @Entity
 public class Staff {
@@ -14,7 +14,7 @@ public class Staff {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +24,7 @@ public class Staff {
     }
 
     @Basic
-    @Column(name = "staff_name", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "staff_name", nullable = true, length = 255)
     public String getStaffName() {
         return staffName;
     }
@@ -34,7 +34,7 @@ public class Staff {
     }
 
     @Basic
-    @Column(name = "title", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "title", nullable = true, length = 255)
     public String getTitle() {
         return title;
     }
@@ -44,7 +44,7 @@ public class Staff {
     }
 
     @Basic
-    @Column(name = "room_id", nullable = true, insertable = true, updatable = true)
+    @Column(name = "room_id", nullable = true)
     public Integer getRoomId() {
         return roomId;
     }

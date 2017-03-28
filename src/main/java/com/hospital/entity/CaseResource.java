@@ -3,10 +3,10 @@ package com.hospital.entity;
 import javax.persistence.*;
 
 /**
- * Created by Jimmy on 2017/3/23.
+ * Created by zhuzheng on 17/3/28.
  */
 @Entity
-@Table(name = "case_resource", schema = "", catalog = "pethospital")
+@Table(name = "case_resource", schema = "pethospital", catalog = "")
 public class CaseResource {
     private int id;
     private String description;
@@ -15,7 +15,7 @@ public class CaseResource {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,7 +25,7 @@ public class CaseResource {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -35,7 +35,7 @@ public class CaseResource {
     }
 
     @Basic
-    @Column(name = "picture", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "picture", nullable = true, length = 255)
     public String getPicture() {
         return picture;
     }
@@ -45,7 +45,7 @@ public class CaseResource {
     }
 
     @Basic
-    @Column(name = "video", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "video", nullable = true, length = 255)
     public String getVideo() {
         return video;
     }

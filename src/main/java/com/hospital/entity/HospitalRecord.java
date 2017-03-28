@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Jimmy on 2017/3/23.
+ * Created by zhuzheng on 17/3/28.
  */
 @Entity
-@Table(name = "hospital_record", schema = "", catalog = "pethospital")
+@Table(name = "hospital_record", schema = "pethospital", catalog = "")
 public class HospitalRecord {
     private int id;
     private String patient;
@@ -17,7 +17,7 @@ public class HospitalRecord {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class HospitalRecord {
     }
 
     @Basic
-    @Column(name = "patient", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "patient", nullable = true, length = 255)
     public String getPatient() {
         return patient;
     }
@@ -37,7 +37,7 @@ public class HospitalRecord {
     }
 
     @Basic
-    @Column(name = "start_time", nullable = true, insertable = true, updatable = true)
+    @Column(name = "start_time", nullable = true)
     public Date getStartTime() {
         return startTime;
     }
@@ -47,7 +47,7 @@ public class HospitalRecord {
     }
 
     @Basic
-    @Column(name = "end_time", nullable = true, insertable = true, updatable = true)
+    @Column(name = "end_time", nullable = true)
     public Date getEndTime() {
         return endTime;
     }
@@ -57,7 +57,7 @@ public class HospitalRecord {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
