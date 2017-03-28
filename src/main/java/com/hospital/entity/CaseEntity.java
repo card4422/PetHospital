@@ -3,10 +3,10 @@ package com.hospital.entity;
 import javax.persistence.*;
 
 /**
- * Created by Jimmy on 2017/3/23.
+ * Created by zhuzheng on 17/3/28.
  */
 @Entity
-@Table(name = "case_entity", schema = "", catalog = "pethospital")
+@Table(name = "case_entity", schema = "pethospital", catalog = "")
 public class CaseEntity {
     private int id;
     private String caseName;
@@ -14,10 +14,10 @@ public class CaseEntity {
     private Integer exam;
     private Integer result;
     private Integer method;
+    private String classification;
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class CaseEntity {
     }
 
     @Basic
-    @Column(name = "case_name", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "case_name", nullable = true, length = 255)
     public String getCaseName() {
         return caseName;
     }
@@ -37,7 +37,7 @@ public class CaseEntity {
     }
 
     @Basic
-    @Column(name = "symptom", nullable = true, insertable = true, updatable = true)
+    @Column(name = "symptom", nullable = true)
     public Integer getSymptom() {
         return symptom;
     }
@@ -47,7 +47,7 @@ public class CaseEntity {
     }
 
     @Basic
-    @Column(name = "exam", nullable = true, insertable = true, updatable = true)
+    @Column(name = "exam", nullable = true)
     public Integer getExam() {
         return exam;
     }
@@ -57,7 +57,7 @@ public class CaseEntity {
     }
 
     @Basic
-    @Column(name = "result", nullable = true, insertable = true, updatable = true)
+    @Column(name = "result", nullable = true)
     public Integer getResult() {
         return result;
     }
@@ -67,13 +67,23 @@ public class CaseEntity {
     }
 
     @Basic
-    @Column(name = "method", nullable = true, insertable = true, updatable = true)
+    @Column(name = "method", nullable = true)
     public Integer getMethod() {
         return method;
     }
 
     public void setMethod(Integer method) {
         this.method = method;
+    }
+
+    @Basic
+    @Column(name = "classification", nullable = true, length = 255)
+    public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
     }
 
     @Override
@@ -89,6 +99,8 @@ public class CaseEntity {
         if (exam != null ? !exam.equals(that.exam) : that.exam != null) return false;
         if (result != null ? !result.equals(that.result) : that.result != null) return false;
         if (method != null ? !method.equals(that.method) : that.method != null) return false;
+        if (classification != null ? !classification.equals(that.classification) : that.classification != null)
+            return false;
 
         return true;
     }
@@ -101,6 +113,7 @@ public class CaseEntity {
         result1 = 31 * result1 + (exam != null ? exam.hashCode() : 0);
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + (method != null ? method.hashCode() : 0);
+        result1 = 31 * result1 + (classification != null ? classification.hashCode() : 0);
         return result1;
     }
 }
