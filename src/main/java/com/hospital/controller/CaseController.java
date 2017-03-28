@@ -205,6 +205,38 @@ public class CaseController {
         caseService.deleteCase(id);
         return "{\"result\":true}";
     }
+
+    /**
+     * 获得指定页码的病例信息，并得到其对应的四种病例资源信息
+     *
+     * @param classification 病例申请的页码
+     * @return json数据信息
+     */
+    @RequestMapping(value = "learning/casenav/{classification}", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String getCasesInClassification(@PathVariable String classification) {
+        List<CaseEntity> cases = caseService.getCaseInClassification(classification);
+        class templateInfo {
+            String caseName;
+            Integer id;
+        }
+        List<templateInfo> result = new ArrayList<templateInfo>();
+        for (CaseEntity c : cases) {
+            templateInfo tempInfo = new templateInfo();//必须放在循环内
+            tempInfo.caseName = c.getCaseName();
+            tempInfo.id = c.getId();
+            result.add(tempInfo);
+        }
+        String json = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        try {
+            json = objectMapper.writeValueAsString(result);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "{\"caseList\":" + json + "}";
+    }
 //
 //    //SYMPTOM
 //    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.PUT)

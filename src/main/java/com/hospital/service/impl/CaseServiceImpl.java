@@ -76,4 +76,16 @@ public class CaseServiceImpl implements CaseService {
             e.printStackTrace();
         }
     }
+
+    public List<CaseEntity> getCaseInClassification(String classification) {
+        try {
+            List list = caseRepository.getByClassification(classification);
+            return list;
+        } catch (HibernateException e) {
+            log.error("在getAllCase出错了");
+            log.error(e);
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -18,4 +18,5 @@ public interface CaseService {
 
     void updateCase(CaseEntity caseEntity);
 
+    List<CaseEntity> getCaseInClassification(String classification);
 }
