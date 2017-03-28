@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-03-28 14:50:31
+Date: 2017-03-28 15:58:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,21 +20,29 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `case_entity`;
 CREATE TABLE `case_entity` (
-  `id`             int(11) NOT NULL AUTO_INCREMENT,
-  `case_name`      varchar(255)     DEFAULT NULL,
-  `symptom`        int(11)          DEFAULT NULL,
-  `exam`           int(11)          DEFAULT NULL,
-  `result`         int(11)          DEFAULT NULL,
-  `method`         int(11)          DEFAULT NULL,
+  `id`             INT(11) NOT NULL AUTO_INCREMENT,
+  `case_name`      VARCHAR(255)     DEFAULT NULL,
+  `symptom`        INT(11)          DEFAULT NULL,
+  `exam`           INT(11)          DEFAULT NULL,
+  `result`         INT(11)          DEFAULT NULL,
+  `method`         INT(11)          DEFAULT NULL,
   `classification` VARCHAR(255)     DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARSET = utf8
+  ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of case_entity
 -- ----------------------------
-INSERT INTO `case_entity` VALUES ('1', 'c1', '1', '2', '3', '4', NULL);
-INSERT INTO `case_entity` VALUES ('2', 'c2', '2', '1', '4', '3', NULL);
+INSERT INTO `case_entity` VALUES ('1', 'c1', '1', '2', '3', '4', 'contagion');
+INSERT INTO `case_entity` VALUES ('2', 'c2', '2', '1', '4', '3', 'parasitosis');
+INSERT INTO `case_entity` VALUES ('3', 'c3', '3', '4', '1', '2', 'internal');
+INSERT INTO `case_entity` VALUES ('4', 'c4', '4', '2', '3', '1', 'external');
+INSERT INTO `case_entity` VALUES ('5', 'c5', '3', '2', '1', '4', 'surgery');
+INSERT INTO `case_entity` VALUES ('6', 'c6', '1', '3', '2', '4', 'immune');
 
 -- ----------------------------
 -- Table structure for case_resource
