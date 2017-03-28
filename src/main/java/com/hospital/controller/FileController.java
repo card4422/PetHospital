@@ -7,7 +7,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -25,21 +27,18 @@ public class FileController {
      * 实现文件上传
      *
      * @param uploadFile 多文件上传的数组
-     * @param session    会话
      * @return 返回成功与否的页面
      * @throws Exception
      */
-    @RequestMapping(value="upload")
-    public String Upload(@RequestParam MultipartFile[] uploadFile, HttpSession session)throws Exception {
-        for (MultipartFile item : uploadFile) {
-            String fileName = item.getOriginalFilename();
+    @RequestMapping(value="upload",method = RequestMethod.POST)
+    @ResponseBody
+    public String Upload(@RequestParam MultipartFile uploadFile)throws Exception {
+        String fileName = uploadFile.getOriginalFilename();
 //        String leftPath = session.getServletContext().getContextPath("/images");
-            String leftPath = "/Users/zhuzheng/Desktop/StoredFile/upload";
-            File file = new File(leftPath, fileName);
-            item.transferTo(file);
-            return "welcome.jsp";
-        }
-        return "error.jsp";
+        String leftPath = "/Users/zhuzheng/Desktop/StoredFile/upload";
+        File file = new File(leftPath, fileName);
+        uploadFile.transferTo(file);
+        return "{\"result\":true}";
     }
 
     /**
@@ -47,7 +46,7 @@ public class FileController {
      * @return 下载实体数据流
      * @throws IOException
      */
-    @RequestMapping(value = "download")
+    @RequestMapping(value = "download",method = RequestMethod.POST)
     public ResponseEntity<byte[]> Download()throws IOException{
         File file = new File("/Users/zhuzheng/Desktop/StoredFile/download");
         HttpHeaders headers = new HttpHeaders();

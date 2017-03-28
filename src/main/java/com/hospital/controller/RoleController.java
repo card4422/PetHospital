@@ -53,19 +53,17 @@ public class RoleController {
         }
         class templateInfo {
             Integer id;
-            List<Integer> roomAccess;
+            List <Integer> roomAccess= new ArrayList<Integer>();
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (Role role : subroles) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
             tempInfo.id = role.getId();
 
-            ObjectMapper objectMapper = new ObjectMapper();
-            CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Integer.class);
-            try {
-                tempInfo.roomAccess = objectMapper.readValue(role.getRoomAccess(), listType);
-            } catch (IOException e) {
-                e.printStackTrace();
+
+            String [] arr_roomAccess = role.getRoomAccess().split(" ");
+            for(String temp :arr_roomAccess){
+                tempInfo.roomAccess.add(Integer.valueOf(temp));
             }
             result.add(tempInfo);
         }
