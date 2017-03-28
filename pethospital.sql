@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : zhuzheng
+Source Server         : test
 Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : pethospital
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-03-21 21:42:23
+Date: 2017-03-28 14:50:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,20 +20,21 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `case_entity`;
 CREATE TABLE `case_entity` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `case_name` varchar(255) DEFAULT NULL,
-  `symptom` int(11) DEFAULT NULL,
-  `exam` int(11) DEFAULT NULL,
-  `result` int(11) DEFAULT NULL,
-  `method` int(11) DEFAULT NULL,
+  `id`             int(11) NOT NULL AUTO_INCREMENT,
+  `case_name`      varchar(255)     DEFAULT NULL,
+  `symptom`        int(11)          DEFAULT NULL,
+  `exam`           int(11)          DEFAULT NULL,
+  `result`         int(11)          DEFAULT NULL,
+  `method`         int(11)          DEFAULT NULL,
+  `classification` VARCHAR(255)     DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of case_entity
 -- ----------------------------
-INSERT INTO `case_entity` VALUES ('1', 'c1', '1', '2', '3', '4');
-INSERT INTO `case_entity` VALUES ('2', 'c2', '2', '1', '4', '3');
+INSERT INTO `case_entity` VALUES ('1', 'c1', '1', '2', '3', '4', NULL);
+INSERT INTO `case_entity` VALUES ('2', 'c2', '2', '1', '4', '3', NULL);
 
 -- ----------------------------
 -- Table structure for case_resource
@@ -126,7 +127,10 @@ CREATE TABLE `record` (
   `description` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 5
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of record
@@ -134,6 +138,7 @@ CREATE TABLE `record` (
 INSERT INTO `record` VALUES ('1', '2017-03-21', 'shiro', 'neko', 'flu', '500');
 INSERT INTO `record` VALUES ('2', '2017-02-28', 'kuro', 'inu', 'cough', '200');
 INSERT INTO `record` VALUES ('3', '2017-03-23', 'sora', 'tori', 'pregnant', '300');
+INSERT INTO `record` VALUES ('4', '2017-04-03', 'abc', 'dog', 'what', '400');
 
 -- ----------------------------
 -- Table structure for role
@@ -143,14 +148,17 @@ CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `room_access` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 4
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('1', '1');
-INSERT INTO `role` VALUES ('2', '3');
-INSERT INTO `role` VALUES ('3', '4');
+INSERT INTO `role` VALUES ('1', '1 2');
+INSERT INTO `role` VALUES ('2', '1 2 3');
+INSERT INTO `role` VALUES ('3', '3 4');
 
 -- ----------------------------
 -- Table structure for room
@@ -161,7 +169,10 @@ CREATE TABLE `room` (
   `room_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `room_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 4
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of room
@@ -180,7 +191,10 @@ CREATE TABLE `staff` (
   `title` varchar(255) DEFAULT NULL,
   `room_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 6
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of staff
@@ -201,7 +215,10 @@ CREATE TABLE `user` (
   `user_pwd` varchar(255) DEFAULT NULL,
   `user_type` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 17
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of user
@@ -221,3 +238,4 @@ INSERT INTO `user` VALUES ('12', 'pique', 'pique', '0');
 INSERT INTO `user` VALUES ('13', 'pogba', 'pogba', '1');
 INSERT INTO `user` VALUES ('14', 'rooney', 'rooney', '0');
 INSERT INTO `user` VALUES ('15', 'kante', 'kante', '1');
+INSERT INTO `user` VALUES ('16', '朱', 'zhu', '0');
