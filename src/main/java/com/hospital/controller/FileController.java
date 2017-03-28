@@ -38,7 +38,7 @@ public class FileController {
         String leftPath = "/Users/zhuzheng/Desktop/StoredFile/upload";
         File file = new File(leftPath, fileName);
         uploadFile.transferTo(file);
-        return "{\"result\":true}";
+        return "{\"fileName\":" + leftPath + fileName + "\"result\":true}";
     }
 
     /**
