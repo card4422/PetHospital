@@ -22,7 +22,7 @@ import java.util.*;
 @Controller
 //跨域访问
 //@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials = "true")
-@RequestMapping("/")
+//@RequestMapping("/")
 public class UserController {
 
     @Autowired

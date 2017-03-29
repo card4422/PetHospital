@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class RecordController {
 
     @Autowired

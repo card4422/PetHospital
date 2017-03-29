@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Jimmy on 2017/3/17.
  */
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class ExaminationController {
     @Autowired
     private ExaminationService examinationService;

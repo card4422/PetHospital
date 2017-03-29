@@ -20,7 +20,7 @@ import java.util.Map;
  * Created by Jimmy on 2017/3/17.
  */
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class CaseController {
     @Autowired
     private CaseService caseService;
