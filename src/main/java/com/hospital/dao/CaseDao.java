@@ -11,4 +11,6 @@ public interface CaseDao extends DomainDao<CaseEntity, Integer> {
     CaseEntity getByName(String name);
 
     List<CaseEntity> getByClassification(String classification);
+
+    CaseEntity getByID(Integer id);
 }

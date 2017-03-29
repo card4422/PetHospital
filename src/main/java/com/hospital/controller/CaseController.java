@@ -217,13 +217,13 @@ public class CaseController {
         List<CaseEntity> cases = caseService.getCaseInClassification(classification);
         class templateInfo {
             String caseName;
-            Integer id;
+            Integer caseID;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (CaseEntity c : cases) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
             tempInfo.caseName = c.getCaseName();
-            tempInfo.id = c.getId();
+            tempInfo.caseID = c.getId();
             result.add(tempInfo);
         }
         String json = null;
@@ -235,6 +235,44 @@ public class CaseController {
             e.printStackTrace();
         }
         return "{\"caseList\":" + json + "}";
+    }
+
+    /**
+     * 获得指定ID的病例信息，并得到其对应的四种病例资源信息
+     *
+     * @param caseId 病例申请的页码
+     * @return json数据信息
+     */
+    @RequestMapping(value = "learning/casedes/{caseId}", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String getCaseByID(@PathVariable Integer caseId) {
+        CaseEntity cases = caseService.getCaseByID(caseId);
+        class templateInfo {
+            //            Integer id;
+            CaseResource symptom;
+            CaseResource exam;
+            CaseResource result;
+            CaseResource method;
+            String caseName;
+        }
+//        List<templateInfo> result = new ArrayList<templateInfo>();
+        templateInfo tempInfo = new templateInfo();//必须放在循环内
+//        tempInfo.id = cases.getId();
+        tempInfo.symptom = caseResourceService.getById(cases.getSymptom());
+        tempInfo.exam = caseResourceService.getById(cases.getExam());
+        tempInfo.result = caseResourceService.getById(cases.getResult());
+        tempInfo.method = caseResourceService.getById(cases.getMethod());
+        tempInfo.caseName = cases.getCaseName();
+//        result.add(tempInfo);
+        String json = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        try {
+            json = objectMapper.writeValueAsString(tempInfo);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "{\"caseContent\":" + json + "}";
     }
 
 //

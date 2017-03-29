@@ -82,7 +82,18 @@ public class CaseServiceImpl implements CaseService {
             List list = caseRepository.getByClassification(classification);
             return list;
         } catch (HibernateException e) {
-            log.error("在getAllCase出错了");
+            log.error("在getCaseInClassification出错了");
+            log.error(e);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public CaseEntity getCaseByID(Integer id) {
+        try {
+            return caseRepository.getByID(id);
+        } catch (HibernateException e) {
+            log.error("在getCaseByID出错了");
             log.error(e);
             e.printStackTrace();
         }

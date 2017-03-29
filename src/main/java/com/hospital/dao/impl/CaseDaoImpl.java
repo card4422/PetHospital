@@ -36,6 +36,13 @@ public class CaseDaoImpl implements CaseDao {
         return (CaseEntity) query.list().get(0);
     }
 
+    public CaseEntity getByID(Integer id) {
+        String hql = "from CaseEntity ca where ca.id=?";
+        Query query = getCurrentSession().createQuery(hql);
+        query.setInteger(0, id);
+        return (CaseEntity) query.list().get(0);
+    }
+
     public List<CaseEntity> getByClassification(String classification) {
         String hql = "from CaseEntity ca where ca.classification=?";
         Query query = getCurrentSession().createQuery(hql);
