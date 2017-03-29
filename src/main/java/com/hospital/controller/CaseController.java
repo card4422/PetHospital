@@ -207,9 +207,8 @@ public class CaseController {
     }
 
     /**
-     * 获得指定页码的病例信息，并得到其对应的四种病例资源信息
-     *
-     * @param classification 病例申请的页码
+     * 获得指定病例类别的病例，并得到其对应的病例名和其ID
+     * @param classification 病例申类别
      * @return json数据信息
      */
     @RequestMapping(value = "learning/casenav/{classification}", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
@@ -237,6 +236,7 @@ public class CaseController {
         }
         return "{\"caseList\":" + json + "}";
     }
+
 //
 //    //SYMPTOM
 //    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.PUT)
