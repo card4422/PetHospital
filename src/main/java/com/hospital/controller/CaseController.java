@@ -217,13 +217,13 @@ public class CaseController {
         List<CaseEntity> cases = caseService.getCaseInClassification(classification);
         class templateInfo {
             String caseName;
-            Integer caseID;
+            Integer caseId;
         }
         List<templateInfo> result = new ArrayList<templateInfo>();
         for (CaseEntity c : cases) {
             templateInfo tempInfo = new templateInfo();//必须放在循环内
             tempInfo.caseName = c.getCaseName();
-            tempInfo.caseID = c.getId();
+            tempInfo.caseId = c.getId();
             result.add(tempInfo);
         }
         String json = null;
@@ -248,22 +248,18 @@ public class CaseController {
     public String getCaseByID(@PathVariable Integer caseId) {
         CaseEntity cases = caseService.getCaseByID(caseId);
         class templateInfo {
-            //            Integer id;
             CaseResource symptom;
             CaseResource exam;
             CaseResource result;
             CaseResource method;
             String caseName;
         }
-//        List<templateInfo> result = new ArrayList<templateInfo>();
         templateInfo tempInfo = new templateInfo();//必须放在循环内
-//        tempInfo.id = cases.getId();
         tempInfo.symptom = caseResourceService.getById(cases.getSymptom());
         tempInfo.exam = caseResourceService.getById(cases.getExam());
         tempInfo.result = caseResourceService.getById(cases.getResult());
         tempInfo.method = caseResourceService.getById(cases.getMethod());
         tempInfo.caseName = cases.getCaseName();
-//        result.add(tempInfo);
         String json = null;
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
@@ -275,96 +271,4 @@ public class CaseController {
         return "{\"caseContent\":" + json + "}";
     }
 
-//
-//    //SYMPTOM
-//    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.PUT)
-//    @ResponseBody
-//    public String updateSymptom(@RequestBody CaseResource caseResource){
-//        caseResourceService.updateCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.POST)
-//    @ResponseBody
-//    public String saveSymptom(@RequestBody CaseResource caseResource){
-//        caseResourceService.saveCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/symptom",method = RequestMethod.DELETE)
-//    @ResponseBody
-//    public String deleteSymptom(@RequestBody CaseResource caseResource) {
-//        Integer id = caseResource.getId();
-//        caseResourceService.deleteCaseResource(id);
-//        return "{\"result\":true}";
-//    }
-//
-//    //EXAMINATION
-//    @RequestMapping(value = "admin/case/examination",method = RequestMethod.PUT)
-//    @ResponseBody
-//    public String updateExamination(@RequestBody CaseResource caseResource){
-//        caseResourceService.updateCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/examination",method = RequestMethod.POST)
-//    @ResponseBody
-//    public String saveExamination(@RequestBody CaseResource caseResource){
-//        caseResourceService.saveCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/examination",method = RequestMethod.DELETE)
-//    @ResponseBody
-//    public String deleteExamination(@RequestBody CaseResource caseResource) {
-//        Integer id = caseResource.getId();
-//        caseResourceService.deleteCaseResource(id);
-//        return "{\"result\":true}";
-//    }
-//
-//    //RESULT
-//    @RequestMapping(value = "admin/case/result",method = RequestMethod.PUT)
-//    @ResponseBody
-//    public String updateResult(@RequestBody CaseResource caseResource){
-//        caseResourceService.updateCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/result",method = RequestMethod.POST)
-//    @ResponseBody
-//    public String saveResult(@RequestBody CaseResource caseResource){
-//        caseResourceService.saveCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/result",method = RequestMethod.DELETE)
-//    @ResponseBody
-//    public String deleteResult(@RequestBody CaseResource caseResource) {
-//        Integer id = caseResource.getId();
-//        caseResourceService.deleteCaseResource(id);
-//        return "{\"result\":true}";
-//    }
-//
-//    //METHOD
-//    @RequestMapping(value = "admin/case/method",method = RequestMethod.PUT)
-//    @ResponseBody
-//    public String updateMethod(@RequestBody CaseResource caseResource){
-//        caseResourceService.updateCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/method",method = RequestMethod.POST)
-//    @ResponseBody
-//    public String saveMethod(@RequestBody CaseResource caseResource){
-//        caseResourceService.saveCaseResource(caseResource);
-//        return "{\"result\":true}";
-//    }
-//
-//    @RequestMapping(value = "admin/case/method",method = RequestMethod.DELETE)
-//    @ResponseBody
-//    public String deleteMethod(@RequestBody CaseResource caseResource) {
-//        Integer id = caseResource.getId();
-//        caseResourceService.deleteCaseResource(id);
-//        return "{\"result\":true}";
-//    }
 }
