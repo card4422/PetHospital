@@ -270,5 +270,7 @@ public class CaseController {
         }
         return "{\"caseContent\":" + json + "}";
     }
-
+//
+//    @ResponseBody
+//    public
 }
