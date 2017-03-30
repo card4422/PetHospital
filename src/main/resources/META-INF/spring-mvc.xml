@@ -40,7 +40,7 @@
     <!-- 全局跨域访问 -->
     <mvc:cors>
 
-        <mvc:mapping path="/"
+        <mvc:mapping path="/**"
                      allowed-origins="http://localhost:3000, http://localhost:8080"
                      allowed-methods="GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE"
                      allow-credentials="true"

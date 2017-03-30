@@ -29,11 +29,11 @@ public class CaseDaoImpl implements CaseDao {
         return (CaseEntity) getCurrentSession().get(CaseEntity.class, id);
     }
 
-    public CaseEntity getByName(String caseName) {
+    public List<CaseEntity> getByName(String caseName) {
         String hql = "from CaseEntity ca where ca.caseName=?";
         Query query = getCurrentSession().createQuery(hql);
         query.setString(0, caseName);
-        return (CaseEntity) query.list().get(0);
+        return query.list();
     }
 
     public CaseEntity getByID(Integer id) {

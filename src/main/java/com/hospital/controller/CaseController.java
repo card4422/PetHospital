@@ -8,10 +8,12 @@ import com.hospital.entity.CaseEntity;
 import com.hospital.entity.CaseResource;
 import com.hospital.service.CaseResourceService;
 import com.hospital.service.CaseService;
+import com.sun.tools.javac.code.Flags;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -270,7 +272,49 @@ public class CaseController {
         }
         return "{\"caseContent\":" + json + "}";
     }
-//
-//    @ResponseBody
-//    public
+
+    @RequestMapping(value = "learning/casenav/search",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public List Search(@RequestBody Map map){
+        String key = map.get("searchContent").toString();
+        int flag = 0;
+        if(key.equals("contagion"))
+            key = "传染病";
+        else if(key.equals("parasitosis"))
+            key = "寄生虫病";
+        else if(key.equals("internal"))
+            key = "内科病例";
+        else if(key.equals("obstetrics"))
+            key = "外产科病例";
+        else if(key.equals("surgery"))
+            key = "常用手术";
+        else if(key.equals("immune"))
+            key = "免疫";
+        else
+            flag = 1;
+        class templateInfo{
+            Integer caseId;
+            String caseName;
+        }
+        templateInfo tempinfo = new templateInfo();
+        List <CaseEntity> temp = new ArrayList<CaseEntity>();
+        List <templateInfo> result = new ArrayList<templateInfo>();
+        if(flag == 0) {
+            temp = caseService.getCaseInClassification(key);
+            for(CaseEntity tempCase : temp) {
+                tempinfo.caseName = tempCase.getCaseName();
+                tempinfo.caseId = tempCase.getId();
+                result.add(tempinfo);
+            }
+        }else{
+            temp.clear();
+            temp = caseService.getCase(key);
+            for(CaseEntity tempCase : temp) {
+                tempinfo.caseName = tempCase.getCaseName();
+                tempinfo.caseId = tempCase.getId();
+                result.add(tempinfo);
+            }
+        }
+        return result;
+    }
 }

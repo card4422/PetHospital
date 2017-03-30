@@ -12,7 +12,7 @@ public interface CaseService {
 
     List<CaseEntity> getAllCase();
 
-    CaseEntity getCase(String name);
+    List<CaseEntity> getCase(String name);
 
     void deleteCase(Integer id);
 

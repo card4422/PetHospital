@@ -46,9 +46,10 @@ public class CaseServiceImpl implements CaseService {
         return null;
     }
 
-    public CaseEntity getCase(String name) {
+    public List<CaseEntity> getCase(String name) {
         try {
-            return caseRepository.getByName(name);
+            List list = caseRepository.getByName(name);
+            return list;
         } catch (HibernateException e) {
             log.error("在getCase出错了");
             log.error(e);
