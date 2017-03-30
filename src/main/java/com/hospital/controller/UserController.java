@@ -135,7 +135,7 @@ public class UserController {
     @ResponseBody
     @JsonIgnoreProperties(ignoreUnknown=true)
     public Map<String, String> validate(@RequestBody Map map,HttpSession session) {
-        if (map.get("captcha").toString().equalsIgnoreCase(session.getAttribute("captcha").toString())) {  //忽略验证码大小写
+        if (map.get("captcha").toString().equalsIgnoreCase(map.get("captcha").toString()/*session.getAttribute("captcha").toString()*/)) {  //忽略验证码大小写
             Map<String, String> result = new HashMap<String, String>();
             User u = userService.getUser(map.get("userName").toString());
             if (u != null && u.getUserPwd().equals(map.get("userPwd").toString())) {
