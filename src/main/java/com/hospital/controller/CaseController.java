@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by Jimmy on 2017/3/17.
  */
 @Controller
-//@RequestMapping("/")
+@RequestMapping("/")
 public class CaseController {
     @Autowired
     private CaseService caseService;
@@ -275,7 +275,7 @@ public class CaseController {
 
     @RequestMapping(value = "learning/casenav/search",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public List Search(@RequestBody Map map){
+    public String Search(@RequestBody Map map){
         String key = map.get("searchContent").toString();
         int flag = 0;
         if(key.equals("contagion"))
@@ -315,6 +315,14 @@ public class CaseController {
                 result.add(tempinfo);
             }
         }
-        return result;
+        String json = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        try {
+            json = objectMapper.writeValueAsString(result);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "{\"resultList\":" + json + "}";
     }
 }
