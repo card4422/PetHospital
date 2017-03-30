@@ -216,6 +216,18 @@ public class CaseController {
     @RequestMapping(value = "learning/casenav/{classification}", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getCasesInClassification(@PathVariable String classification) {
+        if(classification.equals("contagion"))
+            classification = "传染病";
+        else if(classification.equals("parasitosis"))
+            classification = "寄生虫病";
+        else if(classification.equals("internal"))
+            classification = "内科病例";
+        else if(classification.equals("obstetrics"))
+            classification = "外产科病例";
+        else if(classification.equals("surgery"))
+            classification = "常用手术";
+        else if(classification.equals("immune"))
+            classification = "免疫";
         List<CaseEntity> cases = caseService.getCaseInClassification(classification);
         class templateInfo {
             String caseName;
