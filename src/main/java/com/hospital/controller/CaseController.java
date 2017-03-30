@@ -8,12 +8,10 @@ import com.hospital.entity.CaseEntity;
 import com.hospital.entity.CaseResource;
 import com.hospital.service.CaseResourceService;
 import com.hospital.service.CaseService;
-import com.sun.tools.javac.code.Flags;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -254,8 +252,7 @@ public class CaseController {
 
     /**
      * 获得指定ID的病例信息，并得到其对应的四种病例资源信息
-     *
-     * @param caseId 病例申请的页码
+     * @param caseId 申请病例的ID
      * @return json数据信息
      */
     @RequestMapping(value = "learning/casedes/{caseId}", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
@@ -267,14 +264,13 @@ public class CaseController {
             CaseResource exam;
             CaseResource result;
             CaseResource method;
-            String caseName;
         }
         templateInfo tempInfo = new templateInfo();//必须放在循环内
         tempInfo.symptom = caseResourceService.getById(cases.getSymptom());
         tempInfo.exam = caseResourceService.getById(cases.getExam());
         tempInfo.result = caseResourceService.getById(cases.getResult());
         tempInfo.method = caseResourceService.getById(cases.getMethod());
-        tempInfo.caseName = cases.getCaseName();
+        String caseName = cases.getCaseName();
         String json = null;
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
@@ -283,9 +279,15 @@ public class CaseController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{\"caseContent\":" + json + "}";
+        return "{\"caseContent\":" + json + ",\"caseName\":" + "\"" + caseName + "\"" + "}";
     }
 
+    /**
+     * 搜索给定关键词，搜索范围是病例名和病例类别
+     *
+     * @param map 现有病例对应的病例资源的映射
+     * @return json数据信息
+     */
     @RequestMapping(value = "learning/casenav/search",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String Search(@RequestBody Map map){
