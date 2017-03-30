@@ -35,6 +35,7 @@ public class FileController {
     public String Upload(@RequestParam MultipartFile uploadFile)throws Exception {
         String fileName = uploadFile.getOriginalFilename();
 //        String leftPath = session.getServletContext().getContextPath("/images");
+        String classpath = this.getClass().getResource("/").getPath().replaceFirst("/", "");
         String leftPath = "/Users/zhuzheng/Desktop/StoredFile/upload";
         File file = new File(leftPath, fileName);
         uploadFile.transferTo(file);
