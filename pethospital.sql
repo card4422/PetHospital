@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : test
-Source Server Version : 50717
+Source Server         : PetHospital
+Source Server Version : 50622
 Source Host           : localhost:3306
 Source Database       : pethospital
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50622
 File Encoding         : 65001
 
-Date: 2017-03-28 15:58:44
+Date: 2017-03-30 08:56:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,29 +20,25 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `case_entity`;
 CREATE TABLE `case_entity` (
-  `id`             INT(11) NOT NULL AUTO_INCREMENT,
-  `case_name`      VARCHAR(255)     DEFAULT NULL,
-  `symptom`        INT(11)          DEFAULT NULL,
-  `exam`           INT(11)          DEFAULT NULL,
-  `result`         INT(11)          DEFAULT NULL,
-  `method`         INT(11)          DEFAULT NULL,
-  `classification` VARCHAR(255)     DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `case_name` varchar(255) DEFAULT NULL,
+  `symptom` int(11) DEFAULT NULL,
+  `exam` int(11) DEFAULT NULL,
+  `result` int(11) DEFAULT NULL,
+  `method` int(11) DEFAULT NULL,
+  `classification` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  AUTO_INCREMENT = 7
-  DEFAULT CHARSET = utf8
-  ROW_FORMAT = DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of case_entity
 -- ----------------------------
-INSERT INTO `case_entity` VALUES ('1', 'c1', '1', '2', '3', '4', 'contagion');
-INSERT INTO `case_entity` VALUES ('2', 'c2', '2', '1', '4', '3', 'parasitosis');
-INSERT INTO `case_entity` VALUES ('3', 'c3', '3', '4', '1', '2', 'internal');
-INSERT INTO `case_entity` VALUES ('4', 'c4', '4', '2', '3', '1', 'external');
-INSERT INTO `case_entity` VALUES ('5', 'c5', '3', '2', '1', '4', 'surgery');
-INSERT INTO `case_entity` VALUES ('6', 'c6', '1', '3', '2', '4', 'immune');
+INSERT INTO `case_entity` VALUES ('1', '犬瘟热', '1', '2', '3', '8', '传染病');
+INSERT INTO `case_entity` VALUES ('2', '蛔虫病', '5', '2', '3', '8', '寄生虫病');
+INSERT INTO `case_entity` VALUES ('3', '口炎', '1', '6', '3', '4', '内科病例');
+INSERT INTO `case_entity` VALUES ('4', '外伤', '1', '2', '3', '8', '外产科病例');
+INSERT INTO `case_entity` VALUES ('5', '绝育', '5', '6', '7', '4', '常用手术');
+INSERT INTO `case_entity` VALUES ('6', '犬免疫程序', '5', '6', '7', '4', '免疫');
 
 -- ----------------------------
 -- Table structure for case_resource
@@ -54,15 +50,19 @@ CREATE TABLE `case_resource` (
   `picture` varchar(255) DEFAULT NULL,
   `video` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of case_resource
 -- ----------------------------
-INSERT INTO `case_resource` VALUES ('1', 'aaa', 'qqq', 'ee');
-INSERT INTO `case_resource` VALUES ('2', 'bbb', 'www', 'ff');
-INSERT INTO `case_resource` VALUES ('3', 'ccc', 'eee', 'rrr');
-INSERT INTO `case_resource` VALUES ('4', 'ddd', 'hhh', 'yyy');
+INSERT INTO `case_resource` VALUES ('1', '抽搐不止', '/assets/pet/pet1.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('2', '抽一管血', '/assets/pet/pet4.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('3', 'xxx浓度超过aaa则有问题', '/assets/pet/pet6.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('4', '打疫苗', '/assets/pet/pet8.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('5', '抽搐不止', '/assets/pet/pet2.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('6', '抽一管血', '/assets/pet/pet5.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('7', 'xxx浓度超过aaa则有问题', '/assets/pet/pet7.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('8', '打疫苗', '/assets/pet/pet9.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 
 -- ----------------------------
 -- Table structure for examination
@@ -135,10 +135,7 @@ CREATE TABLE `record` (
   `description` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  AUTO_INCREMENT = 5
-  DEFAULT CHARSET = utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of record
@@ -156,10 +153,7 @@ CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `room_access` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  AUTO_INCREMENT = 4
-  DEFAULT CHARSET = utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
@@ -177,10 +171,7 @@ CREATE TABLE `room` (
   `room_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `room_type` (`id`)
-)
-  ENGINE = InnoDB
-  AUTO_INCREMENT = 4
-  DEFAULT CHARSET = utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of room
@@ -199,10 +190,7 @@ CREATE TABLE `staff` (
   `title` varchar(255) DEFAULT NULL,
   `room_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  AUTO_INCREMENT = 6
-  DEFAULT CHARSET = utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of staff
@@ -223,10 +211,7 @@ CREATE TABLE `user` (
   `user_pwd` varchar(255) DEFAULT NULL,
   `user_type` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  AUTO_INCREMENT = 17
-  DEFAULT CHARSET = utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
