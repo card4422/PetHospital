@@ -33,9 +33,10 @@
     </bean>
 
     <!--这里是对静态资源的映射，相对路径从webapp开始-->
-    <mvc:resources mapping="/js/**" location="/resources/js/" />
-    <mvc:resources mapping="/css/**" location="/resources/css/" />
-    <mvc:resources mapping="/img/**" location="/resources/img/" />
+    <!--<mvc:resources mapping="/js/**" location="/resources/js/" />-->
+    <!--<mvc:resources mapping="/css/**" location="/resources/css/" />-->
+    <!--<mvc:resources mapping="/img/**" location="/resources/img/" />-->
+    <!--<mvc:resources mapping="/files/**" location="/files" />-->
 
     <!-- 全局跨域访问 -->
     <!--<mvc:cors>-->

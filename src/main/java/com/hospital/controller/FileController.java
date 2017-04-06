@@ -11,16 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import sun.tools.java.ClassPath;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Created by Jimmy on 2017/3/23.
  */
 @Controller
-//@RequestMapping(value="/")
+@RequestMapping(value="/")
 public class FileController {
 
     /**
@@ -32,11 +35,13 @@ public class FileController {
      */
     @RequestMapping(value="upload",method = RequestMethod.POST)
     @ResponseBody
-    public String Upload(@RequestParam MultipartFile uploadFile)throws Exception {
+    public String Upload(@RequestParam(value = "file",required = false) MultipartFile uploadFile)throws Exception {
         String fileName = uploadFile.getOriginalFilename();
 //        String leftPath = session.getServletContext().getContextPath("/images");
-        String classpath = this.getClass().getResource("/").getPath().replaceFirst("/", "");
-        String leftPath = "/Users/zhuzheng/Desktop/StoredFile/upload";
+        String classpath = this.getClass().getResource("/").getPath();
+
+        //target/PetHospital/target/PetHospital/WEB-INF/classes/META-INF/files
+        String leftPath = classpath+"META-INF/files";
         File file = new File(leftPath, fileName);
         uploadFile.transferTo(file);
         return "{\"fileName\":\"" + leftPath + fileName + "\",\"result\":true}";
