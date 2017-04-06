@@ -30,9 +30,9 @@ public class CaseDaoImpl implements CaseDao {
     }
 
     public List<CaseEntity> getByName(String caseName) {
-        String hql = "from CaseEntity ca where ca.caseName=?";
+        String hql = "from CaseEntity ca where ca.caseName like ?";
         Query query = getCurrentSession().createQuery(hql);
-        query.setString(0, caseName);
+        query.setString(0, "%"+caseName+"%");
         return query.list();
     }
 
