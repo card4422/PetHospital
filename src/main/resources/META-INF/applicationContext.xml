@@ -2,11 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/tool"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd ">
 
     <!--********************************************配置Spring***************************************-->
     <!-- 自动扫描 -->
@@ -30,10 +29,7 @@
         <property name="minPoolSize" value="1" />       <!--最小连接数-->
         <property name="initialPoolSize" value="10" />      <!--初始化连接池内的数据库连接-->
         <property name="maxIdleTime" value="20" />  <!--最大空闲时间-->
-        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
-        <property name="acquireIncrement" value="3" />
-        <property name="maxStatements" value="1000" />
-        <property name="idleConnectionTestPeriod" value="60"/>
+
     </bean>
 
     <!--配置session工厂-->
@@ -46,23 +42,6 @@
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>   <!--指定数据库方言-->
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>     <!--在控制台显示执行的数据库操作语句-->
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/pethospital</prop>
-                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
-
-                <!--&lt;!&ndash; 最大连接数 &ndash;&gt;-->
-                <!--<prop key="hibernate.c3p0.max_size">20</prop>-->
-                <!--&lt;!&ndash; 最小连接数 &ndash;&gt;-->
-                <!--<prop key="hibernate.c3p0.min_size">5</prop>-->
-                <!--&lt;!&ndash; 获得连接的超时时间,如果超过这个时间,会抛出异常，单位毫秒 &ndash;&gt;-->
-                <!--<prop key="hibernate.c3p0.timeout">120</prop>-->
-                <!--&lt;!&ndash; 最大的PreparedStatement的数量 &ndash;&gt;-->
-                <!--<prop key="hibernate.c3p0.max_statements">100</prop>-->
-                <!--&lt;!&ndash; 每隔120秒检查连接池里的空闲连接 ，单位是秒&ndash;&gt;-->
-                <!--<prop key="hibernate.c3p0.idle_test_period">120</prop>-->
-                <!--&lt;!&ndash; 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 &ndash;&gt;-->
-                <!--<prop key="hibernate.c3p0.acquire_increment">2</prop>-->
-                <!--&lt;!&ndash; 每次都验证连接是否可用 &ndash;&gt;-->
-                <!--<prop key="hibernate.c3p0.validate">true</prop>-->
 
                 <!--在控制台显示执行的数据库操作语句（格式）-->
             </props>

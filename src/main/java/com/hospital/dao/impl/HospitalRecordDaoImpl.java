@@ -23,59 +23,64 @@ public class HospitalRecordDaoImpl implements HospitalRecordDao {
     }
 
     public HospitalRecord load(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (HospitalRecord) getCurrentSession().load(HospitalRecord.class, id);
+            return (HospitalRecord) session.load(HospitalRecord.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public HospitalRecord get(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (HospitalRecord) getCurrentSession().get(HospitalRecord.class, id);
+            return (HospitalRecord) session.get(HospitalRecord.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public List<HospitalRecord> findAll() {
+        Session session = getCurrentSession();
         try {
             String hql = "from HospitalRecord";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             return query.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     //查找数据？
     public void persist(HospitalRecord entity) {
+        Session session = getCurrentSession();
         try {
-            getCurrentSession().persist(entity);
+            session.persist(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
     }
 
     //插入数据
     public Integer save(HospitalRecord entity) {
+        Session session = getCurrentSession();
         try {
-            return (Integer) getCurrentSession().save(entity);
+            return (Integer) session.save(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return -1;
     }

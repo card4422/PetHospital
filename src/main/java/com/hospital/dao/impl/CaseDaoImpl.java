@@ -22,28 +22,31 @@ public class CaseDaoImpl implements CaseDao {
     }
 
     public CaseEntity load(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (CaseEntity) getCurrentSession().load(CaseEntity.class, id);
+            return (CaseEntity) session.load(CaseEntity.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public CaseEntity get(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (CaseEntity) getCurrentSession().get(CaseEntity.class, id);
+            return (CaseEntity) session.get(CaseEntity.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public List<CaseEntity> getByName(String caseName) {
+        Session session = getCurrentSession();
         try {
             String hql = "from CaseEntity ca where ca.caseName like ?";
             Query query = getCurrentSession().createQuery(hql);
@@ -52,71 +55,76 @@ public class CaseDaoImpl implements CaseDao {
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public CaseEntity getByID(Integer id) {
+        Session session = getCurrentSession();
         try {
             String hql = "from CaseEntity ca where ca.id=?";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             query.setInteger(0, id);
             return (CaseEntity) query.list().get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public List<CaseEntity> getByClassification(String classification) {
+        Session session = getCurrentSession();
         try {
             String hql = "from CaseEntity ca where ca.classification=?";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             query.setString(0, classification);
             return query.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public List<CaseEntity> findAll() {
+        Session session = getCurrentSession();
         try {
             String hql = "from CaseEntity ce";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             return query.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     //查找数据？
     public void persist(CaseEntity entity) {
+        Session session = getCurrentSession();
         try {
-            getCurrentSession().persist(entity);
+            session.persist(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
     }
 
     //插入数据
     public Integer save(CaseEntity entity) {
+        Session session = getCurrentSession();
         try {
-            return (Integer) getCurrentSession().save(entity);
+            return (Integer) session.save(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return -1;
     }
@@ -132,7 +140,6 @@ public class CaseDaoImpl implements CaseDao {
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
         }
     }
 
@@ -148,7 +155,6 @@ public class CaseDaoImpl implements CaseDao {
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
         }
     }
 

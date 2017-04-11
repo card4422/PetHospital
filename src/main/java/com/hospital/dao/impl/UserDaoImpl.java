@@ -23,73 +23,79 @@ public class UserDaoImpl implements UserDao {
     }
 
     public User load(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (User) getCurrentSession().load(User.class, id);
+            return (User) session.load(User.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public User get(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (User) getCurrentSession().get(User.class, id);
+            return (User) session.get(User.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public User getByName(String userName){
+        Session session = getCurrentSession();
         try {
             String hql = "from User u where u.userName=?";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             query.setString(0, userName);
             return (User) query.list().get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public List<User> findAll() {
+        Session session = getCurrentSession();
         try {
             String hql = "from User";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             return query.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
 }
 
     //查找数据？
     public void persist(User entity) {
+        Session session = getCurrentSession();
         try {
-            getCurrentSession().persist(entity);
+            session.persist(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
     }
 
     //插入数据
     public Integer save(User entity) {
+        Session session = getCurrentSession();
         try {
-            return (Integer) getCurrentSession().save(entity);
+            return (Integer) session.save(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return -1;
     }

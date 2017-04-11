@@ -23,74 +23,80 @@ public class ExaminationDaoImpl implements ExaminationDao {
     }
 
     public Examination load(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (Examination) getCurrentSession().load(Examination.class, id);
+            return (Examination) session.load(Examination.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public Examination get(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (Examination) getCurrentSession().get(Examination.class, id);
+            return (Examination) session.get(Examination.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public Examination getByName(String examinationName) {
+        Session session = getCurrentSession();
         try {
             String hql = "from Examination exam where exam.examinationName=?";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             query.setString(0, examinationName);
             return (Examination) query.list().get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public List<Examination> findAll() {
+        Session session = getCurrentSession();
         try {
             String hql = "from Examination";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             List list = query.list();
             return list;
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     //查找数据？
     public void persist(Examination entity) {
+        Session session = getCurrentSession();
         try {
-            getCurrentSession().persist(entity);
+            session.persist(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
     }
 
     //插入数据
     public Integer save(Examination entity) {
+        Session session = getCurrentSession();
         try {
-            return (Integer) getCurrentSession().save(entity);
+            return (Integer) session.save(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return -1;
     }

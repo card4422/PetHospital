@@ -23,59 +23,64 @@ public class CaseResourceDaoImpl implements CaseResourceDao {
     }
 
     public CaseResource load(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (CaseResource) getCurrentSession().load(CaseResource.class, id);
+            return (CaseResource) session.load(CaseResource.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public CaseResource get(Integer id) {
+        Session session = getCurrentSession();
         try {
-            return (CaseResource) getCurrentSession().get(CaseResource.class, id);
+            return (CaseResource) session.get(CaseResource.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     public List<CaseResource> findAll() {
+        Session session = getCurrentSession();
         try {
             String hql = "from CaseResource";
-            Query query = getCurrentSession().createQuery(hql);
+            Query query = session.createQuery(hql);
             return query.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return null;
     }
 
     //查找数据？
     public void persist(CaseResource entity) {
+        Session session = getCurrentSession();
         try {
-            getCurrentSession().persist(entity);
+            session.persist(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
     }
 
     //插入数据
     public Integer save(CaseResource entity) {
+        Session session = getCurrentSession();
         try {
-            return (Integer) getCurrentSession().save(entity);
+            return (Integer) session.save(entity);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
-            getCurrentSession().close();
+            session.close();
         }
         return -1;
     }
