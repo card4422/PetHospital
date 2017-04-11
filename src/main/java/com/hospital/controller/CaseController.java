@@ -311,12 +311,12 @@ public class CaseController {
             Integer caseId;
             String caseName;
         }
-        templateInfo tempinfo = new templateInfo();
         List <CaseEntity> temp = new ArrayList<CaseEntity>();
         List <templateInfo> result = new ArrayList<templateInfo>();
         if(flag == 0) {
             temp = caseService.getCaseInClassification(key);
             for(CaseEntity tempCase : temp) {
+                templateInfo tempinfo = new templateInfo();
                 tempinfo.caseName = tempCase.getCaseName();
                 tempinfo.caseId = tempCase.getId();
                 result.add(tempinfo);
@@ -325,6 +325,7 @@ public class CaseController {
             temp.clear();
             temp = caseService.getCase(key);
             for(CaseEntity tempCase : temp) {
+                templateInfo tempinfo = new templateInfo();
                 tempinfo.caseName = tempCase.getCaseName();
                 tempinfo.caseId = tempCase.getId();
                 result.add(tempinfo);
