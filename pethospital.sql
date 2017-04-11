@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : PetHospital
-Source Server Version : 50622
+Source Server         : test
+Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : pethospital
 
 Target Server Type    : MYSQL
-Target Server Version : 50622
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-03-30 08:56:00
+Date: 2017-04-11 13:08:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,14 +55,14 @@ CREATE TABLE `case_resource` (
 -- ----------------------------
 -- Records of case_resource
 -- ----------------------------
-INSERT INTO `case_resource` VALUES ('1', '抽搐不止', '/assets/pet/pet1.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('2', '抽一管血', '/assets/pet/pet4.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('3', 'xxx浓度超过aaa则有问题', '/assets/pet/pet6.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('4', '打疫苗', '/assets/pet/pet8.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('5', '抽搐不止', '/assets/pet/pet2.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('6', '抽一管血', '/assets/pet/pet5.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('7', 'xxx浓度超过aaa则有问题', '/assets/pet/pet7.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('8', '打疫苗', '/assets/pet/pet9.jpg', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('1', '抽搐不止', '[\'/files/pet1.jpg\', \'/files/pet2.jpg\', \'/files/pet3.jpg\']', '/files/dianxian.mp4');
+INSERT INTO `case_resource` VALUES ('2', '抽一管血', '[\'/files/pet4.jpg\', \'/files/pet5.jpg\']', '/files/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('3', 'xxx浓度超过aaa则有问题', '[\'/files/pet6.jpg\', \'/files/pet7.jpg\']', '/files/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('4', '打疫苗', '[\'/files/pet8.jpg\', \'/files/pet9.jpg\', \'/files/pet10.jpg\']', '/files/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('5', '抽搐不止', '/files/pet2.jpg', '/files/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('6', '抽一管血', '/files/pet5.jpg', '/files/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('7', 'xxx浓度超过aaa则有问题', '/files/pet7.jpg', '/files/trailer.mp4');
+INSERT INTO `case_resource` VALUES ('8', '打疫苗', '/files/pet9.jpg', '/files/trailer.mp4');
 
 -- ----------------------------
 -- Table structure for examination
