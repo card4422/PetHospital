@@ -19,7 +19,7 @@ import java.io.IOException;
  * Created by Jimmy on 2017/3/23.
  */
 @Controller
-@RequestMapping(value="/")
+//@RequestMapping(value="/")
 public class FileController {
 
     /**

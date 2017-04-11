@@ -20,7 +20,7 @@ import java.util.Map;
  * Created by Jimmy on 2017/3/17.
  */
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class CaseController {
     @Autowired
     private CaseService caseService;
@@ -36,7 +36,6 @@ public class CaseController {
     @RequestMapping(value = "admin/case/{page}",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getCases(@PathVariable String page) {
-        String classpath = this.getClass().getResource("/").getPath().replaceFirst("/", "");
         int pages = Integer.parseInt(page);
         List cases = caseService.getAllCase();
         List<CaseEntity> subcases = null;

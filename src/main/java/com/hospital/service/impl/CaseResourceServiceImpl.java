@@ -25,36 +25,44 @@ public class CaseResourceServiceImpl implements CaseResourceService {
 
     public Integer saveCaseResource(CaseResource caseResource) {
         try {
-            return caseResourceRepository.save(caseResource);
+            Integer id = caseResourceRepository.save(caseResource);
+            caseResourceRepository.close();
+            return id;
         } catch (HibernateException e) {
             log.error("在saveCaseResource出错了");
             log.error(e);
             e.printStackTrace();
         }
+        caseResourceRepository.close();
         return -1;
     }
 
     public List<CaseResource> getAllCaseResource() {
         try {
             List list = caseResourceRepository.findAll();
+            caseResourceRepository.close();
             return list;
         } catch (HibernateException e) {
             log.error("在getAllCaseResource出错了");
             log.error(e);
             e.printStackTrace();
         }
+        caseResourceRepository.close();
         return null;
     }
 
     public CaseResource getById(Integer id){
 
         try {
-            return caseResourceRepository.get(id);
+            CaseResource cr = caseResourceRepository.get(id);
+            caseResourceRepository.close();
+            return cr;
         } catch (HibernateException e) {
             log.error("在getCaseResource出错了");
             log.error(e);
             e.printStackTrace();
         }
+        caseResourceRepository.close();
         return null;
     }
 //    public CaseResource getCaseResource(String name){
@@ -69,6 +77,7 @@ public class CaseResourceServiceImpl implements CaseResourceService {
             log.error(e);
             e.printStackTrace();
         }
+        caseResourceRepository.close();
     }
 
     public void updateCaseResource(CaseResource caseResource) {
@@ -79,5 +88,6 @@ public class CaseResourceServiceImpl implements CaseResourceService {
             log.error(e);
             e.printStackTrace();
         }
+        caseResourceRepository.close();
     }
 }

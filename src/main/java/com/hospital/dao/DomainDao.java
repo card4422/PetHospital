@@ -22,4 +22,6 @@ public interface DomainDao<T,PK extends Serializable>{
     void delete(PK id);
 
     void flush();
+
+    void close();
 }

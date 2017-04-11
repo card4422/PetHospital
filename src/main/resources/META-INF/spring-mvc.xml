@@ -39,17 +39,17 @@
     <!--<mvc:resources mapping="/files/**" location="/files" />-->
 
     <!-- 全局跨域访问 -->
-    <!--<mvc:cors>-->
+    <mvc:cors>
 
-        <!--<mvc:mapping path="/**"-->
-                     <!--allowed-origins="http://localhost:3000, http://localhost:8080"-->
-                     <!--allowed-methods="GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE"-->
-                     <!--allowed-headers="content-type"-->
-                     <!--exposed-headers="content-type"-->
-                     <!--allow-credentials="true"-->
-                     <!--max-age="3600" />-->
+        <mvc:mapping path="/**"
+                     allowed-origins="http://localhost:3000, http://localhost:8080"
+                     allowed-methods="GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE"
+                     allowed-headers="content-type"
+                     exposed-headers="content-type"
+                     allow-credentials="true"
+                     max-age="3600" />
 
-    <!--</mvc:cors>-->
+    </mvc:cors>
 
 
     <mvc:default-servlet-handler />

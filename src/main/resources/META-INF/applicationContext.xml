@@ -44,6 +44,7 @@
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/pethospital</prop>
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.c3p0.validate">true</prop>
                 <!--在控制台显示执行的数据哭操作语句（格式）-->
             </props>
         </property>

@@ -84,4 +84,9 @@ public class RoomDaoImpl implements RoomDao {
     public void flush() {
         getCurrentSession().flush();
     }
+
+    //关闭session
+    public void close(){
+        getCurrentSession().close();
+    }
 }

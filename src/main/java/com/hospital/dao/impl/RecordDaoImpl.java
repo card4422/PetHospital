@@ -2,6 +2,7 @@ package com.hospital.dao.impl;
 
 import com.hospital.entity.Record;
 import com.hospital.dao.RecordDao;
+import com.mchange.v1.lang.NullUtils;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -76,5 +77,10 @@ public class RecordDaoImpl implements RecordDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
+    }
+
+    //关闭session
+    public void close(){
+        getCurrentSession().close();
     }
 }

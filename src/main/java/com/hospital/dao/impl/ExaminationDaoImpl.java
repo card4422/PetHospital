@@ -85,4 +85,9 @@ public class ExaminationDaoImpl implements ExaminationDao {
     public void flush() {
         getCurrentSession().flush();
     }
+
+    //关闭session
+    public void close(){
+        getCurrentSession().close();
+    }
 }
