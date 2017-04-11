@@ -23,34 +23,75 @@ public class UserDaoImpl implements UserDao {
     }
 
     public User load(Integer id) {
-        return (User)getCurrentSession().load(User.class,id);
+        try {
+            return (User) getCurrentSession().load(User.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public User get(Integer id) {
-        return (User)getCurrentSession().get(User.class,id);
+        try {
+            return (User) getCurrentSession().get(User.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public User getByName(String userName){
-        String hql = "from User u where u.userName=?";
-        Query query = getCurrentSession().createQuery(hql);
-        query.setString(0,userName);
-        return (User)query.list().get(0);
+        try {
+            String hql = "from User u where u.userName=?";
+            Query query = getCurrentSession().createQuery(hql);
+            query.setString(0, userName);
+            return (User) query.list().get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public List<User> findAll() {
-        String hql = "from User";
-        Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        try {
+            String hql = "from User";
+            Query query = getCurrentSession().createQuery(hql);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
 }
 
     //查找数据？
     public void persist(User entity) {
-        getCurrentSession().persist(entity);
+        try {
+            getCurrentSession().persist(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
     }
 
     //插入数据
     public Integer save(User entity) {
-        return (Integer)getCurrentSession().save(entity);
+        try {
+            return (Integer) getCurrentSession().save(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return -1;
     }
 
     //更新数据
@@ -83,10 +124,5 @@ public class UserDaoImpl implements UserDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
-    }
-
-    //关闭session
-    public void close(){
-        getCurrentSession().close();
     }
 }

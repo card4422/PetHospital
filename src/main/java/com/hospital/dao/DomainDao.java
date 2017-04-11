@@ -23,5 +23,4 @@ public interface DomainDao<T,PK extends Serializable>{
 
     void flush();
 
-    void close();
 }

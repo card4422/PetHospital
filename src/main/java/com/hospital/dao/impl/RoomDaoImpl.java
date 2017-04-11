@@ -23,34 +23,75 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     public Room load(Integer id) {
-        return (Room) getCurrentSession().load(Room.class, id);
+        try {
+            return (Room) getCurrentSession().load(Room.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public Room get(Integer id) {
-        return (Room) getCurrentSession().get(Room.class, id);
+        try {
+            return (Room) getCurrentSession().get(Room.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public Room getByName(String roomName) {
-        String hql = "from Room roo where roo.roomName=?";
-        Query query = getCurrentSession().createQuery(hql);
-        query.setString(0, roomName);
-        return (Room) query.list().get(0);
+        try {
+            String hql = "from Room roo where roo.roomName=?";
+            Query query = getCurrentSession().createQuery(hql);
+            query.setString(0, roomName);
+            return (Room) query.list().get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public List<Room> findAll() {
-        String hql = "from Room";
-        Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        try {
+            String hql = "from Room";
+            Query query = getCurrentSession().createQuery(hql);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     //查找数据？
     public void persist(Room entity) {
-        getCurrentSession().persist(entity);
+        try {
+            getCurrentSession().persist(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
     }
 
     //插入数据
     public Integer save(Room entity) {
-        return (Integer) getCurrentSession().save(entity);
+        try {
+            return (Integer) getCurrentSession().save(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return -1;
     }
 
     //更新数据
@@ -83,10 +124,5 @@ public class RoomDaoImpl implements RoomDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
-    }
-
-    //关闭session
-    public void close(){
-        getCurrentSession().close();
     }
 }

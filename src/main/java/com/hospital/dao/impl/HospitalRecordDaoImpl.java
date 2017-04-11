@@ -23,27 +23,61 @@ public class HospitalRecordDaoImpl implements HospitalRecordDao {
     }
 
     public HospitalRecord load(Integer id) {
-        return (HospitalRecord) getCurrentSession().load(HospitalRecord.class, id);
+        try {
+            return (HospitalRecord) getCurrentSession().load(HospitalRecord.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public HospitalRecord get(Integer id) {
-        return (HospitalRecord) getCurrentSession().get(HospitalRecord.class, id);
+        try {
+            return (HospitalRecord) getCurrentSession().get(HospitalRecord.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public List<HospitalRecord> findAll() {
-        String hql = "from HospitalRecord";
-        Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        try {
+            String hql = "from HospitalRecord";
+            Query query = getCurrentSession().createQuery(hql);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     //查找数据？
     public void persist(HospitalRecord entity) {
-        getCurrentSession().persist(entity);
+        try {
+            getCurrentSession().persist(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
     }
 
     //插入数据
     public Integer save(HospitalRecord entity) {
-        return (Integer) getCurrentSession().save(entity);
+        try {
+            return (Integer) getCurrentSession().save(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return -1;
     }
 
     //更新数据
@@ -76,10 +110,5 @@ public class HospitalRecordDaoImpl implements HospitalRecordDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
-    }
-
-    //关闭session
-    public void close(){
-        getCurrentSession().close();
     }
 }

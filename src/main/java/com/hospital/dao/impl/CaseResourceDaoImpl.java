@@ -23,27 +23,61 @@ public class CaseResourceDaoImpl implements CaseResourceDao {
     }
 
     public CaseResource load(Integer id) {
-        return (CaseResource) getCurrentSession().load(CaseResource.class, id);
+        try {
+            return (CaseResource) getCurrentSession().load(CaseResource.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public CaseResource get(Integer id) {
-        return (CaseResource) getCurrentSession().get(CaseResource.class, id);
+        try {
+            return (CaseResource) getCurrentSession().get(CaseResource.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public List<CaseResource> findAll() {
-        String hql = "from CaseResource";
-        Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        try {
+            String hql = "from CaseResource";
+            Query query = getCurrentSession().createQuery(hql);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     //查找数据？
     public void persist(CaseResource entity) {
-        getCurrentSession().persist(entity);
+        try {
+            getCurrentSession().persist(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
     }
 
     //插入数据
     public Integer save(CaseResource entity) {
-        return (Integer) getCurrentSession().save(entity);
+        try {
+            return (Integer) getCurrentSession().save(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return -1;
     }
 
     //更新数据
@@ -76,10 +110,5 @@ public class CaseResourceDaoImpl implements CaseResourceDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
-    }
-
-    //关闭session
-    public void close(){
-        getCurrentSession().close();
     }
 }

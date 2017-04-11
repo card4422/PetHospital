@@ -24,27 +24,61 @@ public class RecordDaoImpl implements RecordDao {
     }
 
     public Record load(Integer id) {
-        return (Record) getCurrentSession().load(Record.class, id);
+        try {
+            return (Record) getCurrentSession().load(Record.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public Record get(Integer id) {
-        return (Record) getCurrentSession().get(Record.class, id);
+        try {
+            return (Record) getCurrentSession().get(Record.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public List<Record> findAll() {
-        String hql = "from Record";
-        Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        try {
+            String hql = "from Record";
+            Query query = getCurrentSession().createQuery(hql);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     //查找数据？
     public void persist(Record entity) {
-        getCurrentSession().persist(entity);
+        try {
+            getCurrentSession().persist(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
     }
 
     //插入数据
     public Integer save(Record entity) {
-        return (Integer) getCurrentSession().save(entity);
+        try {
+            return (Integer) getCurrentSession().save(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return -1;
     }
 
     //更新数据
@@ -77,10 +111,5 @@ public class RecordDaoImpl implements RecordDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
-    }
-
-    //关闭session
-    public void close(){
-        getCurrentSession().close();
     }
 }

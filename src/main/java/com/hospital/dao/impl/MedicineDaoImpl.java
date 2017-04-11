@@ -23,34 +23,75 @@ public class MedicineDaoImpl implements MedicineDao {
     }
 
     public Medicine load(Integer id) {
-        return (Medicine) getCurrentSession().load(Medicine.class, id);
+        try {
+            return (Medicine) getCurrentSession().load(Medicine.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public Medicine get(Integer id) {
-        return (Medicine) getCurrentSession().get(Medicine.class, id);
+        try {
+            return (Medicine) getCurrentSession().get(Medicine.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public Medicine getByName(String medicineName) {
-        String hql = "from Medicine med where med.medicineName=?";
-        Query query = getCurrentSession().createQuery(hql);
-        query.setString(0, medicineName);
-        return (Medicine) query.list().get(0);
+        try {
+            String hql = "from Medicine med where med.medicineName=?";
+            Query query = getCurrentSession().createQuery(hql);
+            query.setString(0, medicineName);
+            return (Medicine) query.list().get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public List<Medicine> findAll() {
-        String hql = "from Medicine";
-        Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        try {
+            String hql = "from Medicine";
+            Query query = getCurrentSession().createQuery(hql);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     //查找数据？
     public void persist(Medicine entity) {
-        getCurrentSession().persist(entity);
+        try {
+            getCurrentSession().persist(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
     }
 
     //插入数据
     public Integer save(Medicine entity) {
-        return (Integer) getCurrentSession().save(entity);
+        try {
+            return (Integer) getCurrentSession().save(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return -1;
     }
 
     //更新数据
@@ -83,10 +124,5 @@ public class MedicineDaoImpl implements MedicineDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
-    }
-
-    //关闭session
-    public void close(){
-        getCurrentSession().close();
     }
 }

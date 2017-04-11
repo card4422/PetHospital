@@ -23,34 +23,75 @@ public class StaffDaoImpl implements StaffDao {
     }
 
     public Staff load(Integer id) {
-        return (Staff) getCurrentSession().load(Staff.class, id);
+        try {
+            return (Staff) getCurrentSession().load(Staff.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public Staff get(Integer id) {
-        return (Staff) getCurrentSession().get(Staff.class, id);
+        try {
+            return (Staff) getCurrentSession().get(Staff.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public Staff getByName(String staffName) {
-        String hql = "from Staff staf where staf.staffName=?";
-        Query query = getCurrentSession().createQuery(hql);
-        query.setString(0, staffName);
-        return (Staff) query.list().get(0);
+        try {
+            String hql = "from Staff staf where staf.staffName=?";
+            Query query = getCurrentSession().createQuery(hql);
+            query.setString(0, staffName);
+            return (Staff) query.list().get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     public List<Staff> findAll() {
-        String hql = "from Staff";
-        Query query = getCurrentSession().createQuery(hql);
-        return query.list();
+        try {
+            String hql = "from Staff";
+            Query query = getCurrentSession().createQuery(hql);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return null;
     }
 
     //查找数据？
     public void persist(Staff entity) {
-        getCurrentSession().persist(entity);
+        try {
+            getCurrentSession().persist(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
     }
 
     //插入数据
     public Integer save(Staff entity) {
-        return (Integer) getCurrentSession().save(entity);
+        try {
+            return (Integer) getCurrentSession().save(entity);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            getCurrentSession().close();
+        }
+        return -1;
     }
 
     //更新数据
@@ -83,10 +124,5 @@ public class StaffDaoImpl implements StaffDao {
     //清理
     public void flush() {
         getCurrentSession().flush();
-    }
-
-    //关闭session
-    public void close(){
-        getCurrentSession().close();
     }
 }
