@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-04-11 13:41:07
+Date: 2017-04-11 14:11:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,10 +59,6 @@ INSERT INTO `case_resource` VALUES ('1', '抽搐不止', '[\'/files/pet1.jpg\', 
 INSERT INTO `case_resource` VALUES ('2', '抽一管血', '[\'/files/pet4.jpg\', \'/files/pet5.jpg\']', '/files/trailer.mp4');
 INSERT INTO `case_resource` VALUES ('3', 'xxx浓度超过aaa则有问题', '[\'/files/pet6.jpg\', \'/files/pet7.jpg\']', '/files/trailer.mp4');
 INSERT INTO `case_resource` VALUES ('4', '打疫苗', '[\'/files/pet8.jpg\', \'/files/pet9.jpg\', \'/files/pet10.jpg\']', '/files/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('5', '抽搐不止', '[\'/files/pet2.jpg\']', '/files/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('6', '抽一管血', '[\'/files/pet5.jpg\']', '/files/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('7', 'xxx浓度超过aaa则有问题', '[\'/files/pet7.jpg\']', '/files/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('8', '打疫苗', '[\'/files/pet9.jpg\']', '/files/trailer.mp4');
 
 -- ----------------------------
 -- Table structure for examination
@@ -158,9 +154,9 @@ CREATE TABLE `role` (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('1', '1 2');
-INSERT INTO `role` VALUES ('2', '1 2 3');
-INSERT INTO `role` VALUES ('3', '3 4');
+INSERT INTO `role` VALUES ('1', '1 4');
+INSERT INTO `role` VALUES ('2', '5 6 7 8 9 10 11 12 13 14');
+INSERT INTO `role` VALUES ('3', '2 3 6 7 8 10 13 14');
 
 -- ----------------------------
 -- Table structure for room
@@ -171,14 +167,28 @@ CREATE TABLE `room` (
   `room_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `room_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 16
+  DEFAULT CHARSET = utf8;
 
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES ('1', 'room1');
-INSERT INTO `room` VALUES ('2', 'room2');
-INSERT INTO `room` VALUES ('3', 'room3');
+INSERT INTO `room` VALUES ('1', '前台');
+INSERT INTO `room` VALUES ('2', '注射室');
+INSERT INTO `room` VALUES ('3', '药房');
+INSERT INTO `room` VALUES ('4', '档案室');
+INSERT INTO `room` VALUES ('5', '诊室');
+INSERT INTO `room` VALUES ('6', '化验室');
+INSERT INTO `room` VALUES ('7', '免疫室');
+INSERT INTO `room` VALUES ('8', '影像室');
+INSERT INTO `room` VALUES ('9', '专科检查室');
+INSERT INTO `room` VALUES ('10', '手术准备室');
+INSERT INTO `room` VALUES ('11', '手术室');
+INSERT INTO `room` VALUES ('12', '病理解剖室');
+INSERT INTO `room` VALUES ('13', '处置室');
+INSERT INTO `room` VALUES ('14', '病房');
 
 -- ----------------------------
 -- Table structure for staff
