@@ -41,7 +41,7 @@ public class FileController {
         String leftPath = "D:/GradeFour/virtualPetHospital/public/assets";
         File file = new File(leftPath, fileName);
         uploadFile.transferTo(file);
-        return "{\"fileName\":\"" + leftPath + fileName + "\",\"result\":true}";
+        return "{\"fileName\":\"" + "/assets/pet/" + fileName + "\",\"result\":true}";
     }
 
     /**
