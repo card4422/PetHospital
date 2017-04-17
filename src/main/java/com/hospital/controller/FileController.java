@@ -34,10 +34,11 @@ public class FileController {
     public String Upload(@RequestParam(value = "file",required = false) MultipartFile uploadFile)throws Exception {
         String fileName = uploadFile.getOriginalFilename();
 //        String leftPath = session.getServletContext().getContextPath("/images");
-        String classpath = this.getClass().getResource("/").getPath();
+//        String classpath = this.getClass().getResource("/").getPath();
 
         //target/PetHospital/target/PetHospital/WEB-INF/classes/META-INF/files
-        String leftPath = classpath+"META-INF/files";
+//        String leftPath = classpath+"META-INF/files";
+        String leftPath = "D:/GradeFour/virtualPetHospital/public/assets";
         File file = new File(leftPath, fileName);
         uploadFile.transferTo(file);
         return "{\"fileName\":\"" + leftPath + fileName + "\",\"result\":true}";
