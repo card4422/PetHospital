@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : PetHospital
-Source Server Version : 50622
+Source Server         : test
+Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : pethospital
 
 Target Server Type    : MYSQL
-Target Server Version : 50622
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-04-17 14:46:44
+Date: 2017-04-18 00:51:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -97,59 +97,49 @@ CREATE TABLE `case_resource` (
 -- ----------------------------
 INSERT INTO `case_resource` VALUES ('1',
                                     '癫痫发作是“一个短暂的迹象，由于大脑中过度或同步的神经元活动异常” 这可能通过不同的方式体现，可以通过各种潜在病因引起。癫痫的主要症状是意识丧失和强直性痉挛。临床可分为大发作和小发作两种。大发作型。病犬突然倒地、惊厥，发生强直性或阵发性痉挛，全身僵硬、四肢伸展、头颈向背侧或一侧弯曲，有时四肢划动呈游泳状。小发作型。突然发生一过性的意识障碍，呆立不动，反应迟钝或无反应，痉挛抽搐症状轻微并且短暂，大多表现在局部，如眼睑颤动、眼球旋动、口唇震颤等。',
-                                    '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-                                    'https://media.w3.org/2010/05/sintel/trailer.mp4');
+                                    '[\'/assets/pet/pet8.jpg\']', '/assets/pet/video1.mp4');
 INSERT INTO `case_resource` VALUES ('2',
                                     '主要症状大致为渐进性消瘦、可视粘膜发白、营养不良、被毛粗乱无光、食欲不振、呕吐，偶见呕吐物中有虫体；异嗜，消化功能障碍、触诊、隔腹触压肠管，大量虫体寄生时可感到肠管套迭界线。有腹痛症状，患犬不时的叫唤。出现套迭或梗阻时，患犬全身情况恶化、不排便。',
-                                    '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-                                    'https://media.w3.org/2010/05/sintel/trailer.mp4');
+                                    '[\'/assets/pet/pet5.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
   ('3', '患处一般是椭圆或圆形的，与健康皮肤界限明显。有结痂容易剥离，剥后皮肤光滑，皮肤不会增厚，而是形成大面积的癣斑(如蜂窝状)痒感不强烈。可能细小皮屑，像鳞一样。',
-   '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-   'https://media.w3.org/2010/05/sintel/trailer.mp4');
+   '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\']', '/assets/pet/video2.mp4');
 INSERT INTO `case_resource` VALUES ('4',
                                     '患犬表现眼鼻水样分泌物，体温高达40摄氏度以上，持续2-3天左右，稍有进食，接近常温，病犬似是好转。紧接着又第二次体温升高，病情恶化，各类细菌继发感染更为严重，畏寒颤抖，精神时好时坏，鼻眼分泌物增多转为脓性，口角糜烂。这种情形一般持续1月以上。后转为湿咳，呼吸困难。呕吐、腹泻、肠套迭，最终以严重脱水和衰弱死亡。',
-                                    '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
+                                    '[\'/assets/pet/pet2.jpg\', \'/assets/pet/pet5.jpg\', \'/assets/pet/pet8.jpg\']',
                                     'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
   ('5', '首先，临床医生需要确定是否狗确实有癫痫发作。一个详细而准确的历史是对癫痫发作患者进行调查的基础。其次，可以对狗做脑电图、心电图等检查，从病源上确认狗是否有癫痫病发作。',
-   '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-   'https://media.w3.org/2010/05/sintel/trailer.mp4');
+   '[\'/assets/pet/pet9.jpg\', \'/assets/pet/pet10.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES ('6',
                                     '狗狗抽血正常是在前脚，在前脚尺骨中间，（类似于人类小臂那个位置）因为那里可以找到血管而且不会弯曲。\r\n先用剃刀将毛剃掉一小块，然后寻找血管，找到后擦上酒精，然后就和人抽血没什么两样了，扎针，将血导入塑料小管内，然后拔针用医用棉花压住就OK了。',
-                                    '[\'/assets/pet/pet4.jpg\', \'/assets/pet/pet5.jpg\']',
+                                    '[\'/assets/pet/pet5.jpg\', \'/assets/pet/pet13.jpg\']',
                                     'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
-  ('7', '观察狗发病症状，检测狗的呕吐物或粪便中是否有虫卵。', '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-   'https://media.w3.org/2010/05/sintel/trailer.mp4');
+  ('7', '观察狗发病症状，检测狗的呕吐物或粪便中是否有虫卵。', '[\'/assets/pet/pet5.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES ('8', '观察狗发病区域状态，与皮肤病发病现象进行对比，并进行病原体检查。',
                                     '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
                                     'https://media.w3.org/2010/05/sintel/trailer.mp4');
+INSERT INTO `case_resource`
+VALUES ('9', '脑电图波动异常。', '[\'/assets/pet/pet11.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
-  ('9', '脑电图波动异常。', '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
+  ('10', '血液指标中某指标浓度超过标准指标范围则有问题。', '[\'/assets/pet/pet13.jpg\', \'/assets/pet/pet14.jpg\']',
    'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
-  ('10', '血液指标中某指标浓度超过标准指标范围则有问题。', '[\'/assets/pet/pet6.jpg\', \'/assets/pet/pet7.jpg\']',
-   'https://media.w3.org/2010/05/sintel/trailer.mp4');
+  ('11', '狗发病症状符合蛔虫病对应症状，粪便中有虫卵。', '[\'/assets/pet/pet6.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
-  ('11', '狗发病症状符合蛔虫病对应症状，粪便中有虫卵。', '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-   'https://media.w3.org/2010/05/sintel/trailer.mp4');
+  ('12', '发病现象符合皮肤病症状，病原体检测显示存在皮肤病。', '[\'/assets/pet/pet3.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
-  ('12', '发病现象符合皮肤病症状，病原体检测显示存在皮肤病。', '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-   'https://media.w3.org/2010/05/sintel/trailer.mp4');
-INSERT INTO `case_resource` VALUES ('13', '手术摘除脑补病灶体，并通过长期用药以及营养保健进行控制。',
-                                    '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-                                    'https://media.w3.org/2010/05/sintel/trailer.mp4');
+  ('13', '手术摘除脑补病灶体，并通过长期用药以及营养保健进行控制。根据狗狗的体重适量给温顺片，每日一次。如果狗狗病情较重，发作频率较高，可遵医嘱给予癫安舒或抗癫口服液，或其它癫痫类药物对症治疗。',
+   '[\'/assets/pet/pet12.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES ('14', '疫苗皮下注射或者肌肉注射。注射方法为：提起脖子的皮肤，斜着扎入或者对着大腿内侧扎入。',
-                                    '[\'/assets/pet/pet8.jpg\', \'/assets/pet/pet9.jpg\', \'/assets/pet/pet10.jpg\']',
+                                    '[\'/assets/pet/pet5.jpg\', \'/assets/pet/pet9.jpg\', \'/assets/pet/pet10.jpg\']',
                                     'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES ('15',
                                     '定期检查与驱虫：幼犬每月检查1次，成年犬每季检查1次，发现病犬，立即进行驱虫。可用左咪唑，每千克体重10毫克内服。或用甲苯咪唑，每千克体重10毫克，每天服两次，连服两天。或用噻嘧啶(抗虫灵)每千克体重5-10毫克，内服。或用驱蛔灵每千克体重100毫克，内服。',
-                                    '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
-                                    'https://media.w3.org/2010/05/sintel/trailer.mp4');
+                                    '[\'/assets/pet/pet7.jpg\']', 'https://media.w3.org/2010/05/sintel/trailer.mp4');
 INSERT INTO `case_resource` VALUES
-  ('16', '皮特芬喷剂(盐酸特比奈芬喷剂)，每天3-4次，全身外用 。真菌极端严重的，可口服癣净(请看清成份也是盐酸特比奈芬)。口服抗真菌要对肝肾损伤较大，极量是3天。',
-   '[\'/assets/pet/pet1.jpg\', \'/assets/pet/pet2.jpg\', \'/assets/pet/pet3.jpg\']',
+  ('16', '皮特芬喷剂(盐酸特比奈芬喷剂)，每天3-4次，全身外用 。真菌极端严重的，可口服癣净(请看清成份也是盐酸特比奈芬)。口服抗真菌要对肝肾损伤较大，极量是3天。', '[\'/assets/pet/pet4.jpg\']',
    'https://media.w3.org/2010/05/sintel/trailer.mp4');
 
 -- ----------------------------
