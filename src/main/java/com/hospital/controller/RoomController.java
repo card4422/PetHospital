@@ -28,7 +28,7 @@ public class RoomController {
      * @param page 科室申请的页码
      * @return json数据信息
      */
-    @RequestMapping(value = "admin/room/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/room/{page}", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getRoom(@PathVariable String page) {
         int pages = Integer.parseInt(page);
@@ -66,6 +66,40 @@ public class RoomController {
         return "{\"data\":" + json + ",\"pages\":" + total + "}";
     }
 
+
+    /**
+     * 获得指定页码的科室信息
+     *
+     * @param page 科室申请的页码
+     * @return json数据信息
+     */
+    @RequestMapping(value = "admin/room", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String getRoom() {
+        List<Room> rooms = roomService.getAllRoom();
+
+        class templateInfo {
+            Integer id;
+            String roomName;
+        }
+
+        List<templateInfo> result = new ArrayList<templateInfo>();
+        for (Room room : rooms) {
+            templateInfo tempInfo = new templateInfo();//必须放在循环内
+            tempInfo.id = room.getId();
+            tempInfo.roomName = room.getRoomName();
+            result.add(tempInfo);
+        }
+        String json = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        try {
+            json = objectMapper.writeValueAsString(result);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "{\"data\":" + json + "}";
+    }
 
     /**
      * 更新科室
