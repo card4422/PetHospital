@@ -100,6 +100,8 @@ public class CaseController {
         Map exam = (Map)map.get("exam");
         Map result = (Map)map.get("result");
         Map method = (Map)map.get("method");
+        String classification = map.get("classification").toString();
+
         CaseResource cr = new CaseResource();
 
         //symptom
@@ -138,6 +140,7 @@ public class CaseController {
         c.setExam(Integer.parseInt(exam.get("id").toString()));
         c.setResult(Integer.parseInt(result.get("id").toString()));
         c.setMethod(Integer.parseInt(method.get("id").toString()));
+        c.setClassification(classification);
         caseService.updateCase(c);
         return "{\"result\":true}";
     }
@@ -156,6 +159,7 @@ public class CaseController {
         Map exam = (Map)map.get("exam");
         Map result = (Map)map.get("result");
         Map method = (Map)map.get("method");
+        String classification = map.get("classification").toString();
         CaseResource cr = new CaseResource();
 
         //symptom
@@ -189,6 +193,7 @@ public class CaseController {
         c.setExam(examId);
         c.setResult(resultId);
         c.setMethod(methodId);
+        c.setClassification(classification);
         caseService.saveCase(c);
         return "{\"result\":true}";
     }
