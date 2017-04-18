@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 
@@ -31,17 +32,18 @@ public class FileController {
      */
     @RequestMapping(value="upload",method = RequestMethod.POST)
     @ResponseBody
-    public String Upload(@RequestParam(value = "file",required = false) MultipartFile uploadFile)throws Exception {
+    public String Upload(@RequestParam(value = "file",required = false) MultipartFile uploadFile, HttpServletRequest request)throws Exception {
         String fileName = uploadFile.getOriginalFilename();
 //        String leftPath = session.getServletContext().getContextPath("/images");
 //        String classpath = this.getClass().getResource("/").getPath();
 
         //target/PetHospital/target/PetHospital/WEB-INF/classes/META-INF/files
-//        String leftPath = classpath+"META-INF/files";
-        String leftPath = "D:/GradeFour/virtualPetHospital/public/assets/pet";
+
+        String leftPath = "/User/Burgess/Desktop/PetHospital/src/main/webapp/img";//classpath+"META-INF/files";
+        String returnPath = "http://localhost:8080/img/" + fileName;
         File file = new File(leftPath, fileName);
         uploadFile.transferTo(file);
-        return "{\"fileName\":\"" + "/assets/pet/" + fileName + "\",\"result\":true}";
+        return "{\"fileName\":\"" + returnPath + "\",\"result\":true}";
     }
 
     /**

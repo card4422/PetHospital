@@ -14,6 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -135,20 +139,32 @@ public class UserController {
     @ResponseBody
     @JsonIgnoreProperties(ignoreUnknown=true)
     public Map<String, String> validate(@RequestBody Map map,HttpSession session) {
-        if (map.get("captcha").toString().equalsIgnoreCase(map.get("captcha").toString()/*session.getAttribute("captcha").toString()*/)) {  //忽略验证码大小写
-            Map<String, String> result = new HashMap<String, String>();
+        BufferedReader in= null;
+        String captcha =  "";
+        try {
+            in = new BufferedReader(new FileReader("code.txt"));
+            captcha = in.readLine();
+            in.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Map<String, String> result = new HashMap<String, String>();
+        if (map.get("captcha").toString().equalsIgnoreCase(captcha) || captcha.equals("")) {  //忽略验证码大小写
             User u = userService.getUser(map.get("userName").toString());
             if (u != null && u.getUserPwd().equals(map.get("userPwd").toString())) {
                 result.put("isValidated", "true");
                 result.put("userType", u.getUserType().toString());
             } else {
                 result.put("isValidated", "false");
-                result.put("userType", u.getUserType().toString());
+                result.put("err", "填写信息错误");
             }
-            return result;
         } else {
-            return null;
+            result.put("isValidated", "false");
+            result.put("err", "填写信息错误");
         }
+        return result;
     }
 
 

@@ -1,5 +1,6 @@
 package com.hospital.controller;
 
+import javafx.application.Application;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
@@ -96,6 +98,11 @@ public class CodeController {
         // 将四位数字的验证码保存到Session中。
         HttpSession session = request.getSession();
         System.out.print(randomCode);
+
+        FileWriter writer=new FileWriter("code.txt");
+        writer.write(randomCode.toString());
+        writer.close();
+
         session.setAttribute("captcha", randomCode.toString());
 
         // 禁止图像缓存。
