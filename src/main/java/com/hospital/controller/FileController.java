@@ -38,7 +38,7 @@ public class FileController {
 
         //target/PetHospital/target/PetHospital/WEB-INF/classes/META-INF/files
 //        String leftPath = classpath+"META-INF/files";
-        String leftPath = "D:/GradeFour/virtualPetHospital/public/assets";
+        String leftPath = "D:/GradeFour/virtualPetHospital/public/assets/pet";
         File file = new File(leftPath, fileName);
         uploadFile.transferTo(file);
         return "{\"fileName\":\"" + "/assets/pet/" + fileName + "\",\"result\":true}";
